@@ -1,0 +1,409 @@
+"","outcome","nestingvariable","phylogeny","contrast lower","contrast upper"
+"1","perc_won","no lemur sexratio","no",0.41035907,0.50456445
+"2","perc_won","lemur sexratio","no",-0.41189677,-0.137390215
+"3","perc_won","no lemur sexratio","yes",0.148959285,0.407038225
+"4","perc_won","lemur sexratio","yes",1.2195396,1.85177635
+"5","strict","no lemur sexratio","no",0.62591299,1.19011375
+"6","strict","lemur sexratio","no",-0.67238472,0.91863436
+"7","strict","no lemur sexratio","yes",0.62539905,1.2395444
+"8","strict","lemur sexratio","yes",-0.657919445,1.12556485
+"9","relaxed","no lemur sexratio","no",0.2233327,0.9148893
+"10","relaxed","lemur sexratio","no",-0.46793157,0.863933255
+"11","relaxed","no lemur sexratio","yes",0.4058799,1.18742335
+"12","relaxed","lemur sexratio","yes",2.19556985,3.91753395
+"13","perc_won","no lemur SexualDimorphism_MaleWeight_over_FemaleWeight","no",-0.398976805,-0.299131525
+"14","perc_won","lemur SexualDimorphism_MaleWeight_over_FemaleWeight","no",-0.918640335,-0.318232785
+"15","perc_won","no lemur SexualDimorphism_MaleWeight_over_FemaleWeight","yes",-0.57490268,0.0598665030000001
+"16","perc_won","lemur SexualDimorphism_MaleWeight_over_FemaleWeight","yes",-3.18212785,-1.12399585
+"17","strict","no lemur SexualDimorphism_MaleWeight_over_FemaleWeight","no",-0.757416325,-0.207304765
+"18","strict","lemur SexualDimorphism_MaleWeight_over_FemaleWeight","no",-2.3653411,-0.20885771
+"19","strict","no lemur SexualDimorphism_MaleWeight_over_FemaleWeight","yes",-0.746905465,-0.209318495
+"20","strict","lemur SexualDimorphism_MaleWeight_over_FemaleWeight","yes",-2.4905451,-0.20836277
+"21","relaxed","no lemur SexualDimorphism_MaleWeight_over_FemaleWeight","no",-0.950707955,-0.157255175
+"22","relaxed","lemur SexualDimorphism_MaleWeight_over_FemaleWeight","no",-1.1890926,0.214582265
+"23","relaxed","no lemur SexualDimorphism_MaleWeight_over_FemaleWeight","yes",-1.234024,-0.275952675
+"24","relaxed","lemur SexualDimorphism_MaleWeight_over_FemaleWeight","yes",-4.40033885,-2.9351222
+"25","perc_won","no lemur female_average_relatedness","no",-0.10641708,0.030417918
+"26","perc_won","lemur female_average_relatedness","no",-1.0731896,-0.4202009
+"27","perc_won","no lemur female_average_relatedness","yes",-0.379771175,0.26026923
+"28","perc_won","lemur female_average_relatedness","yes",-2.74343495,-0.157044905
+"29","strict","no lemur female_average_relatedness","no",-0.31313292,0.64929522
+"30","strict","lemur female_average_relatedness","no",-1.16508055,1.45081655
+"31","strict","no lemur female_average_relatedness","yes",-0.34897141,0.639577170000001
+"32","strict","lemur female_average_relatedness","yes",-1.06227975,1.4825005
+"33","relaxed","no lemur female_average_relatedness","no",-0.582689765,0.40029962
+"34","relaxed","lemur female_average_relatedness","no",-0.640204535,0.876911995
+"35","relaxed","no lemur female_average_relatedness","yes",-0.760801345,0.350969735
+"36","relaxed","lemur female_average_relatedness","yes",-0.029917532,2.3578344
+"37","perc_won","no lemur Synchrony","no",-0.93383876,-0.72694958
+"38","perc_won","lemur Synchrony","no",-2.1022159,0.66438427
+"39","perc_won","no lemur Synchrony","yes",-1.35438385,-0.24774401
+"40","perc_won","lemur Synchrony","yes",-2.49764925,0.276229975000001
+"41","strict","no lemur Synchrony","no",-0.48667326,0.199427575
+"42","strict","lemur Synchrony","no",-2.4874109,0.113430710000001
+"43","strict","no lemur Synchrony","yes",-0.43432757,0.425838425
+"44","strict","lemur Synchrony","yes",-2.63618065,0.196067245000001
+"45","relaxed","no lemur Synchrony","no",-0.0435173675,0.709079005
+"46","relaxed","lemur Synchrony","no",-1.1455895,0.36719113
+"47","relaxed","no lemur Synchrony","yes",-0.0857834665,0.895315625
+"48","relaxed","lemur Synchrony","yes",-3.5740826,-1.51298015
+"49","perc_won","no lemur r_seasonality_value","no",0.096062119,0.25268422
+"50","perc_won","lemur r_seasonality_value","no",1.6221791,3.6268128
+"51","perc_won","no lemur r_seasonality_value","yes",0.00715361764999998,1.09555235
+"52","perc_won","lemur r_seasonality_value","yes",-0.506869295,2.0642865
+"53","strict","no lemur r_seasonality_value","no",-0.119058835,0.6924815
+"54","strict","lemur r_seasonality_value","no",0.178393905,2.6582084
+"55","strict","no lemur r_seasonality_value","yes",-0.064770292,0.923976185
+"56","strict","lemur r_seasonality_value","yes",-0.0461568985,2.683516
+"57","relaxed","no lemur r_seasonality_value","no",-0.30892016,0.704329955
+"58","relaxed","lemur r_seasonality_value","no",-0.42583895,1.0286473
+"59","relaxed","no lemur r_seasonality_value","yes",-0.241674175,1.0733762
+"60","relaxed","lemur r_seasonality_value","yes",0.78842019,3.1078193
+"61","perc_won","no lemur male_skew","no",-0.0429051085,0.100061155
+"62","perc_won","lemur male_skew","no",2.16687115,3.73619085
+"63","perc_won","no lemur male_skew","yes",-0.05912768,0.7037387
+"64","perc_won","lemur male_skew","yes",0.0449349215,2.3453914
+"65","strict","no lemur male_skew","no",-0.311652325,0.60389272
+"66","strict","lemur male_skew","no",0.167178055,2.51891915
+"67","strict","no lemur male_skew","yes",-0.41800566,0.5484078
+"68","strict","lemur male_skew","yes",0.091223779,2.5213788
+"69","relaxed","no lemur male_skew","no",-0.814482015,0.107874465
+"70","relaxed","lemur male_skew","no",-0.180717955,1.17608125
+"71","relaxed","no lemur male_skew","yes",-1.0085575,0.165417615
+"72","relaxed","lemur male_skew","yes",1.04680385,3.1146351
+"73","perc_won","no lemur env_harshness","no",-0.3080392,-0.202675515
+"74","perc_won","lemur env_harshness","no",-0.400148315,-0.035561798
+"75","perc_won","no lemur env_harshness","yes",-1.07449655,-0.0422123015
+"76","perc_won","lemur env_harshness","yes",-2.3979965,-0.0100711217999998
+"77","strict","no lemur env_harshness","no",-0.658257085,-0.0591878925
+"78","strict","lemur env_harshness","no",-1.3555165,0.80224248
+"79","strict","no lemur env_harshness","yes",-0.672017065,-0.027756296
+"80","strict","lemur env_harshness","yes",-1.4313558,0.73491889
+"81","relaxed","no lemur env_harshness","no",-0.555096185,0.243437565
+"82","relaxed","lemur env_harshness","no",-0.88166378,0.60094945
+"83","relaxed","no lemur env_harshness","yes",-0.52056659,0.330658035
+"84","relaxed","lemur env_harshness","yes",-3.32594505,-1.2472655
+"85","perc_won","no lemur rainfall_unpredictability","no",-0.0370122075,0.081834372
+"86","perc_won","lemur rainfall_unpredictability","no",-0.435585515,-0.24803782
+"87","perc_won","no lemur rainfall_unpredictability","yes",-0.21965387,0.93882161
+"88","perc_won","lemur rainfall_unpredictability","yes",-1.5116583,0.199205915
+"89","strict","no lemur rainfall_unpredictability","no",-0.64179171,0.00802044910000002
+"90","strict","lemur rainfall_unpredictability","no",-1.5117764,0.033039975
+"91","strict","no lemur rainfall_unpredictability","yes",-0.66782,0.0586935625
+"92","strict","lemur rainfall_unpredictability","yes",-1.54657715,0.0340773640000002
+"93","relaxed","no lemur rainfall_unpredictability","no",-0.707530815,0.20300277
+"94","relaxed","lemur rainfall_unpredictability","no",-0.853845,0.369097990000001
+"95","relaxed","no lemur rainfall_unpredictability","yes",-0.71262725,0.17532353
+"96","relaxed","lemur rainfall_unpredictability","yes",-2.4175454,-0.71268283
+"97","perc_won","no lemur female_canine_height","no",-0.455534295,-0.313772075
+"98","perc_won","lemur female_canine_height","no",0.0245038175,0.255411365
+"99","perc_won","no lemur female_canine_height","yes",-0.924956845,-0.20170245
+"100","perc_won","lemur female_canine_height","yes",-1.2636813,-0.30189072
+"101","strict","no lemur female_canine_height","no",-0.908799635,-0.26433267
+"102","strict","lemur female_canine_height","no",-0.875202255,0.477715735
+"103","strict","no lemur female_canine_height","yes",-0.990439325,-0.266383105
+"104","strict","lemur female_canine_height","yes",-0.873772175,0.533077465
+"105","relaxed","no lemur female_canine_height","no",-1.302054,-0.441448585
+"106","relaxed","lemur female_canine_height","no",-1.05990825,0.186580105
+"107","relaxed","no lemur female_canine_height","yes",-1.295694,-0.27485843
+"108","relaxed","lemur female_canine_height","yes",-2.9774506,-0.924322025
+"109","perc_won","no lemur male_canine_height","no",-0.83472386,-0.66619763
+"110","perc_won","lemur male_canine_height","no",0.22441007,0.82443528
+"111","perc_won","no lemur male_canine_height","yes",-0.89514743,-0.064477518
+"112","perc_won","lemur male_canine_height","yes",-2.42876155,-0.264171285
+"113","strict","no lemur male_canine_height","no",-1.42680915,-0.621745245
+"114","strict","lemur male_canine_height","no",-1.9834092,0.317362465
+"115","strict","no lemur male_canine_height","yes",-1.4812545,-0.613790315
+"116","strict","lemur male_canine_height","yes",-2.106017,0.32886522
+"117","relaxed","no lemur male_canine_height","no",-1.4242844,-0.449066005
+"118","relaxed","lemur male_canine_height","no",-1.19252445,0.21299472
+"119","relaxed","no lemur male_canine_height","yes",-1.8733968,-0.505294555
+"120","relaxed","lemur male_canine_height","yes",-4.114324,-2.223282
+"121","perc_won","no lemur females","no",-1.3050585,-1.01643075
+"122","perc_won","lemur females","no",0.16243711,1.8970843
+"123","perc_won","no lemur females","yes",-1.260416,-0.58932003
+"124","perc_won","lemur females","yes",-2.85243205,0.0644026045000004
+"125","strict","no lemur females","no",-1.12754155,-0.268465395
+"126","strict","lemur females","no",-2.1548011,0.728168440000001
+"127","strict","no lemur females","yes",-1.1427175,-0.306168635
+"128","strict","lemur females","yes",-2.13781405,0.775628075
+"129","relaxed","no lemur females","no",-1.03780815,-0.0564030194999999
+"130","relaxed","lemur females","no",-1.0879081,0.52135585
+"131","relaxed","no lemur females","yes",-1.42076725,-0.185609245
+"132","relaxed","lemur females","yes",-5.5808264,-3.46389855
+"133","perc_won","no lemur homerange_overlap","no",-0.0842221095,0.027595479
+"134","perc_won","lemur homerange_overlap","no",-0.270925075,0.0733977755
+"135","perc_won","no lemur homerange_overlap","yes",-0.39969003,0.134305015
+"136","perc_won","lemur homerange_overlap","yes",-0.92743718,0.659296225
+"137","strict","no lemur homerange_overlap","no",-0.27765067,0.33909847
+"138","strict","lemur homerange_overlap","no",-1.3628227,0.263556725
+"139","strict","no lemur homerange_overlap","yes",-0.321832415,0.352195455
+"140","strict","lemur homerange_overlap","yes",-1.4091042,0.304476505
+"141","relaxed","no lemur homerange_overlap","no",-0.79206218,0.00223665175000013
+"142","relaxed","lemur homerange_overlap","no",-1.34653905,-0.000487030889999889
+"143","relaxed","no lemur homerange_overlap","yes",-0.893466995,-0.0418580464999999
+"144","relaxed","lemur homerange_overlap","yes",-3.9268279,-1.95241175
+"145","perc_won","no lemur perc_aggression_mm","no",0.36903595,0.489776355
+"146","perc_won","lemur perc_aggression_mm","no",0.788206705,1.3220041
+"147","perc_won","no lemur perc_aggression_mm","yes",-0.41770208,0.0168624725
+"148","perc_won","lemur perc_aggression_mm","yes",0.23962104,1.35235605
+"149","strict","no lemur perc_aggression_mm","no",0.0206893145,0.928206715
+"150","strict","lemur perc_aggression_mm","no",0.00366820709999992,2.17244315
+"151","strict","no lemur perc_aggression_mm","yes",0.03739723,0.98084422
+"152","strict","lemur perc_aggression_mm","yes",-0.0979528805,2.31994315
+"153","relaxed","no lemur perc_aggression_mm","no",-0.119577155,0.81456748
+"154","relaxed","lemur perc_aggression_mm","no",-0.51979126,0.870718815
+"155","relaxed","no lemur perc_aggression_mm","yes",-0.0927066245,0.99781478
+"156","relaxed","lemur perc_aggression_mm","yes",-0.0661493715,2.13192805
+"157","perc_won","no lemur testes_mass","no",0.017019793,0.133903375
+"158","perc_won","lemur testes_mass","no",-0.254617925,0.80020323
+"159","perc_won","no lemur testes_mass","yes",-1.00282465,0.311191885
+"160","perc_won","lemur testes_mass","yes",-3.0412972,-0.66459371
+"161","strict","no lemur testes_mass","no",-0.67165658,-0.0525320215
+"162","strict","lemur testes_mass","no",-2.04265725,0.639575925
+"163","strict","no lemur testes_mass","yes",-0.880316215,-0.0784742324999999
+"164","strict","lemur testes_mass","yes",-2.06311165,0.63569244
+"165","relaxed","no lemur testes_mass","no",-0.415826635,0.30264849
+"166","relaxed","lemur testes_mass","no",-1.05292865,0.42109598
+"167","relaxed","no lemur testes_mass","yes",-0.600724605,0.22531086
+"168","relaxed","lemur testes_mass","yes",-4.02799765,-1.9990247
+"169","perc_won","no lemur body_mass","no",-0.123871785,-0.00226539924999999
+"170","perc_won","lemur body_mass","no",-0.016444529,2.44276895
+"171","perc_won","no lemur body_mass","yes",-0.45549157,0.00681208425000003
+"172","perc_won","lemur body_mass","yes",-2.1722096,0.903196835
+"173","strict","no lemur body_mass","no",-0.64475255,0.0568236740000001
+"174","strict","lemur body_mass","no",-2.06518105,0.877026105
+"175","strict","no lemur body_mass","yes",-0.58426994,0.0827886105
+"176","strict","lemur body_mass","yes",-2.23009275,0.962206435
+"177","relaxed","no lemur body_mass","no",-0.95382427,0.0426873650000001
+"178","relaxed","lemur body_mass","no",-0.91403193,0.61108959
+"179","relaxed","no lemur body_mass","yes",-1.3458953,-0.00875777129999993
+"180","relaxed","lemur body_mass","yes",-4.2486895,-1.78552575
+"181","perc_won","no lemur receptive_synchrony","no",-0.799579305,-0.6226058
+"182","perc_won","lemur receptive_synchrony","no",-1.57860085,-0.201654485
+"183","perc_won","no lemur receptive_synchrony","yes",-1.26880355,0.011862577
+"184","perc_won","lemur receptive_synchrony","yes",-3.22645575,-0.73321857
+"185","strict","no lemur receptive_synchrony","no",-0.123295605,0.46065571
+"186","strict","lemur receptive_synchrony","no",-2.60020595,-0.00234974368999991
+"187","strict","no lemur receptive_synchrony","yes",0.021726403,0.6975731
+"188","strict","lemur receptive_synchrony","yes",-2.51455765,0.0671898640000001
+"189","relaxed","no lemur receptive_synchrony","no",-0.18346561,0.52011901
+"190","relaxed","lemur receptive_synchrony","no",-1.1402248,0.326055255
+"191","relaxed","no lemur receptive_synchrony","yes",-0.327723565,0.509054435
+"192","relaxed","lemur receptive_synchrony","yes",-3.95120695,-2.04428365
+"193","perc_won","no lemur monopolization","No",-0.274203745,0.0190457785
+"194","perc_won","lemur monopolization","No",-0.21582118,2.116257
+"195","perc_won","no lemur monopolization","Yes",-0.898919415,0.0953238415000003
+"196","perc_won","lemur monopolization","Yes",-0.582645065,2.1312347
+"197","strict","no lemur monopolization","No",-1.28558815,-0.247491405
+"198","strict","lemur monopolization","No",-0.10247337,1.2933997
+"199","strict","no lemur monopolization","Yes",-1.3565899,-0.28177191
+"200","strict","lemur monopolization","Yes",-0.136654945,1.3005996
+"201","relaxed","no lemur monopolization","No",-1.37444155,-0.167634695
+"202","relaxed","lemur monopolization","No",-0.26245615,1.2610173
+"203","relaxed","no lemur monopolization","Yes",-1.36987095,-0.124588725
+"204","relaxed","lemur monopolization","Yes",-0.191762925,1.2538592
+"205","perc_won","no lemur jointaggression_males","No",0.465532665,0.672749225
+"206","perc_won","lemur jointaggression_males","No",-0.0655794605000001,2.1329909
+"207","perc_won","no lemur jointaggression_males","Yes",-0.260554125,0.876134755
+"208","perc_won","lemur jointaggression_males","Yes",0.43703493,2.9323908
+"209","strict","no lemur jointaggression_males","No",-0.90380914,-0.0947541645
+"210","strict","lemur jointaggression_males","No",0.233574555,1.5962502
+"211","strict","no lemur jointaggression_males","Yes",-0.91090979,-0.132451235
+"212","strict","lemur jointaggression_males","Yes",0.203730995,1.57353385
+"213","relaxed","no lemur jointaggression_males","No",-1.20178705,-0.14672116
+"214","relaxed","lemur jointaggression_males","No",0.073911515,1.52097175
+"215","relaxed","no lemur jointaggression_males","Yes",-1.2665843,-0.17725823
+"216","relaxed","lemur jointaggression_males","Yes",0.084970964,1.53157695
+"217","perc_won","no lemur jointaggression_females","No",-0.341839935,-0.11174757
+"218","perc_won","lemur jointaggression_females","No",0.2390125,0.57608763
+"219","perc_won","no lemur jointaggression_females","Yes",-1.00586785,0.0743401600000001
+"220","perc_won","lemur jointaggression_females","Yes",-0.53508399,1.05040665
+"221","strict","no lemur jointaggression_females","No",-0.98527195,-0.18177839
+"222","strict","lemur jointaggression_females","No",0.22593881,1.22595295
+"223","strict","no lemur jointaggression_females","Yes",-1.0517617,-0.17666006
+"224","strict","lemur jointaggression_females","Yes",0.16655281,1.29246675
+"225","relaxed","no lemur jointaggression_females","No",-0.659181875,0.30467615
+"226","relaxed","lemur jointaggression_females","No",0.370531665,1.52264755
+"227","relaxed","no lemur jointaggression_females","Yes",-0.78177397,0.240013695
+"228","relaxed","lemur jointaggression_females","Yes",0.392909915,1.6139886
+"229","perc_won","no lemur female_dispersal","No",0.250904255,0.472936875
+"230","perc_won","lemur female_dispersal","No",0.17324037,0.8048585
+"231","perc_won","no lemur female_dispersal","Yes",-2.2466164,-0.915327125
+"232","perc_won","lemur female_dispersal","Yes",-0.307441915,1.95584975
+"233","strict","no lemur female_dispersal","No",-0.93607472,-0.0514009945
+"234","strict","lemur female_dispersal","No",0.0504195505,1.3578944
+"235","strict","no lemur female_dispersal","Yes",-1.0087776,-0.0932994245
+"236","strict","lemur female_dispersal","Yes",0.0107355849,1.3612386
+"237","relaxed","no lemur female_dispersal","No",-0.82622938,0.21522264
+"238","relaxed","lemur female_dispersal","No",0.23734755,1.5451011
+"239","relaxed","no lemur female_dispersal","Yes",-0.90644346,0.20570073
+"240","relaxed","lemur female_dispersal","Yes",0.228785155,1.63912775
+"241","perc_won","no lemur female_infanticide","No",-0.22440748,0.0692417885
+"242","perc_won","lemur female_infanticide","No",-0.208749305,0.26992247
+"243","perc_won","no lemur female_infanticide","Yes",-0.63008882,0.50228319
+"244","perc_won","lemur female_infanticide","Yes",-1.95545995,-0.421578725
+"245","strict","no lemur female_infanticide","No",-1.1707499,-0.184847765
+"246","strict","lemur female_infanticide","No",0.21373675,1.43549145
+"247","strict","no lemur female_infanticide","Yes",-1.1763478,-0.140056695
+"248","strict","lemur female_infanticide","Yes",0.19166036,1.47322335
+"249","relaxed","no lemur female_infanticide","No",-1.40331795,-0.152058125
+"250","relaxed","lemur female_infanticide","No",-0.15242959,1.1762626
+"251","relaxed","no lemur female_infanticide","Yes",-1.41623395,-0.19639833
+"252","relaxed","lemur female_infanticide","Yes",-0.1168748,1.15128295
+"253","perc_won","no lemur female_evictions","No",-0.491740825,-0.0760953805
+"254","perc_won","lemur female_evictions","No",0.16381382,1.5452811
+"255","perc_won","no lemur female_evictions","Yes",-2.6945387,-0.66750898
+"256","perc_won","lemur female_evictions","Yes",0.215247695,1.99633355
+"257","strict","no lemur female_evictions","No",-1.27869955,-0.0317490784999999
+"258","strict","lemur female_evictions","No",0.36564702,1.60241355
+"259","strict","no lemur female_evictions","Yes",-1.3150268,-0.0712032659999999
+"260","strict","lemur female_evictions","Yes",0.29449448,1.5631872
+"261","relaxed","no lemur female_evictions","No",-1.1712638,0.20482286
+"262","relaxed","lemur female_evictions","No",0.198207285,1.40537735
+"263","relaxed","no lemur female_evictions","Yes",-1.1802526,0.206397325
+"264","relaxed","lemur female_evictions","Yes",0.13644339,1.37246325
+"265","perc_won","no lemur sexbias_dispersal","No",-0.529996165,-0.39473379
+"266","perc_won","lemur sexbias_dispersal","No",-0.43847058,-0.089003814
+"267","perc_won","no lemur sexbias_dispersal","Yes",-0.21906532,0.65001345
+"268","perc_won","lemur sexbias_dispersal","Yes",-0.181120575,1.15780345
+"269","perc_won","no lemur sexbias_dispersal","No",-0.67729341,-0.0749163294999999
+"270","perc_won","lemur sexbias_dispersal","No",0.33917846,1.1876243
+"271","perc_won","no lemur sexbias_dispersal","Yes",-0.704338885,-0.0212110355
+"272","perc_won","lemur sexbias_dispersal","Yes",0.336352135,1.26321055
+"273","perc_won","no lemur sexbias_dispersal","No",-1.08437105,-0.27076454
+"274","perc_won","lemur sexbias_dispersal","No",0.129688245,1.03813175
+"275","perc_won","no lemur sexbias_dispersal","Yes",-1.0665566,-0.26585563
+"276","perc_won","lemur sexbias_dispersal","Yes",0.109383295,1.0940852
+"277","strict","no lemur sexbias_dispersal",NA,NA,NA
+"278","strict","lemur sexbias_dispersal",NA,NA,NA
+"279","strict","no lemur sexbias_dispersal",NA,NA,NA
+"280","strict","lemur sexbias_dispersal",NA,NA,NA
+"281","strict","no lemur sexbias_dispersal",NA,NA,NA
+"282","strict","lemur sexbias_dispersal",NA,NA,NA
+"283","strict","no lemur sexbias_dispersal",NA,NA,NA
+"284","strict","lemur sexbias_dispersal",NA,NA,NA
+"285","strict","no lemur sexbias_dispersal",NA,NA,NA
+"286","strict","lemur sexbias_dispersal",NA,NA,NA
+"287","strict","no lemur sexbias_dispersal",NA,NA,NA
+"288","strict","lemur sexbias_dispersal",NA,NA,NA
+"289","relaxed","no lemur sexbias_dispersal",NA,NA,NA
+"290","relaxed","lemur sexbias_dispersal",NA,NA,NA
+"291","relaxed","no lemur sexbias_dispersal",NA,NA,NA
+"292","relaxed","lemur sexbias_dispersal",NA,NA,NA
+"293","relaxed","no lemur sexbias_dispersal",NA,NA,NA
+"294","relaxed","lemur sexbias_dispersal",NA,NA,NA
+"295","relaxed","no lemur sexbias_dispersal",NA,NA,NA
+"296","relaxed","lemur sexbias_dispersal",NA,NA,NA
+"297","relaxed","no lemur sexbias_dispersal",NA,NA,NA
+"298","relaxed","lemur sexbias_dispersal",NA,NA,NA
+"299","relaxed","no lemur sexbias_dispersal",NA,NA,NA
+"300","relaxed","lemur sexbias_dispersal",NA,NA,NA
+"301","perc_won","no lemur MatSysPMK","No",-0.35867271,-0.220826635
+"302","perc_won","lemur MatSysPMK","No",-0.16703446,-0.030974424
+"303","perc_won","no lemur MatSysPMK","Yes",-0.517362015,0.24518283
+"304","perc_won","lemur MatSysPMK","Yes",-1.052853,-0.339492085
+"305","perc_won","no lemur MatSysPMK","No",-0.62465728,-0.14139634
+"306","perc_won","lemur MatSysPMK","No",0.107860295,0.70024159
+"307","perc_won","no lemur MatSysPMK","Yes",-0.681154295,-0.147378335
+"308","perc_won","lemur MatSysPMK","Yes",0.10416367,0.742905395
+"309","perc_won","no lemur MatSysPMK","No",-0.80101619,-0.152545675
+"310","perc_won","lemur MatSysPMK","No",-0.0922111695,0.66598183
+"311","perc_won","no lemur MatSysPMK","Yes",-1.2156132,-0.4053208
+"312","perc_won","lemur MatSysPMK","Yes",-0.1720157,0.660098975
+"313","perc_won","no lemur MatSysPMK",NA,NA,NA
+"314","perc_won","lemur MatSysPMK",NA,NA,NA
+"315","perc_won","no lemur MatSysPMK",NA,NA,NA
+"316","perc_won","lemur MatSysPMK",NA,NA,NA
+"317","perc_won","no lemur MatSysPMK",NA,NA,NA
+"318","perc_won","lemur MatSysPMK",NA,NA,NA
+"319","perc_won","no lemur MatSysPMK",NA,NA,NA
+"320","perc_won","lemur MatSysPMK",NA,NA,NA
+"321","perc_won","no lemur MatSysPMK",NA,NA,NA
+"322","perc_won","lemur MatSysPMK",NA,NA,NA
+"323","perc_won","no lemur MatSysPMK",NA,NA,NA
+"324","perc_won","lemur MatSysPMK",NA,NA,NA
+"325","strict","no lemur MatSysPMK",NA,NA,NA
+"326","strict","lemur MatSysPMK",NA,NA,NA
+"327","strict","no lemur MatSysPMK",NA,NA,NA
+"328","strict","lemur MatSysPMK",NA,NA,NA
+"329","strict","no lemur MatSysPMK",NA,NA,NA
+"330","strict","lemur MatSysPMK",NA,NA,NA
+"331","strict","no lemur MatSysPMK",NA,NA,NA
+"332","strict","lemur MatSysPMK",NA,NA,NA
+"333","strict","no lemur MatSysPMK",NA,NA,NA
+"334","strict","lemur MatSysPMK",NA,NA,NA
+"335","strict","no lemur MatSysPMK",NA,NA,NA
+"336","strict","lemur MatSysPMK",NA,NA,NA
+"337","strict","no lemur MatSysPMK",NA,NA,NA
+"338","strict","lemur MatSysPMK",NA,NA,NA
+"339","strict","no lemur MatSysPMK",NA,NA,NA
+"340","strict","lemur MatSysPMK",NA,NA,NA
+"341","strict","no lemur MatSysPMK",NA,NA,NA
+"342","strict","lemur MatSysPMK",NA,NA,NA
+"343","strict","no lemur MatSysPMK",NA,NA,NA
+"344","strict","lemur MatSysPMK",NA,NA,NA
+"345","strict","no lemur MatSysPMK",NA,NA,NA
+"346","strict","lemur MatSysPMK",NA,NA,NA
+"347","strict","no lemur MatSysPMK",NA,NA,NA
+"348","strict","lemur MatSysPMK",NA,NA,NA
+"349","relaxed","no lemur MatSysPMK",NA,NA,NA
+"350","relaxed","lemur MatSysPMK",NA,NA,NA
+"351","relaxed","no lemur MatSysPMK",NA,NA,NA
+"352","relaxed","lemur MatSysPMK",NA,NA,NA
+"353","relaxed","no lemur MatSysPMK",NA,NA,NA
+"354","relaxed","lemur MatSysPMK",NA,NA,NA
+"355","relaxed","no lemur MatSysPMK",NA,NA,NA
+"356","relaxed","lemur MatSysPMK",NA,NA,NA
+"357","relaxed","no lemur MatSysPMK",NA,NA,NA
+"358","relaxed","lemur MatSysPMK",NA,NA,NA
+"359","relaxed","no lemur MatSysPMK",NA,NA,NA
+"360","relaxed","lemur MatSysPMK",NA,NA,NA
+"361","relaxed","no lemur MatSysPMK",NA,NA,NA
+"362","relaxed","lemur MatSysPMK",NA,NA,NA
+"363","relaxed","no lemur MatSysPMK",NA,NA,NA
+"364","relaxed","lemur MatSysPMK",NA,NA,NA
+"365","relaxed","no lemur MatSysPMK",NA,NA,NA
+"366","relaxed","lemur MatSysPMK",NA,NA,NA
+"367","relaxed","no lemur MatSysPMK",NA,NA,NA
+"368","relaxed","lemur MatSysPMK",NA,NA,NA
+"369","relaxed","no lemur MatSysPMK",NA,NA,NA
+"370","relaxed","lemur MatSysPMK",NA,NA,NA
+"371","relaxed","no lemur MatSysPMK",NA,NA,NA
+"372","relaxed","lemur MatSysPMK",NA,NA,NA
+"373","perc_won","no lemur SocOrgPMK","No",0.46488699,1.1425471
+"374","perc_won","lemur SocOrgPMK","No",-0.31569539,-0.17265681
+"375","perc_won","no lemur SocOrgPMK","Yes",-1.864763,0.166784735
+"376","perc_won","lemur SocOrgPMK","Yes",0.566352715,1.5510666
+"377","perc_won","no lemur SocOrgPMK","No",-0.783721815,0.361773
+"378","perc_won","lemur SocOrgPMK","No",0.27551055,1.05955935
+"379","perc_won","no lemur SocOrgPMK","Yes",-0.864488395,0.35455691
+"380","perc_won","lemur SocOrgPMK","Yes",0.25858057,1.11409385
+"381","perc_won","no lemur SocOrgPMK","No",-1.4783843,-0.0857888539999999
+"382","perc_won","lemur SocOrgPMK","No",0.283559685,1.42144925
+"383","perc_won","no lemur SocOrgPMK","Yes",-1.53537805,-0.185571145
+"384","perc_won","lemur SocOrgPMK","Yes",0.274356885,1.39297
+"385","strict","no lemur SocOrgPMK",NA,NA,NA
+"386","strict","lemur SocOrgPMK",NA,NA,NA
+"387","strict","no lemur SocOrgPMK",NA,NA,NA
+"388","strict","lemur SocOrgPMK",NA,NA,NA
+"389","strict","no lemur SocOrgPMK",NA,NA,NA
+"390","strict","lemur SocOrgPMK",NA,NA,NA
+"391","strict","no lemur SocOrgPMK",NA,NA,NA
+"392","strict","lemur SocOrgPMK",NA,NA,NA
+"393","strict","no lemur SocOrgPMK",NA,NA,NA
+"394","strict","lemur SocOrgPMK",NA,NA,NA
+"395","strict","no lemur SocOrgPMK",NA,NA,NA
+"396","strict","lemur SocOrgPMK",NA,NA,NA
+"397","relaxed","no lemur SocOrgPMK",NA,NA,NA
+"398","relaxed","lemur SocOrgPMK",NA,NA,NA
+"399","relaxed","no lemur SocOrgPMK",NA,NA,NA
+"400","relaxed","lemur SocOrgPMK",NA,NA,NA
+"401","relaxed","no lemur SocOrgPMK",NA,NA,NA
+"402","relaxed","lemur SocOrgPMK",NA,NA,NA
+"403","relaxed","no lemur SocOrgPMK",NA,NA,NA
+"404","relaxed","lemur SocOrgPMK",NA,NA,NA
+"405","relaxed","no lemur SocOrgPMK",NA,NA,NA
+"406","relaxed","lemur SocOrgPMK",NA,NA,NA
+"407","relaxed","no lemur SocOrgPMK",NA,NA,NA
+"408","relaxed","lemur SocOrgPMK",NA,NA,NA
