@@ -80,7 +80,7 @@ colnames(phylosignals)<-c("variable","phylogenetic_signal_Blomberg_K","significa
 phylosignals$variable<-c("Percentage fights won by females","Strict three-way classification","Relaxed two-way classification")
 phylosignals$phylogenetic_signal_Blomberg_K<-c(phylosignal_percwon$K,phylosignal_strict$K,phylosignal_relaxed$K)
 phylosignals$significance<-c(phylosignal_percwon$P,phylosignal_strict$P,phylosignal_relaxed$P)
-write.csv(phylosignals,file="FemaleDominance_PhylogeneticSignal.csv")
+write.csv(phylosignals,file="./results/FemaleDominance_PhylogeneticSignal.csv")
 
 ##########################################################################################
 # Estimation of the phylogenetic covariance using STAN models

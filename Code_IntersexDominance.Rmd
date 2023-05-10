@@ -268,21 +268,6 @@ sum(table(speciesvariation_femdom_summarytable$corrected_species_id)==3)
 combined[combined$corrected_species_id=="Miopithecus_talapoin",]
 
 
-# Distribution of intersexual dominance systems according to relaxed definition
-# Occurrence of three types
-table(combined$mostlyfdom)
-
-# Determine how many different species there are for each type of intersexual dominance
-species_femdom_summarytable<-as.data.frame((combined %>% group_by(mostlyfdom) %>% summarize(unique(corrected_species_id)) ))
-
-nrow(species_femdom_summarytable[species_femdom_summarytable$mostlyfdom=="f",])
-nrow(species_femdom_summarytable[species_femdom_summarytable$mostlyfdom=="m",])
-
-speciesvariation_femdom_summarytable<-as.data.frame((combined %>% group_by(corrected_species_id) %>% summarize(unique(mostlyfdom)) ))
-
-sum(table(speciesvariation_femdom_summarytable$corrected_species_id)==1)
-sum(table(speciesvariation_femdom_summarytable$corrected_species_id)==2)
-
 # Distribution of proportion of aggressive interactions won by females
 table(combined$perc_won_females)
 
@@ -400,7 +385,7 @@ for(i in 1:length(alldiscretepredictors)){
   count<-count+1
 }
 
-write.csv(samplesizetable,file="FemdomAnalyses_Feb2023_Samplesizes.csv")
+write.csv(samplesizetable,file="./results/FemdomAnalyses_May2023_Samplesizes.csv")
 
 
 for (k in 1:1){
@@ -427,11 +412,14 @@ for (j in 1:length(alldiscretepredictors)){
   colnames(alldiscreteresults)<-colnames(allresults)
   combinedresults<-rbind(allresults,alldiscreteresults)
   
-}
-
+  
 combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*combinedresults$'estimate upper'<0,"not","confident" )
 
-write.csv(combinedresults,file="intersexualdominance_combinedresults.csv")
+write.csv(combinedresults,file="./results/intersexualdominance_combinedresults.csv")
+
+}
+
+
 
 ```
 
