@@ -549,7 +549,7 @@ overallprobs_speciesaverages_skew<-pordlogit( 1:3 , overallphi_speciesaverages ,
 # combined plot
 
 previouspar<-par()
-op <- par(oma=c(1.5,1.5,1.5,0.2), mar=c(1.5,1.5,1.5,1.5), mfrow=c(1,5))
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_mating,col=dominance_colors,axisnames = F)
 
 plot( NULL , type="n" , xlab="Male body weight relative to female body weight" ,
@@ -732,7 +732,7 @@ plot_synchrony<-ggplot(df)+aes(y=strictfdom,x=Synchrony,fill=strictfdom)+stat_ha
 
 
 #  Fig 2b top combined plot 
-plot_grid(plot_arboreality ,plot_ovulationsigns, plot_sexualreceptivity, plot_testesmass,plot_synchrony, rel_widths = c(5,3,3,3,3),nrow=1,scale=0.85)
+plot_grid(plot_arboreality ,plot_ovulationsigns, plot_sexualreceptivity, plot_testesmass,plot_synchrony, rel_widths = c(5,3,3,3,3),nrow=1,scale=0.9)
 
 
 
@@ -922,11 +922,10 @@ overallprobs_speciesaverages_synchrony<-pordlogit( 1:3 , overallphi_speciesavera
 
 # combined plot
 
-plot_grid(plot_arboreality ,plot_ovulationsigns, plot_sexualreceptivity, plot_testesmass,plot_synchrony, rel_widths = c(5,3,3,3,3),nrow=1,scale=0.85)
 
 # Fig 2b bottom
 previouspar<-par()
-op <- par(oma=c(1.5,1.5,1.5,0.2), mar=c(1.5,1.5,1.5,1.5), mfrow=c(1,5))
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_arboreality,col=dominance_colors,axisnames = F)
 
 barplot(overallprobs_speciesaverages_ovulation_signs,col=c( col.alpha(dominance_colors[1],0.4), col.alpha(dominance_colors[2],0.4),col.alpha(dominance_colors[3],0.4)),axisnames = F,yaxt="n")
@@ -1113,7 +1112,7 @@ plot_percaggress_mm<-ggplot(df)+aes(y=strictfdom,x=perc_aggression_mm,fill=stric
 
 
 # combined plot
-plot_grid(plot_socialsystem ,plot_jointaggression_females, plot_sexbias_dispersal, plot_males,plot_percaggress_mm, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.85)
+plot_grid(plot_socialsystem ,plot_jointaggression_females, plot_sexbias_dispersal, plot_males,plot_percaggress_mm, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.9)
 
 
 
@@ -1306,7 +1305,7 @@ overallprobs_speciesaverages_perc_aggression_mm<-pordlogit( 1:3 , overallphi_spe
 # combined plot
 
 previouspar<-par()
-op <- par(oma=c(1.5,1.5,1.5,0.2), mar=c(1.5,1.5,1.5,1.5), mfrow=c(1,5))
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_SocOrgPMK,col=dominance_colors,axisnames = F)
 
 
@@ -1488,7 +1487,7 @@ plot_homerange_overlap<-ggplot(df)+aes(y=strictfdom,x=homerange_overlap,fill=str
 
 
 # combined plot
-plot_grid(plot_origin ,plot_femaleevictions, plot_env_harshness, plot_seasonalbreeding,plot_homerange_overlap, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.85)
+plot_grid(plot_origin ,plot_femaleevictions, plot_env_harshness, plot_seasonalbreeding,plot_homerange_overlap, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.9)
 
 
 
@@ -1676,7 +1675,7 @@ overallprobs_speciesaverages_homerange_overlap<-pordlogit( 1:3 , overallphi_spec
 
 # combined plot
 previouspar<-par()
-op <- par(oma=c(1.5,1.5,1.5,0.2), mar=c(1.5,1.5,1.5,1.5), mfrow=c(1,5))
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_origin,col=c(col.alpha(dominance_colors[1],0.4),col.alpha(dominance_colors[2],0.4),col.alpha(dominance_colors[3],0.4) ),axisnames = F)
 
 barplot(overallprobs_speciesaverages_female_evictions,col=dominance_colors,axisnames = F,yaxt="n")
