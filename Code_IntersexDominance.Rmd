@@ -277,6 +277,41 @@ sum(combined$perc_won_females>66,na.rm=T)
 ```
 
 
+
+## Occurrence of intersexual conflict
+
+Intersexual conflicts are frequent, representing nearly half of all agonistic interactions among primates: mean percentage ±SD: 48.1±21.5
+
+Intersexual conflicts are not more (or less) frequent when most dyads in the group are between the sexes: mean estimate -0.01, 89% HPDI -0.06 - +0.04
+
+
+```{r p2 variation in intersexual conflicts, echo=FALSE}
+
+mean(combined$perc_aggression_fm,na.rm=T)
+sd(combined$perc_aggression_fm,na.rm=T)
+
+dstan_conflicts<-select(combined,corrected_species_id,perc_aggression_fm,perc_fm_dyads)
+dstan_conflicts<-dstan_conflicts[complete.cases(dstan_conflicts),]
+
+  dat_list_conflicts <- list(
+    perc_aggression_fm = as.integer(dstan_conflicts$perc_aggression_fm),
+    perc_fm_dyads = standardize(dstan_conflicts$perc_fm_dyads),
+    total = rep(100,nrow(dstan_conflicts))
+    )
+  
+  m_conflicts <- ulam(
+    alist(
+      perc_aggression_fm ~ dbinom(total,p),
+      logit(p) <-a +b*perc_fm_dyads,
+      a ~dnorm(0,1),   
+      b ~ dnorm(0,1)
+    ) , data=dat_list_conflicts , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
+
+precis(m_conflicts)  
+  
+```
+
+
 ## Investigation whether setting of the study influences the inference
 
 ## P1.3	Intersexual dominance interactions observed in captive settings are similar to those observed in more natural settings as social conditions in captivity tend to reflect those in the wild 
