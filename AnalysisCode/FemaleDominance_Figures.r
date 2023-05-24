@@ -38,7 +38,11 @@ palette1<- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "
 palette2<- c("#440154FF", "#443A83FF" ,"#31688EFF", "#21908CFF", "#35B779FF", "#8FD744FF", "#FDE725FF")
 
 
- 
+
+
+
+
+################################################################################
 ################################################################################
 # Figure 1: phylogenetic distribution of sex-specific aggression and dominance
 
@@ -175,7 +179,13 @@ p3 <- facet_plot(treeplot, panel="Intersexual dominance", data=dominancedata, ge
 
 treeplot+geom_facet(panel="Distribution of aggression", data=fightdistributiondata_long, geom=geom_barh, mapping=aes(fill = name,y = numericspecies, x = value),stat="identity", cex=1,fill=rep(c(fm_aggression,mm_aggression,ff_aggression),117))+geom_facet(panel="Percentage fights won by females", data=fightswondata_range_min, geom=geom_segment, aes(x=min_perc_won_females,xend=min_perc_won_females+delta_long,y=Count,yend=Count+delta_lat), size=2,color=c("black"))+geom_facet(panel="Intersexual dominance", data=dominancedata, geom=geom_point, aes(x=placeholder), cex=2,color=c(dominancedata$colours),pch=15)+theme_tree()
 
+pdf("/figures/R_Figure1.pdf")
 plot(obj,lwd=5,outline=FALSE,direction="leftwards")
+dev.off()
+
+
+
+
 
 
 
@@ -358,8 +368,9 @@ plot_reproductiveskew<-ggplot(df)+aes(y=strictfdom,x=skew,fill=strictfdom)+stat_
 
 
 # combined plot
+pdf("figures/R_Fig2a_top.pdf",width=18,height=4)
 plot_grid(plot_matingsystem ,plot_bodysizedimorphism, plot_caninesizedimorphism, plot_sexratio,plot_reproductiveskew, rel_widths = c(5,3,3,3,3),nrow=1)
-
+dev.off()
 
 
 ### bottom: model output
@@ -548,6 +559,8 @@ overallprobs_speciesaverages_skew<-pordlogit( 1:3 , overallphi_speciesaverages ,
 
 # combined plot
 
+pdf("R_Fig2a_bottom.pdf",width=18,height=4)
+
 previouspar<-par()
 op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_mating,col=dominance_colors,axisnames = F)
@@ -581,7 +594,7 @@ polygon(x=c(male_skew,rev(male_skew)),y=c(rep(1,11),rev(overallprobs_speciesaver
 
 par<-previouspar
 
-
+dev.off()
 
 
 
@@ -732,7 +745,12 @@ plot_synchrony<-ggplot(df)+aes(y=strictfdom,x=Synchrony,fill=strictfdom)+stat_ha
 
 
 #  Fig 2b top combined plot 
-plot_grid(plot_arboreality ,plot_ovulationsigns, plot_sexualreceptivity, plot_testesmass,plot_synchrony, rel_widths = c(5,3,3,3,3),nrow=1,scale=0.9)
+pdf("figures/R_Fig2b_top.pdf",width=18,height=4)
+plot_grid(plot_arboreality ,plot_ovulationsigns, plot_sexualreceptivity, plot_testesmass,plot_synchrony, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.9)
+dev.off()
+
+
+
 
 
 
@@ -924,6 +942,7 @@ overallprobs_speciesaverages_synchrony<-pordlogit( 1:3 , overallphi_speciesavera
 
 
 # Fig 2b bottom
+pdf("figures/R_Fig2b_bottom.pdf",width=18,height=4)
 previouspar<-par()
 op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_arboreality,col=dominance_colors,axisnames = F)
@@ -950,12 +969,12 @@ polygon(x=c(Synchrony,rev(Synchrony)),y=c(overallprobs_speciesaverages_synchrony
 polygon(x=c(Synchrony,rev(Synchrony)),y=c(rep(1,length(Synchrony)),rev(overallprobs_speciesaverages_synchrony[,2])),col=col.alpha(male_dominance_color,0.4),border=NA)
 
 par<-previouspar
-
+dev.off()
 
 
 ################################################################################
-##### Figure 2 c: dominance and female mating
-# Social system, female coalitions, female philopatry, number of males, proportion of male-male conflicts 
+##### Figure 2 c: dominance and female bonds
+# Social system, female coalitions, female philopatry, female average relatedness
 ### top: raw data
 
 # social system
@@ -1018,7 +1037,7 @@ summarizedtable<-summarizedtable[order(summarizedtable$jointaggression_females,s
 summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
 
 plot_jointaggression_females <-ggplot(summarizedtable, aes(x = factor(jointaggression_females,levels=c("Yes","No")), y = Observations, fill = StrictFemdom)) + 
-  geom_bar(stat = "identity",fill=c(female_dominance_color,co_dominance_color,male_dominance_color,female_dominance_color,co_dominance_color,male_dominance_color))+
+  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+
   theme(       axis.text.y=element_blank(),
                axis.ticks.y=element_blank(),
                axis.title.y = element_blank(),
@@ -1062,44 +1081,21 @@ plot_sexbias_dispersal <-ggplot(summarizedtable, aes(x = factor(sexbias_dispersa
   )
 
 
-# males
-df_males <- combined[ complete.cases(combined$strictfdom,combined$males),]
-
-df_males[df_males$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
-df_males[df_males$strictfdom==2,]$strictfdom<-"b) Co dominance"
-df_males[df_males$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
-
-df = data.frame(
-  strictfdom=df_males$strictfdom,
-  males=exp(df_males$males)
-)
-
-plot_males<-ggplot(df)+aes(y=strictfdom,x=males,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
-  theme(axis.text.y=element_blank(),
-        axis.ticks.y=element_blank(),
-        axis.title.y = element_blank(),
-        axis.title.x = element_blank(),
-        axis.text=element_text(size=10)
-  )+
-  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
-  scale_x_continuous(name="number of males")+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
 
 
+# female average relatedness
+df_female_relatedness <- combined[ complete.cases(combined$strictfdom,combined$female_average_relatedness),]
 
-
-# proportion of male-male conflicts
-df_perc_aggress_mm <- combined[ complete.cases(combined$strictfdom,combined$perc_aggression_mm),]
-
-df_perc_aggress_mm[df_perc_aggress_mm$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
-df_perc_aggress_mm[df_perc_aggress_mm$strictfdom==2,]$strictfdom<-"b) Co dominance"
-df_perc_aggress_mm[df_perc_aggress_mm$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+df_female_relatedness[df_female_relatedness$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_female_relatedness[df_female_relatedness$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_female_relatedness[df_female_relatedness$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
 
 df = data.frame(
-  strictfdom=df_perc_aggress_mm$strictfdom,
-  perc_aggression_mm=df_perc_aggress_mm$perc_aggression_mm
+  strictfdom=df_female_relatedness$strictfdom,
+  female_average_relatedness=df_female_relatedness$female_average_relatedness
 )
 
-plot_percaggress_mm<-ggplot(df)+aes(y=strictfdom,x=perc_aggression_mm,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+plot_female_relatedness<-ggplot(df)+aes(y=strictfdom,x=female_average_relatedness,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
   theme(        axis.text.y=element_blank(),
                 axis.ticks.y=element_blank(),
                 axis.title.y = element_blank(),
@@ -1111,9 +1107,12 @@ plot_percaggress_mm<-ggplot(df)+aes(y=strictfdom,x=perc_aggression_mm,fill=stric
 
 
 
-# combined plot
-plot_grid(plot_socialsystem ,plot_jointaggression_females, plot_sexbias_dispersal, plot_males,plot_percaggress_mm, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.9)
 
+
+# combined plot
+pdf("figures/R_Fig2c_top.pdf",width=14.4,height=4)
+plot_grid(plot_socialsystem ,plot_jointaggression_females, plot_sexbias_dispersal, plot_female_relatedness, rel_widths = c(3,3,3,3),nrow=1,scale=0.9)
+dev.off()
 
 
 ### bottom: model output
@@ -1235,36 +1234,185 @@ overallprobs_speciesaverages_sexbias_dispersal <-t(overallprobs_speciesaverages_
 overallprobs_speciesaverages_sexbias_dispersal<-overallprobs_speciesaverages_sexbias_dispersal[,c(3,1,2)]
 
 
-# number males
 
-males_data<-combined[is.na(combined$males)==F,]
-males_data$strictfdom<-as.integer(males_data$strictfdom)
+# female average relatedness
 
-dat_list_strict_males<- list(
-  R = as.integer(as.factor(1/males_data$strictfdom)),
-  males = standardize((males_data$males)),
-  species = as.integer(as.factor(males_data$corrected_species_id))
+speciesaverage<-combined[is.na(combined$female_average_relatedness)==F,]
+
+dat_list_strict_female_relatedness <- list(
+  R = as.integer(as.factor(1/as.integer(speciesaverage$strictfdom))),
+  female_average_relatedness = standardize(speciesaverage$female_average_relatedness),
+  species = as.integer(as.factor(speciesaverage$corrected_species_id))
 )
 
-m_speciesaverage_relative_males <- ulam(
+m_speciesaverage_female_relatedness <- ulam(
   alist(
     R ~ dordlogit( phi , cutpoints ),
-    phi <-a + b*males ,
+    phi <-a + b*female_average_relatedness ,
     a ~ normal( 0 , 5 ),
     b ~ dnorm(0,5),
     cutpoints ~ dnorm( 0 , 5 )
-  ) , data= dat_list_strict_males , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+  ) , data=dat_list_strict_female_relatedness , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
 
 
-males <- seq(from=min(dat_list_strict_males$males),to=max(dat_list_strict_males$males),length.out=9)
-pdat <- data.frame(males=males)
+female_average_relatedness <- seq(from=min(dat_list_strict_female_relatedness$female_average_relatedness),to=max((dat_list_strict_female_relatedness$female_average_relatedness)),length.out=9)
+pdat <- data.frame(female_average_relatedness=female_average_relatedness)
 
-overallphi_speciesaverages<-matrix(ncol=1, nrow=length(males))
-for(i in 1:length(males)){
-  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_relative_males,depth=2)[1,1]+precis(m_speciesaverage_relative_males,depth=2)[2,1]* males[i]
+overallphi_speciesaverages<-matrix(ncol=1, nrow=length(female_average_relatedness))
+for(i in 1:length(female_average_relatedness)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_female_relatedness,depth=2)[1,1]+precis(m_speciesaverage_female_relatedness,depth=2)[2,1]*female_average_relatedness[i]
 }
 
-overallprobs_speciesaverages_relative_males<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_relative_males,depth=2)[3:4,1] )
+overallprobs_speciesaverages_female_relatedness<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_female_relatedness,depth=2)[3:4,1] )
+
+
+
+
+
+
+# combined plot
+pdf("figures/R_Fig2c_bottom.pdf",width=14.4,height=4)
+previouspar<-par()
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,4))
+barplot(overallprobs_speciesaverages_SocOrgPMK,col=dominance_colors,axisnames = F)
+
+barplot(overallprobs_speciesaverages_jointaggression_females,col=c(col.alpha(dominance_colors[1],alpha=0.4),col.alpha(dominance_colors[2],alpha=0.4),col.alpha(dominance_colors[3],alpha=0.4)),axisnames = F,yaxt="n")
+
+barplot(overallprobs_speciesaverages_sexbias_dispersal,col=dominance_colors,axisnames = F,yaxt="n")
+
+plot( NULL , type="n" , xlab="female_average_relatedness" ,
+      xlim=c(min(dat_list_strict_female_relatedness$female_average_relatedness,na.rm=T),max(dat_list_strict_female_relatedness$female_average_relatedness,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(female_average_relatedness,rev(female_average_relatedness)),y=c(overallprobs_speciesaverages_female_relatedness[,2],rev(overallprobs_speciesaverages_female_relatedness[,1])),col=col.alpha(co_dominance_color,0.4),border=NA)
+polygon(x=c(female_average_relatedness,rev(female_average_relatedness)),y=c(overallprobs_speciesaverages_female_relatedness[,1],rep(0,length(female_average_relatedness))),col=col.alpha(female_dominance_color,0.4),border=NA)
+polygon(x=c(female_average_relatedness,rev(female_average_relatedness)),y=c(rep(1,length(female_average_relatedness)),rev(overallprobs_speciesaverages_female_relatedness[,2])),col=col.alpha(male_dominance_color,0.4),border=NA)
+par<-previouspar
+
+dev.off()
+
+
+
+
+
+
+
+
+################################################################################
+##### Figure 2 d: dominance and self organisation
+# Adult sex ratio, percentage male-male conflicts, number of males in group
+### top: raw data
+
+# sex ratio
+df_sexratio <- combined[ complete.cases(combined$strictfdom,combined$sexratio),]
+
+df_sexratio[df_sexratio$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_sexratio[df_sexratio$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_sexratio[df_sexratio$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_sexratio$strictfdom,
+  sexratio_malesperfemale=df_sexratio$sexratio
+)
+
+plot_sexratio<-ggplot(df)+aes(y=strictfdom,x=sexratio_malesperfemale,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(        axis.text.y=element_blank(),
+                axis.ticks.y=element_blank(),
+                axis.title.y = element_blank(),
+                axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+scale_x_continuous(name="Sex ratio in social groups",lim=c(0.09,0.76),breaks=c(0.1, 0.33,0.5, 0.66),labels=c("1♂ / 10♀♀","1♂ / 2♀♀","1♂ / 1♀","2♂♂ / 1♀"))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color),)+theme(legend.position="none")
+
+
+
+
+# proportion of male-male conflicts
+df_perc_aggress_mm <- combined[ complete.cases(combined$strictfdom,combined$perc_aggression_mm),]
+
+df_perc_aggress_mm[df_perc_aggress_mm$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_perc_aggress_mm[df_perc_aggress_mm$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_perc_aggress_mm[df_perc_aggress_mm$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_perc_aggress_mm$strictfdom,
+  perc_aggression_mm=df_perc_aggress_mm$perc_aggression_mm
+)
+
+plot_percaggress_mm<-ggplot(df)+aes(y=strictfdom,x=perc_aggression_mm,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(        axis.text.y=element_blank(),
+                axis.ticks.y=element_blank(),
+                axis.title.y = element_blank(),
+                axis.title.x = element_blank(),
+                axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+scale_fill_manual(values=c(col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1) ),)+theme(legend.position="none")
+
+
+
+
+
+# males
+df_males <- combined[ complete.cases(combined$strictfdom,combined$males),]
+
+df_males[df_males$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_males[df_males$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_males[df_males$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_males$strictfdom,
+  males=exp(df_males$males)
+)
+
+plot_males<-ggplot(df)+aes(y=strictfdom,x=males,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
+  scale_x_continuous(name="number of males")+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
+
+
+# combined plot
+pdf("figures/R_Fig2d_top.pdf",width=10.8,height=4)
+plot_grid(plot_sexratio,plot_percaggress_mm, plot_males, rel_widths = c(3,3,3),nrow=1,scale=0.9)
+dev.off()
+
+
+
+
+
+### bottom: model output
+
+# sex ratio 
+
+speciesaverage<-combined[is.na(combined$sexratio)==F,]
+
+dat_list_strict_sexratio <- list(
+  R = as.integer(as.factor(1/as.integer(speciesaverage$strictfdom))),
+  sexratio = standardize(speciesaverage$sexratio),
+  species = as.integer(as.factor(speciesaverage$corrected_species_id))
+)
+
+m_speciesaverage_sexratio <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*sexratio ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data=dat_list_strict_sexratio , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+
+sexratio <- seq(from=-2.5,to=2.5,by=0.5)
+pdat <- data.frame(sexratio=sexratio)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=11)
+for(i in 1:length(sexratio)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_sexratio,depth=2)[1,1]+precis(m_speciesaverage_sexratio,depth=2)[2,1]*sexratio[i]
+}
+
+overallprobs_speciesaverages_sexratio<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_sexratio,depth=2)[3:4,1] )
+
 
 
 
@@ -1300,43 +1448,69 @@ overallprobs_speciesaverages_perc_aggression_mm<-pordlogit( 1:3 , overallphi_spe
 
 
 
+# number males
+
+males_data<-combined[is.na(combined$males)==F,]
+males_data$strictfdom<-as.integer(males_data$strictfdom)
+
+dat_list_strict_males<- list(
+  R = as.integer(as.factor(1/males_data$strictfdom)),
+  males = standardize((males_data$males)),
+  species = as.integer(as.factor(males_data$corrected_species_id))
+)
+
+m_speciesaverage_relative_males <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*males ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data= dat_list_strict_males , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+
+males <- seq(from=min(dat_list_strict_males$males),to=max(dat_list_strict_males$males),length.out=9)
+pdat <- data.frame(males=males)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=length(males))
+for(i in 1:length(males)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_relative_males,depth=2)[1,1]+precis(m_speciesaverage_relative_males,depth=2)[2,1]* males[i]
+}
+
+overallprobs_speciesaverages_relative_males<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_relative_males,depth=2)[3:4,1] )
+
 
 
 # combined plot
-
+pdf("figures/R_Fig2d_bottom.pdf",width=10.8,height=4)
 previouspar<-par()
-op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
-barplot(overallprobs_speciesaverages_SocOrgPMK,col=dominance_colors,axisnames = F)
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,3))
+
+plot( NULL , type="n" , xlab="Number of males relative to number of females" ,      xlim=c(min(dat_list_strict_sexratio$sexratio,na.rm=T),max(dat_list_strict_sexratio$sexratio,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+axis(side=1,at=c(-2.166648,-0.068047,1,2.324043),labels=FALSE)
+polygon(x=c(sexratio,rev(sexratio)),y=c(overallprobs_speciesaverages_sexratio[,2],rev(overallprobs_speciesaverages_sexratio[,1])),col=co_dominance_color,border=NA)
+polygon(x=c(sexratio,rev(sexratio)),y=c(overallprobs_speciesaverages_sexratio[,1],rep(0,11)),col=female_dominance_color,border=NA)
+polygon(x=c(sexratio,rev(sexratio)),y=c(rep(1,11),rev(overallprobs_speciesaverages_sexratio[,2])),col=male_dominance_color,border=NA)
 
 
-barplot(overallprobs_speciesaverages_jointaggression_females,col=c(col.alpha(dominance_colors[1],alpha=0.4),col.alpha(dominance_colors[2],alpha=0.4),col.alpha(dominance_colors[3],alpha=0.4)),axisnames = F,yaxt="n")
-
-barplot(overallprobs_speciesaverages_sexbias_dispersal,col=dominance_colors,axisnames = F,yaxt="n")
-
-
-
+plot( NULL , type="n" , xlab="perc_aggression_mm" ,
+      xlim=c(min(dat_list_strict_perc_aggression_mm$perc_aggression_mm,na.rm=T),max(dat_list_strict_perc_aggression_mm$perc_aggression_mm,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(perc_aggression_mm,rev(perc_aggression_mm)),y=c(overallprobs_speciesaverages_perc_aggression_mm[,2],rev(overallprobs_speciesaverages_perc_aggression_mm[,1])),col=col.alpha(co_dominance_color,1),border=NA)
+polygon(x=c(perc_aggression_mm,rev(perc_aggression_mm)),y=c(overallprobs_speciesaverages_perc_aggression_mm[,1],rep(0,length(perc_aggression_mm))),col=col.alpha(female_dominance_color,1),border=NA)
+polygon(x=c(perc_aggression_mm,rev(perc_aggression_mm)),y=c(rep(1,length(perc_aggression_mm)),rev(overallprobs_speciesaverages_perc_aggression_mm[,2])),col=col.alpha(male_dominance_color,1),border=NA)
+par<-previouspar
 
 plot( NULL , type="n" , xlab="males" ,
       xlim=c(min(dat_list_strict_males $males,na.rm=T),max(dat_list_strict_males $males,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
-
 polygon(x=c(males,rev(males)),y=c(overallprobs_speciesaverages_relative_males[,2],rev(overallprobs_speciesaverages_relative_males[,1])),col=co_dominance_color,border=NA)
 polygon(x=c(males,rev(males)),y=c(overallprobs_speciesaverages_relative_males[,1],rep(0,length(males))),col=female_dominance_color,border=NA)
 polygon(x=c(males,rev(males)),y=c(rep(1,length(males)),rev(overallprobs_speciesaverages_relative_males[,2])),col=male_dominance_color,border=NA)
 
 
-
-
-plot( NULL , type="n" , xlab="perc_aggression_mm" ,
-      xlim=c(min(dat_list_strict_perc_aggression_mm$perc_aggression_mm,na.rm=T),max(dat_list_strict_perc_aggression_mm$perc_aggression_mm,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
-
-polygon(x=c(perc_aggression_mm,rev(perc_aggression_mm)),y=c(overallprobs_speciesaverages_perc_aggression_mm[,2],rev(overallprobs_speciesaverages_perc_aggression_mm[,1])),col=col.alpha(co_dominance_color,0.4),border=NA)
-polygon(x=c(perc_aggression_mm,rev(perc_aggression_mm)),y=c(overallprobs_speciesaverages_perc_aggression_mm[,1],rep(0,length(perc_aggression_mm))),col=col.alpha(female_dominance_color,0.4),border=NA)
-polygon(x=c(perc_aggression_mm,rev(perc_aggression_mm)),y=c(rep(1,length(perc_aggression_mm)),rev(overallprobs_speciesaverages_perc_aggression_mm[,2])),col=col.alpha(male_dominance_color,0.4),border=NA)
+dev.off()
 
 
 
-
-par<-previouspar
 
 
 
@@ -1345,8 +1519,8 @@ par<-previouspar
 
 
 ################################################################################
-##### Figure 2 d: dominance and female competition
-# Captivity, environmental harshness, seasonal breeding, home range overlap, female eviction
+##### Figure 2 e: dominance and environmental conditions
+# Captivity, environmental harshness, rainfall seasonality, rainfall unpredictability
 ### top: raw data
 
 # Captivity
@@ -1383,6 +1557,266 @@ plot_origin <-ggplot(summarizedtable, aes(x = factor(origin,levels=c("wild","cap
   )
 
 
+# environmental harshness
+df_envharshness <- combined[ complete.cases(combined$strictfdom,combined$env_harshness),]
+
+df_envharshness[df_envharshness$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_envharshness[df_envharshness$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_envharshness[df_envharshness$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_envharshness$strictfdom,
+  env_harshness=(df_envharshness$env_harshness)
+)
+
+plot_env_harshness<-ggplot(df)+aes(y=strictfdom,x=env_harshness,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.y = element_blank(),
+        axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
+  scale_x_continuous(name="sexual receptivity (days)")+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
+
+
+
+
+# rainfall seasonality
+df_rainfallseasonality <- combined[ complete.cases(combined$strictfdom,combined$rainfall_annualvariation),]
+
+df_rainfallseasonality[df_rainfallseasonality$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_rainfallseasonality[df_rainfallseasonality$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_rainfallseasonality[df_rainfallseasonality$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_rainfallseasonality$strictfdom,
+  rainfall_annualvariation=(df_rainfallseasonality$rainfall_annualvariation)
+)
+
+plot_rainfall_seasonality<-ggplot(df)+aes(y=strictfdom,x=rainfall_annualvariation,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.y = element_blank(),
+        axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
+  scale_x_continuous(name="rainfall seasonality")+scale_fill_manual(values=c(col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+theme(legend.position="none")
+
+
+
+# rainfall seasonality
+df_rainfallunpredictability <- combined[ complete.cases(combined$strictfdom,combined$rainfall_unpredictability),]
+
+df_rainfallunpredictability[df_rainfallunpredictability$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_rainfallunpredictability[df_rainfallunpredictability$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_rainfallunpredictability[df_rainfallunpredictability$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_rainfallunpredictability$strictfdom,
+  rainfall_unpredictability=(df_rainfallunpredictability$rainfall_unpredictability)
+)
+
+plot_rainfall_unpredictability<-ggplot(df)+aes(y=strictfdom,x=rainfall_unpredictability,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.y = element_blank(),
+        axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
+  scale_x_continuous(name="rainfall unpredictability")+scale_fill_manual(values=c(col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1)))+theme(legend.position="none")
+
+
+
+
+# combined plot
+pdf("figures/R_Fig2e_top.pdf",width=14.4,height=4)
+plot_grid(plot_origin , plot_env_harshness, plot_rainfall_seasonality,plot_rainfall_unpredictability, rel_widths = c(3,3,3,3),nrow=1,scale=0.9)
+dev.off()
+
+
+### bottom: model output
+
+# origin
+
+speciesaverage<-combined[is.na(combined$origin)==F,]
+speciesaverage<-speciesaverage[speciesaverage$origin !="provisioned",]
+
+dat_list_strict_origin <- list(
+  R = (as.factor(1/as.integer(speciesaverage$strictfdom))),
+  origin = as.integer(as.factor(speciesaverage$origin)),
+  species = as.integer(as.factor(speciesaverage$corrected_species_id))
+)
+
+m_origin <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b[origin],
+    a ~ normal( 0 , 5 ),
+    b[origin] ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data=dat_list_strict_origin , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+
+origin <- seq(from=1,to=2,by=1)
+pdat <- data.frame(origin=origin)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=2)
+for(i in 1:length(origin)){
+  overallphi_speciesaverages[i,]<-precis(m_origin,depth=2)[1,1]+precis(m_origin,depth=2)[i+1,1]*origin[i]
+}
+
+overallprobs_speciesaverages_origin<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_origin,depth=2)[4:5,1] )
+
+overallprobs_speciesaverages_origin[,3]<-overallprobs_speciesaverages_origin[,3]-overallprobs_speciesaverages_origin[,2]
+overallprobs_speciesaverages_origin[,2]<-overallprobs_speciesaverages_origin[,2]-overallprobs_speciesaverages_origin[,1]
+overallprobs_speciesaverages_origin <-t(overallprobs_speciesaverages_origin)
+
+
+
+# environmental harshness
+
+env_harshness_data<-combined[is.na(combined$env_harshness)==F,]
+env_harshness_data$strictfdom<-as.integer(env_harshness_data$strictfdom)
+
+dat_list_strict_env_harshness <- list(
+  R = as.integer(as.factor(1/env_harshness_data$strictfdom)),
+  env_harshness = standardize((env_harshness_data$env_harshness)),
+  species = as.integer(as.factor(env_harshness_data$corrected_species_id))
+)
+
+m_speciesaverage_env_harshness <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*env_harshness ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data= dat_list_strict_env_harshness , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+
+
+env_harshness <- seq(from=min(dat_list_strict_env_harshness$env_harshness),to=max(dat_list_strict_env_harshness$env_harshness),length.out=9)
+pdat <- data.frame(env_harshness=env_harshness)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=9)
+for(i in 1:length(env_harshness)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_env_harshness,depth=2)[1,1]+precis(m_speciesaverage_env_harshness,depth=2)[2,1]*env_harshness[i]
+}
+
+overallprobs_speciesaverages_env_harshness<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_env_harshness,depth=2)[3:4,1] )
+
+
+# rainfall variation
+
+rainfallvariation_data<-combined[is.na(combined$rainfall_annualvariation)==F,]
+rainfallvariation_data$strictfdom<-as.integer(rainfallvariation_data$strictfdom)
+
+dat_list_strict_rainfallvariation <- list(
+  R = as.integer(as.factor(1/rainfallvariation_data$strictfdom)),
+  rainfall_annualvariation = standardize((rainfallvariation_data$rainfall_annualvariation)),
+  species = as.integer(as.factor(rainfallvariation_data$corrected_species_id))
+)
+
+m_speciesaverage_rainfallvariation <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*rainfall_annualvariation ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data= dat_list_strict_rainfallvariation , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+
+
+rainfall_annualvariation <- seq(from=min(dat_list_strict_rainfallvariation$rainfall_annualvariation),to=max(dat_list_strict_rainfallvariation$rainfall_annualvariation),length.out=9)
+pdat <- data.frame(rainfall_annualvariation=rainfall_annualvariation)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=9)
+for(i in 1:length(rainfall_annualvariation)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_rainfallvariation,depth=2)[1,1]+precis(m_speciesaverage_rainfallvariation,depth=2)[2,1]*rainfall_annualvariation[i]
+}
+
+overallprobs_speciesaverages_rainfallvariation<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_rainfallvariation,depth=2)[3:4,1] )
+
+
+
+# rainfall predictability
+
+rainfallpredictability_data<-combined[is.na(combined$rainfall_unpredictability)==F,]
+rainfallpredictability_data$strictfdom<-as.integer(rainfallpredictability_data$strictfdom)
+
+dat_list_strict_rainfallpredictability <- list(
+  R = as.integer(as.factor(1/rainfallpredictability_data$strictfdom)),
+  rainfall_unpredictability = standardize((rainfallpredictability_data$rainfall_unpredictability)),
+  species = as.integer(as.factor(rainfallpredictability_data$corrected_species_id))
+)
+
+m_speciesaverage_rainfallpredictability <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*rainfall_unpredictability ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data= dat_list_strict_rainfallpredictability , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+rainfall_unpredictability <- seq(from=min(dat_list_strict_rainfallpredictability$rainfall_unpredictability),to=max(dat_list_strict_rainfallpredictability$rainfall_unpredictability),length.out=9)
+pdat <- data.frame(rainfall_unpredictability=rainfall_unpredictability)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=9)
+for(i in 1:length(rainfall_unpredictability)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_rainfallpredictability,depth=2)[1,1]+precis(m_speciesaverage_rainfallpredictability,depth=2)[2,1]*rainfall_unpredictability[i]
+}
+
+overallprobs_speciesaverages_rainfallpredictability<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_rainfallpredictability,depth=2)[3:4,1] )
+
+
+
+# combined plot
+pdf("figures/R_Fig2e_bottom.pdf",width=14.4,height=4)
+previouspar<-par()
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,4))
+barplot(overallprobs_speciesaverages_origin,col=c(col.alpha(dominance_colors[1],0.4),col.alpha(dominance_colors[2],0.4),col.alpha(dominance_colors[3],0.4) ),axisnames = F)
+
+plot( NULL , type="n" , xlab="environmental harshness" ,
+      xlim=c(min(dat_list_strict_env_harshness$env_harshness,na.rm=T),max(dat_list_strict_env_harshness$env_harshness,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(env_harshness,rev(env_harshness)),y=c(overallprobs_speciesaverages_env_harshness[,2],rev(overallprobs_speciesaverages_env_harshness[,1])),col=co_dominance_color,border=NA)
+polygon(x=c(env_harshness,rev(env_harshness)),y=c(overallprobs_speciesaverages_env_harshness[,1],rep(0,length(env_harshness))),col=female_dominance_color,border=NA)
+polygon(x=c(env_harshness,rev(env_harshness)),y=c(rep(1,length(env_harshness)),rev(overallprobs_speciesaverages_env_harshness[,2])),col=male_dominance_color,border=NA)
+
+
+plot( NULL , type="n" , xlab="rainfall seasonality" ,
+      xlim=c(min(dat_list_strict_rainfallvariation$rainfall_annualvariation,na.rm=T),max(dat_list_strict_rainfallvariation$rainfall_annualvariation,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(rainfall_annualvariation,rev(rainfall_annualvariation)),y=c(overallprobs_speciesaverages_rainfallvariation[,2],rev(overallprobs_speciesaverages_rainfallvariation[,1])),col=col.alpha(co_dominance_color,0.4),border=NA)
+polygon(x=c(rainfall_annualvariation,rev(rainfall_annualvariation)),y=c(overallprobs_speciesaverages_rainfallvariation[,1],rep(0,length(rainfall_annualvariation))),col=col.alpha(female_dominance_color,0.4),border=NA)
+polygon(x=c(rainfall_annualvariation,rev(rainfall_annualvariation)),y=c(rep(1,length(rainfall_annualvariation)),rev(overallprobs_speciesaverages_rainfallvariation[,2])),col=col.alpha(male_dominance_color,0.4),border=NA)
+
+
+plot( NULL , type="n" , xlab="rainfall unpredictability" ,    xlim=c(min(dat_list_strict_rainfallpredictability$rainfall_unpredictability,na.rm=T),max(dat_list_strict_rainfallpredictability$rainfall_unpredictability,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(rainfall_unpredictability,rev(rainfall_unpredictability)),y=c(overallprobs_speciesaverages_rainfallpredictability[,2],rev(overallprobs_speciesaverages_rainfallpredictability[,1])),col=co_dominance_color,border=NA)
+polygon(x=c(rainfall_unpredictability,rev(rainfall_unpredictability)),y=c(overallprobs_speciesaverages_rainfallpredictability[,1],rep(0,length(rainfall_unpredictability))),col=female_dominance_color,border=NA)
+polygon(x=c(rainfall_unpredictability,rev(rainfall_unpredictability)),y=c(rep(1,length(rainfall_unpredictability)),rev(overallprobs_speciesaverages_rainfallpredictability[,2])),col=male_dominance_color,border=NA)
+
+
+par<-previouspar
+
+dev.off()
+
+
+
+
+
+
+
+
+################################################################################
+##### Figure 2 f: dominance and female competition
+# Homerange overlap, breeding seasonality, number of females in the group, female evictions, female infanticide, female relative canine size
+### top: raw data
+
+
+
+
 # Female eviction
 
 summarizedtable<-combined %>%
@@ -1417,26 +1851,42 @@ plot_femaleevictions <-ggplot(summarizedtable, aes(x = factor(female_evictions,l
   )
 
 
-# environmental harshness
-df_envharshness <- combined[ complete.cases(combined$strictfdom,combined$env_harshness),]
 
-df_envharshness[df_envharshness$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
-df_envharshness[df_envharshness$strictfdom==2,]$strictfdom<-"b) Co dominance"
-df_envharshness[df_envharshness$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+# Female infanticide
 
-df = data.frame(
-  strictfdom=df_envharshness$strictfdom,
-  env_harshness=(df_envharshness$env_harshness)
-)
+summarizedtable<-combined %>%
+  group_by(female_infanticide,strictfdom) %>%
+  summarize(Total = n())
 
-plot_env_harshness<-ggplot(df)+aes(y=strictfdom,x=env_harshness,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
-  theme(axis.text.y=element_blank(),
-        axis.ticks.y=element_blank(),
-        axis.title.y = element_blank(),
-        axis.text=element_text(size=10)
-  )+
-  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
-  scale_x_continuous(name="sexual receptivity (days)")+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
+summarizedtable<-as.data.frame(summarizedtable)
+
+summarizedtable<-summarizedtable[c(1:6),]
+
+
+colnames(summarizedtable)<-c("female_infanticide","StrictFemdom","Observations")
+summarizedtable$Observations<-as.integer(summarizedtable$Observations)
+
+
+
+summarizedtable[summarizedtable$StrictFemdom ==1, ]$StrictFemdom<-"3) male dominance"
+summarizedtable[summarizedtable$StrictFemdom ==2, ]$StrictFemdom<-"2) co-dominance"
+summarizedtable[summarizedtable$StrictFemdom ==3, ]$StrictFemdom<-"1) female dominance"
+
+summarizedtable<-summarizedtable[order(summarizedtable$female_infanticide,summarizedtable$StrictFemdom),]
+
+summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
+
+plot_femaleinfanticide <-ggplot(summarizedtable, aes(x = factor(female_infanticide,levels=c("Yes","No")), y = Observations, fill = StrictFemdom)) + 
+  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,0.5),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+
+  theme(       axis.text.y=element_blank(),
+               axis.ticks.y=element_blank(),
+               axis.title.y = element_blank(),
+               axis.title.x = element_blank(),
+               axis.text=element_text(size=10)
+  )
+
+
+
 
 
 # seasonal breeding
@@ -1485,51 +1935,61 @@ plot_homerange_overlap<-ggplot(df)+aes(y=strictfdom,x=homerange_overlap,fill=str
 
 
 
+# relative canine size
+df_caninesize <- combined[ complete.cases(combined$strictfdom,combined$relative_femalecaninesize),]
+
+df_caninesize[df_caninesize$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_caninesize[df_caninesize$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_caninesize[df_caninesize$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_caninesize$strictfdom,
+  relative_femalecaninesize=df_caninesize$relative_femalecaninesize
+)
+
+plot_caninesize<-ggplot(df)+aes(y=strictfdom,x=relative_femalecaninesize,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(        axis.text.y=element_blank(),
+                axis.ticks.y=element_blank(),
+                axis.title.y = element_blank(),
+                axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color),)+theme(legend.position="none")
+
+
+# number of females
+df_females <- combined[ complete.cases(combined$strictfdom,combined$females),]
+
+df_females[df_females$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_females[df_females$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_females[df_females$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_females$strictfdom,
+  females=df_females$females
+)
+
+plot_females<-ggplot(df)+aes(y=strictfdom,x=females,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(        axis.text.y=element_blank(),
+                axis.ticks.y=element_blank(),
+                axis.title.y = element_blank(),
+                axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color),)+theme(legend.position="none")
+
+
+
+
 
 # combined plot
-plot_grid(plot_origin ,plot_femaleevictions, plot_env_harshness, plot_seasonalbreeding,plot_homerange_overlap, rel_widths = c(3,3,3,3,3),nrow=1,scale=0.9)
+pdf("figures/R_Fig2f_top.pdf",width=21.6,height=4)
+plot_grid(plot_femaleevictions,plot_femaleinfanticide,plot_seasonalbreeding,plot_homerange_overlap,plot_females,plot_caninesize, rel_widths = c(3,3,3,3,3,3),nrow=1,scale=0.9)
+dev.off()
+
+
 
 
 
 ### bottom: model output
-
-# origin
-
-speciesaverage<-combined[is.na(combined$origin)==F,]
-speciesaverage<-speciesaverage[speciesaverage$origin !="provisioned",]
-
-dat_list_strict_origin <- list(
-  R = (as.factor(1/as.integer(speciesaverage$strictfdom))),
-  origin = as.integer(as.factor(speciesaverage$origin)),
-  species = as.integer(as.factor(speciesaverage$corrected_species_id))
-)
-
-m_origin <- ulam(
-  alist(
-    R ~ dordlogit( phi , cutpoints ),
-    phi <-a + b[origin],
-    a ~ normal( 0 , 5 ),
-    b[origin] ~ dnorm(0,5),
-    cutpoints ~ dnorm( 0 , 5 )
-  ) , data=dat_list_strict_origin , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
-
-
-origin <- seq(from=1,to=2,by=1)
-pdat <- data.frame(origin=origin)
-
-overallphi_speciesaverages<-matrix(ncol=1, nrow=2)
-for(i in 1:length(origin)){
-  overallphi_speciesaverages[i,]<-precis(m_origin,depth=2)[1,1]+precis(m_origin,depth=2)[i+1,1]*origin[i]
-}
-
-overallprobs_speciesaverages_origin<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_origin,depth=2)[4:5,1] )
-
-overallprobs_speciesaverages_origin[,3]<-overallprobs_speciesaverages_origin[,3]-overallprobs_speciesaverages_origin[,2]
-overallprobs_speciesaverages_origin[,2]<-overallprobs_speciesaverages_origin[,2]-overallprobs_speciesaverages_origin[,1]
-overallprobs_speciesaverages_origin <-t(overallprobs_speciesaverages_origin)
-
-
-
 
 # female evictions
 
@@ -1537,7 +1997,7 @@ speciesaverage<-combined[is.na(combined$female_evictions)==F,]
 
 dat_list_strict_female_evictions <- list(
   R = as.integer(as.factor(1/as.integer(speciesaverage$strictfdom))),
-  female_evictions = as.integer(as.factor(speciesaverage$female_evictions)),
+  female_evictions = ifelse(speciesaverage$female_evictions=="Yes",1,2),
   species = as.integer(as.factor(speciesaverage$corrected_species_id))
 )
 
@@ -1566,43 +2026,39 @@ overallprobs_speciesaverages_female_evictions[,2]<-overallprobs_speciesaverages_
 overallprobs_speciesaverages_female_evictions <-t(overallprobs_speciesaverages_female_evictions)
 
 
+# female infanticide
 
+speciesaverage<-combined[is.na(combined$female_infanticide)==F,]
 
-
-
-
-# environmental harshness
-
-env_harshness_data<-combined[is.na(combined$env_harshness)==F,]
-env_harshness_data$strictfdom<-as.integer(env_harshness_data$strictfdom)
-
-dat_list_strict_env_harshness <- list(
-  R = as.integer(as.factor(1/env_harshness_data$strictfdom)),
-  env_harshness = standardize((env_harshness_data$env_harshness)),
-  species = as.integer(as.factor(env_harshness_data$corrected_species_id))
+dat_list_strict_female_infanticide <- list(
+  R = as.integer(as.factor(1/as.integer(speciesaverage$strictfdom))),
+  female_infanticide = ifelse(speciesaverage$female_infanticide=="Yes",1,2),
+  species = as.integer(as.factor(speciesaverage$corrected_species_id))
 )
 
-m_speciesaverage_env_harshness <- ulam(
+m_female_infanticide <- ulam(
   alist(
     R ~ dordlogit( phi , cutpoints ),
-    phi <-a + b*env_harshness ,
+    phi <-a + b[female_infanticide],
     a ~ normal( 0 , 5 ),
-    b ~ dnorm(0,5),
+    b[female_infanticide] ~ dnorm(0,5),
     cutpoints ~ dnorm( 0 , 5 )
-  ) , data= dat_list_strict_env_harshness , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+  ) , data=dat_list_strict_female_infanticide , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
 
 
+female_infanticide <- seq(from=1,to=2,by=1)
+pdat <- data.frame(female_infanticide=female_infanticide)
 
-env_harshness <- seq(from=min(dat_list_strict_env_harshness$env_harshness),to=max(dat_list_strict_env_harshness$env_harshness),length.out=9)
-pdat <- data.frame(env_harshness=env_harshness)
-
-overallphi_speciesaverages<-matrix(ncol=1, nrow=9)
-for(i in 1:length(env_harshness)){
-  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_env_harshness,depth=2)[1,1]+precis(m_speciesaverage_env_harshness,depth=2)[2,1]*env_harshness[i]
+overallphi_speciesaverages<-matrix(ncol=1, nrow=2)
+for(i in 1:length(female_infanticide)){
+  overallphi_speciesaverages[i,]<-precis(m_female_infanticide,depth=2)[1,1]+precis(m_female_infanticide,depth=2)[i+1,1]*female_infanticide[i]
 }
 
-overallprobs_speciesaverages_env_harshness<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_env_harshness,depth=2)[3:4,1] )
+overallprobs_speciesaverages_female_infanticide<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_female_infanticide,depth=2)[4:5,1] )
 
+overallprobs_speciesaverages_female_infanticide[,3]<-overallprobs_speciesaverages_female_infanticide[,3]-overallprobs_speciesaverages_female_infanticide[,2]
+overallprobs_speciesaverages_female_infanticide[,2]<-overallprobs_speciesaverages_female_infanticide[,2]-overallprobs_speciesaverages_female_infanticide[,1]
+overallprobs_speciesaverages_female_infanticide <-t(overallprobs_speciesaverages_female_infanticide)
 
 
 
@@ -1659,7 +2115,7 @@ m_speciesaverage_homerange_overlap <- ulam(
   ) , data=dat_list_strict_homerange_overlap , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
 
 
-homerange_overlap <- seq(from=-1,to=2.0,by=0.5)
+homerange_overlap <- seq(from=min(dat_list_strict_homerange_overlap$homerange_overlap),to=max(dat_list_strict_homerange_overlap$homerange_overlap),length=10)
 pdat <- data.frame(homerange_overlap=homerange_overlap)
 
 overallphi_speciesaverages<-matrix(ncol=1, nrow=length(homerange_overlap))
@@ -1671,21 +2127,75 @@ overallprobs_speciesaverages_homerange_overlap<-pordlogit( 1:3 , overallphi_spec
 
 
 
+# females
+
+speciesaverage<-combined[is.na(combined$females)==F,]
+
+dat_list_strict_females <- list(
+  R = as.integer(as.factor(1/as.integer(speciesaverage$strictfdom))),
+  females = standardize(speciesaverage$females),
+  species = as.integer(as.factor(speciesaverage$corrected_species_id))
+)
+
+m_speciesaverage_females <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*females ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data=dat_list_strict_females , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
 
 
-# combined plot
+females <- seq(from=min(dat_list_strict_females$females),to=max(dat_list_strict_females$females),length=10)
+pdat <- data.frame(females=females)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=length(females))
+for(i in 1:length(females)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_females,depth=2)[1,1]+precis(m_speciesaverage_females,depth=2)[2,1]*females[i]
+}
+
+overallprobs_speciesaverages_females<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_females,depth=2)[3:4,1] )
+
+
+# canine size
+
+speciesaverage<-combined[is.na(combined$relative_femalecaninesize)==F,]
+
+dat_list_strict_caninesize <- list(
+  R = as.integer(as.factor(1/as.integer(speciesaverage$strictfdom))),
+  relative_femalecaninesize = standardize(speciesaverage$relative_femalecaninesize),
+  species = as.integer(as.factor(speciesaverage$corrected_species_id))
+)
+
+m_speciesaverage_caninesize <- ulam(
+  alist(
+    R ~ dordlogit( phi , cutpoints ),
+    phi <-a + b*relative_femalecaninesize ,
+    a ~ normal( 0 , 5 ),
+    b ~ dnorm(0,5),
+    cutpoints ~ dnorm( 0 , 5 )
+  ) , data=dat_list_strict_caninesize , chains=4 , cores=4 ,cmdstan=T, messages=FALSE)
+
+
+relative_femalecaninesize <- seq(from=min(dat_list_strict_caninesize$relative_femalecaninesize),to=max(dat_list_strict_caninesize$relative_femalecaninesize),by=0.5)
+pdat <- data.frame(relative_femalecaninesize=relative_femalecaninesize)
+
+overallphi_speciesaverages<-matrix(ncol=1, nrow=length(relative_femalecaninesize))
+for(i in 1:length(relative_femalecaninesize)){
+  overallphi_speciesaverages[i,]<-precis(m_speciesaverage_caninesize,depth=2)[1,1]+precis(m_speciesaverage_caninesize,depth=2)[2,1]*relative_femalecaninesize[i]
+}
+
+overallprobs_speciesaverages_caninesize<-pordlogit( 1:3 , overallphi_speciesaverages , precis(m_speciesaverage_caninesize,depth=2)[3:4,1] )
+
+
+
+pdf("figures/R_Fig2f_bottom.pdf",width=21.6,height=4)
 previouspar<-par()
-op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
-barplot(overallprobs_speciesaverages_origin,col=c(col.alpha(dominance_colors[1],0.4),col.alpha(dominance_colors[2],0.4),col.alpha(dominance_colors[3],0.4) ),axisnames = F)
+op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,6))
+barplot(overallprobs_speciesaverages_female_evictions,col=c(col.alpha(dominance_colors[1],1),col.alpha(dominance_colors[2],1),col.alpha(dominance_colors[3],1) ),axisnames = F)
 
-barplot(overallprobs_speciesaverages_female_evictions,col=dominance_colors,axisnames = F,yaxt="n")
-
-plot( NULL , type="n" , xlab="environmental harshness" ,
-      xlim=c(min(dat_list_strict_env_harshness$env_harshness,na.rm=T),max(dat_list_strict_env_harshness$env_harshness,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
-polygon(x=c(env_harshness,rev(env_harshness)),y=c(overallprobs_speciesaverages_env_harshness[,2],rev(overallprobs_speciesaverages_env_harshness[,1])),col=co_dominance_color,border=NA)
-polygon(x=c(env_harshness,rev(env_harshness)),y=c(overallprobs_speciesaverages_env_harshness[,1],rep(0,length(env_harshness))),col=female_dominance_color,border=NA)
-polygon(x=c(env_harshness,rev(env_harshness)),y=c(rep(1,length(env_harshness)),rev(overallprobs_speciesaverages_env_harshness[,2])),col=male_dominance_color,border=NA)
-
+barplot(overallprobs_speciesaverages_female_infanticide,col=c(col.alpha(dominance_colors[1],0.4),col.alpha(dominance_colors[2],0.4),col.alpha(dominance_colors[3],0.4) ),axisnames = F)
 
 plot( NULL , type="n" , xlab="seasonal breeding" ,
       xlim=c(min(dat_list_strict_r_seasonality_value$r_seasonality_value,na.rm=T),max(dat_list_strict_r_seasonality_value$r_seasonality_value,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
@@ -1694,35 +2204,29 @@ polygon(x=c(r_seasonality_value,rev(r_seasonality_value)),y=c(overallprobs_speci
 polygon(x=c(r_seasonality_value,rev(r_seasonality_value)),y=c(rep(1,length(r_seasonality_value)),rev(overallprobs_speciesaverages_r_seasonality_value[,2])),col=male_dominance_color,border=NA)
 
 
-plot( NULL , type="n" , xlab="home range overlap" ,    xlim=c(min(dat_list_strict_homerange_overlap$homerange_overlap,na.rm=T),max(dat_list_strict_homerange_overlap$homerange_overlap,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+plot( NULL , type="n" , xlab="home range overlap" ,
+      xlim=c(min(dat_list_strict_homerange_overlap$homerange_overlap,na.rm=T),max(dat_list_strict_homerange_overlap$homerange_overlap,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
 polygon(x=c(homerange_overlap,rev(homerange_overlap)),y=c(overallprobs_speciesaverages_homerange_overlap[,2],rev(overallprobs_speciesaverages_homerange_overlap[,1])),col=co_dominance_color,border=NA)
 polygon(x=c(homerange_overlap,rev(homerange_overlap)),y=c(overallprobs_speciesaverages_homerange_overlap[,1],rep(0,length(homerange_overlap))),col=female_dominance_color,border=NA)
 polygon(x=c(homerange_overlap,rev(homerange_overlap)),y=c(rep(1,length(homerange_overlap)),rev(overallprobs_speciesaverages_homerange_overlap[,2])),col=male_dominance_color,border=NA)
 
 
+plot( NULL , type="n" , xlab="number of females" ,    xlim=c(min(dat_list_strict_females$females,na.rm=T),max(dat_list_strict_females$females,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(females,rev(females)),y=c(overallprobs_speciesaverages_females[,2],rev(overallprobs_speciesaverages_females[,1])),col=co_dominance_color,border=NA)
+polygon(x=c(females,rev(females)),y=c(overallprobs_speciesaverages_females[,1],rep(0,length(females))),col=female_dominance_color,border=NA)
+polygon(x=c(females,rev(females)),y=c(rep(1,length(females)),rev(overallprobs_speciesaverages_females[,2])),col=male_dominance_color,border=NA)
+
+
+plot( NULL , type="n" , xlab="relative canine size" ,    xlim=c(min(dat_list_strict_caninesize$relative_femalecaninesize,na.rm=T),max(dat_list_strict_caninesize$relative_femalecaninesize,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
+polygon(x=c(relative_femalecaninesize,rev(relative_femalecaninesize)),y=c(overallprobs_speciesaverages_caninesize[,2],rev(overallprobs_speciesaverages_caninesize[,1])),col=co_dominance_color,border=NA)
+polygon(x=c(relative_femalecaninesize,rev(relative_femalecaninesize)),y=c(overallprobs_speciesaverages_caninesize[,1],rep(0,length(relative_femalecaninesize))),col=female_dominance_color,border=NA)
+polygon(x=c(relative_femalecaninesize,rev(relative_femalecaninesize)),y=c(rep(1,length(relative_femalecaninesize)),rev(overallprobs_speciesaverages_caninesize[,2])),col=male_dominance_color,border=NA)
+
+
+
 par<-previouspar
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+dev.off()
 
 
 
