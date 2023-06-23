@@ -1,0 +1,17 @@
+,nestingvariable,estimate.lower,estimate.upper
+43,no dimorphic SocOrgPMK,0.109,0.84
+271,no dimorphic female_average_relatedness,-1.102,0.117
+319,no dimorphic jointaggression_females,-0.076,0.828
+331,no dimorphic sexbias_dispersal,0.479,1.268
+7,no dimorphic sexratio,0.402,1.382
+163,no dimorphic perc_aggression_mm,0.229,2.002
+175,no dimorphic males,-1.357,-0.188
+199,no dimorphic origin,-0.234,0.372
+3311,no dimorphic env_harshness,-0.18,1.39
+343,no dimorphic rainfall_annualvariation,-0.389,0.952
+91,no dimorphic rainfall_unpredictability,-0.973,0.1
+103,no dimorphic r_seasonality_value,-0.093,1.622
+115,no dimorphic homerange_overlap,-0.631,0.551
+403,no dimorphic female_evictions,0.08,1.26
+67,no dimorphic female_infanticide,0.058,1.175
+1631,no dimorphic relative_femalecaninesize,-0.044,1.169

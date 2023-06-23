@@ -1,0 +1,11 @@
+,nestingvariable,estimate.lower,estimate.upper
+4,dimorphic MatSysPMK,-0.894,-0.029
+16,dimorphic SexualDimorphism_MaleWeight_over_FemaleWeight,-1.742,-0.614
+28,dimorphic CanineDimorphism,-1.426,-0.56
+76,dimorphic sexratio,-0.62,-0.23
+280,dimorphic M_skew_index,-0.359,0.239
+52,dimorphic Strata_Wilman,-2.479,-1.135
+208,dimorphic sexualreceptivity_hours,-0.537,0.695
+244,dimorphic relative_testes_mass,-0.404,1.103
+376,dimorphic ovulation_signs,-2.272,-1.09
+388,dimorphic Synchrony,-1.193,-0.141

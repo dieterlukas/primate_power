@@ -36,10 +36,8 @@ notes 28 Feb manuscript from Elise
 
 
 
-Which variables to include in Figure 2?
 
-
-
+between group conflict
 
 
 Testes size only in promiscuous groups
@@ -78,6 +76,29 @@ add sample sizes to sexual selection
 
 
 in figure 2 bottom add the receptive synchrony variable that differs? 
+
+
+# arboreality
+dimorphism changes before the mating system - makes sense, only when males are large enough can they exclude other males from access to females - but sexual selection for different mating system started first, leading to selection on dimorphism
+https://onlinelibrary.wiley.com/doi/full/10.1111/mam.12191
+
+it's all body size
+https://link.springer.com/article/10.1007/BF02693740
+
+ no relationship between body size and dimorphism in lemurs - also what I find here, that there are other factors that lead both to shifts in dimorphism and body size, so indirect link - terrestrial species can both be larger and have larger dimorphism, but variation in body size within each substrate much less linked to variation in dimorphism
+https://onlinelibrary.wiley.com/doi/abs/10.1002/ajp.1350210304
+
+Group sizes of arboreal species are smaller - should also link to nocturnal? - it all goes back to predation pressure? life history evolution theory says delay reproduction when uncertainty + high mortality of adults
+https://www.annualreviews.org/doi/pdf/10.1146/annurev.es.17.110186.000551
+
+
+want a model: 
+percentage fights won by females ~ arboreality + number of females + size dimorphism
+percentage fights won by females ~ arboreality + number of females 
+percentage fights won by females ~ arboreality + size dimorphism
+
+size dimorphism ~ arboreality + body mass + females
+
 
 
 
@@ -461,6 +482,93 @@ write.csv(combinedresults,file="./results/intersexualdominance_combinedresults.c
 
 
 
+Prepare the table for the results
+
+```{r functions nested, echo=FALSE}
+
+combinedresults<-read.csv("results/intersexualdominance_combinedresults.csv")
+
+combinedresults<-combinedresults[combinedresults$phylogeny=="Yes",]
+
+combinedresults$estimate.lower<-round(combinedresults$estimate.lower,3)
+combinedresults$estimate.upper<-round(combinedresults$estimate.upper,3)
+
+sexualselection_males<-c("MatSysPMK","SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index")
+sexualselection_females<-c("Strata_Wilman","sexualreceptivity_hours","relative_testes_mass","ovulation_signs","Synchrony")
+socialbonds<-c("SocOrgPMK","female_average_relatedness","jointaggression_females","sexbias_dispersal")
+selforganisation<-c("sexratio","perc_aggression_mm","males")
+femalecompetition_environment<-c("origin","env_harshness","rainfall_annualvariation","rainfall_unpredictability")
+femalecompetition_social<-c("female_evictions","female_infanticide","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
+
+r_percwon<-combinedresults[combinedresults$outcome %in% "perc_won",]
+r_strictdominance<-combinedresults[combinedresults$outcome %in% "strict three way",]
+r_strictfemale<-combinedresults[combinedresults$outcome %in% "strict female dominance",]
+r_strictmale<-combinedresults[combinedresults$outcome %in% "strict male dominance",]
+
+r_sm_percwon<-r_percwon[unique(grep(paste(sexualselection_males,collapse="|"),r_percwon$continuouspredictor)),]
+r_sm_percwon<-r_sm_percwon[c(5:10,2,3,1,4),]
+r_sf_percwon<-r_percwon[unique(grep(paste(sexualselection_females,collapse="|"),r_percwon$continuouspredictor)),]
+r_sf_percwon<-r_sf_percwon[c(7:9,2,3,4:6,1),]
+r_sb_percwon<-r_percwon[unique(grep(paste(socialbonds,collapse="|"),r_percwon$continuouspredictor)),]
+r_sb_percwon<-r_sb_percwon[c(2:4,1,8,5:7),]
+r_so_percwon<-r_percwon[unique(grep(paste(selforganisation,collapse="|"),r_percwon$continuouspredictor)),]
+r_so_percwon<-r_so_percwon[c(1,4,3),]
+r_fe_percwon<-r_percwon[unique(grep(paste(femalecompetition_environment,collapse="|"),r_percwon$continuouspredictor)),]
+r_fe_percwon<-r_fe_percwon[c(5,1,3,2),]
+r_fs_percwon<-r_percwon[unique(grep(paste(femalecompetition_social,collapse="|"),r_percwon$continuouspredictor)),]
+r_fs_percwon<-r_fs_percwon[c(6,7,1,3,2,4),]
+
+
+r_sm_strictdominance<-r_strictdominance[unique(grep(paste(sexualselection_males,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_sm_strictdominance<-r_sm_strictdominance[c(5:10,2,3,1,4),]
+r_sf_strictdominance<-r_strictdominance[unique(grep(paste(sexualselection_females,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_sf_strictdominance<-r_sf_strictdominance[c(7:9,2,3,4:6,1),]
+r_sb_strictdominance<-r_strictdominance[unique(grep(paste(socialbonds,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_sb_strictdominance<-r_sb_strictdominance[c(2:4,1,8,5:7),]
+r_so_strictdominance<-r_strictdominance[unique(grep(paste(selforganisation,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_so_strictdominance<-r_so_strictdominance[c(1,4,3),]
+r_fe_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_fe_strictdominance<-r_fe_strictdominance[c(5,1,3,2),]
+r_fs_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_fs_strictdominance<-r_fs_strictdominance[c(6,7,1,3,2,4),]
+
+
+
+r_sm_strictfemale<-r_strictfemale[unique(grep(paste(sexualselection_males,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_sm_strictfemale<-r_sm_strictfemale[c(5:10,2,3,1,4),]
+r_sf_strictfemale<-r_strictfemale[unique(grep(paste(sexualselection_females,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_sf_strictfemale<-r_sf_strictfemale[c(7:9,2,3,4:6,1),]
+r_sb_strictfemale<-r_strictfemale[unique(grep(paste(socialbonds,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_sb_strictfemale<-r_sb_strictfemale[c(2:4,1,8,5:7),]
+r_so_strictfemale<-r_strictfemale[unique(grep(paste(selforganisation,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_so_strictfemale<-r_so_strictfemale[c(1,4,3),]
+r_fe_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_fe_strictfemale<-r_fe_strictfemale[c(5,1,3,2),]
+r_fs_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_fs_strictfemale<-r_fs_strictfemale[c(6,7,1,3,2,4),]
+
+
+r_sm_strictmale<-r_strictmale[unique(grep(paste(sexualselection_males,collapse="|"),r_strictmale$continuouspredictor)),]
+r_sm_strictmale<-r_sm_strictmale[c(5:10,2,3,1,4),]
+r_sf_strictmale<-r_strictmale[unique(grep(paste(sexualselection_females,collapse="|"),r_strictmale$continuouspredictor)),]
+r_sf_strictmale<-r_sf_strictmale[c(7:9,2,3,4:6,1),]
+r_sb_strictmale<-r_strictmale[unique(grep(paste(socialbonds,collapse="|"),r_strictmale$continuouspredictor)),]
+r_sb_strictmale<-r_sb_strictmale[c(2:4,1,8,5:7),]
+r_so_strictmale<-r_strictmale[unique(grep(paste(selforganisation,collapse="|"),r_strictmale$continuouspredictor)),]
+r_so_strictmale<-r_so_strictmale[c(1,4,3),]
+r_fe_strictmale<-r_strictmale[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictmale$continuouspredictor)),]
+r_fe_strictmale<-r_fe_strictmale[c(5,1,3,2),]
+r_fs_strictmale<-r_strictmale[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictmale$continuouspredictor)),]
+r_fs_strictmale<-r_fs_strictmale[c(6,7,1,3,2,4),]
+
+
+```
+
+
+
+
+
+
 
 
 We want to repeat the analyses for the various predictor variables split depending on a nesting variable. In particular, we want to assess the relationships separately for lemurs versus non-lemur species, and for species with high versus those with low sexual dimorphism.
@@ -468,6 +576,7 @@ We want to repeat the analyses for the various predictor variables split dependi
 ```{r functions nested, echo=FALSE}
 
 source("AnalysisCode/FemaleDominance_FunctionsNested.r")
+
 
 ```
 
@@ -487,7 +596,7 @@ We account for potential differences in the relationship between female dominanc
 
 nestingvariable<-"dimorphic"
 
-allcontinuouspredictors<-c("sexratio", "female_average_relatedness", "Synchrony", "r_seasonality_value", "male_skew", "env_harshness", "rainfall_unpredictability", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","receptive_synchrony","body_mass","testes_mass")
+allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
 
 for(i in 1:length(allcontinuouspredictors)){
   continuouspredictor<-allcontinuouspredictors[i]
@@ -500,7 +609,8 @@ for(i in 1:length(allcontinuouspredictors)){
   colnames(combined)[colnames(combined) %in% "continuouspredictor"]<-c(continuouspredictor)
 }
 
-alldiscretepredictors<-c("cooperative_breeder", "monopolization", "jointaggression_males", "jointaggression_females", "female_dispersal", "female_infanticide", "female_evictions", "sexbias_dispersal", "MatSysPMK", "SocOrgPMK")
+alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_dispersal","sexbias_dispersal","jointaggression_females","jointaggression_males","female_evictions","female_infanticide" ,"ovulation_signs","Strata_Wilman","origin","between_groupconflict")
+
 
 for(i in 1:length(alldiscretepredictors)){
   discretepredictor<-alldiscretepredictors[i]
@@ -612,6 +722,114 @@ for (j in 1:length(alldiscretepredictors)){
 
 
 
+Prepare the table for the results
+
+```{r functions nested, echo=FALSE}
+
+nestedresults<-read.csv("results/intersexualdominance_combinedresults_nestedbydimorphism_2023.csv")
+
+nestedresults<-nestedresults[nestedresults$phylogeny=="yes",]
+
+nestedresults$estimate.lower<-round(nestedresults$contrast.lower,3)
+nestedresults$estimate.upper<-round(nestedresults$contrast.upper,3)
+
+sexualselection_males<-c("MatSysPMK","SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index")
+sexualselection_females<-c("Strata_Wilman","sexualreceptivity_hours","relative_testes_mass","ovulation_signs","Synchrony")
+socialbonds<-c("SocOrgPMK","female_average_relatedness","jointaggression_females","sexbias_dispersal")
+selforganisation<-c("sexratio","perc_aggression_mm","males")
+femalecompetition_environment<-c("origin","env_harshness","rainfall_annualvariation","rainfall_unpredictability")
+femalecompetition_social<-c("female_evictions","female_infanticide","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
+
+r_percwon<-nestedresults[nestedresults$outcome %in% "perc_won",]
+r_strictdominance<-nestedresults[nestedresults$outcome %in% "strict",]
+
+r_percwon_notdimorphic<-r_percwon[seq(from=1,to=69,by=2),]
+r_percwon_notdimorphic<-r_percwon_notdimorphic[,c(3,7,8)]
+r_percwon_dimorphic<-r_percwon[seq(from=2,to=70,by=2),]
+r_percwon_dimorphic<-r_percwon_dimorphic[,c(3,7,8)]
+
+r_strictdominance_notdimorphic<-r_strictdominance[seq(from=1,to=69,by=2),]
+r_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[,c(3,7,8)]
+r_strictdominance_dimorphic<-r_strictdominance[seq(from=2,to=70,by=2),]
+r_strictdominance_dimorphic<-r_strictdominance_dimorphic[,c(3,7,8)]
+
+
+
+r_sm_percwon_notdimorphic<-r_percwon_notdimorphic[unique(grep(paste(sexualselection_males,collapse="|"),r_percwon_notdimorphic$nestingvariable)),]
+
+r_sf_percwon_notdimorphic<-r_percwon_notdimorphic[unique(grep(paste(sexualselection_females,collapse="|"),r_percwon_notdimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sm_percwon_notdimorphic,r_sf_percwon_notdimorphic),file="results/Table_S7.csv")
+
+r_sb_percwon_notdimorphic<-r_percwon_notdimorphic[unique(grep(paste(socialbonds,collapse="|"),r_percwon_notdimorphic$nestingvariable)),]
+
+r_so_percwon_notdimorphic<-r_percwon_notdimorphic[unique(grep(paste(selforganisation,collapse="|"),r_percwon_notdimorphic$nestingvariable)),]
+
+r_fe_percwon_notdimorphic<-r_percwon_notdimorphic[unique(grep(paste(femalecompetition_environment,collapse="|"),r_percwon_notdimorphic$nestingvariable)),]
+
+r_fs_percwon_notdimorphic<-r_percwon_notdimorphic[unique(grep(paste(femalecompetition_social,collapse="|"),r_percwon_notdimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sb_percwon_notdimorphic,r_so_percwon_notdimorphic,r_fe_percwon_notdimorphic,r_fs_percwon_notdimorphic),file="results/Table_S8.csv")
+
+
+r_sm_percwon_dimorphic<-r_percwon_dimorphic[unique(grep(paste(sexualselection_males,collapse="|"),r_percwon_dimorphic$nestingvariable)),]
+
+r_sf_percwon_dimorphic<-r_percwon_dimorphic[unique(grep(paste(sexualselection_females,collapse="|"),r_percwon_dimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sm_percwon_dimorphic,r_sf_percwon_dimorphic),file="results/Table_S9.csv")
+
+
+r_sb_percwon_dimorphic<-r_percwon_dimorphic[unique(grep(paste(socialbonds,collapse="|"),r_percwon_dimorphic$nestingvariable)),]
+
+r_so_percwon_dimorphic<-r_percwon_dimorphic[unique(grep(paste(selforganisation,collapse="|"),r_percwon_dimorphic$nestingvariable)),]
+
+r_fe_percwon_dimorphic<-r_percwon_dimorphic[unique(grep(paste(femalecompetition_environment,collapse="|"),r_percwon_dimorphic$nestingvariable)),]
+
+r_fs_percwon_dimorphic<-r_percwon_dimorphic[unique(grep(paste(femalecompetition_social,collapse="|"),r_percwon_dimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sb_percwon_dimorphic,r_so_percwon_dimorphic,r_fe_percwon_dimorphic,r_fs_percwon_dimorphic),file="results/Table_S10.csv")
+
+
+
+
+r_sm_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[unique(grep(paste(sexualselection_males,collapse="|"),r_strictdominance_notdimorphic$nestingvariable)),]
+
+r_sf_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[unique(grep(paste(sexualselection_females,collapse="|"),r_strictdominance_notdimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sm_strictdominance_notdimorphic,r_sf_strictdominance_notdimorphic),file="results/Table_S11.csv")
+
+
+r_sb_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[unique(grep(paste(socialbonds,collapse="|"),r_strictdominance_notdimorphic$nestingvariable)),]
+
+r_so_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[unique(grep(paste(selforganisation,collapse="|"),r_strictdominance_notdimorphic$nestingvariable)),]
+
+r_fe_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictdominance_notdimorphic$nestingvariable)),]
+
+r_fs_strictdominance_notdimorphic<-r_strictdominance_notdimorphic[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictdominance_notdimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sb_strictdominance_notdimorphic,r_so_strictdominance_notdimorphic,r_fe_strictdominance_notdimorphic,r_fs_strictdominance_notdimorphic),file="results/Table_S12.csv")
+
+
+r_sm_strictdominance_dimorphic<-r_strictdominance_dimorphic[unique(grep(paste(sexualselection_males,collapse="|"),r_strictdominance_dimorphic$nestingvariable)),]
+
+r_sf_strictdominance_dimorphic<-r_strictdominance_dimorphic[unique(grep(paste(sexualselection_females,collapse="|"),r_strictdominance_dimorphic$nestingvariable)),]
+
+write.csv(rbind(r_sm_strictdominance_dimorphic,r_sf_strictdominance_dimorphic),file="results/Table_S13.csv")
+
+r_sb_strictdominance_dimorphic<-r_strictdominance_dimorphic[unique(grep(paste(socialbonds,collapse="|"),r_strictdominance_dimorphic$nestingvariable)),]
+
+r_so_strictdominance_dimorphic<-r_strictdominance_dimorphic[unique(grep(paste(selforganisation,collapse="|"),r_strictdominance_dimorphic$nestingvariable)),]
+
+r_fe_strictdominance_dimorphic<-r_strictdominance_dimorphic[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictdominance_dimorphic$nestingvariable)),]
+
+r_fs_strictdominance_dimorphic<-r_strictdominance_dimorphic[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictdominance_dimorphic$nestingvariable)),]
+
+
+write.csv(rbind(r_sb_strictdominance_dimorphic,r_so_strictdominance_dimorphic,r_fe_strictdominance_dimorphic,r_fs_strictdominance_dimorphic),file="results/Table_S14.csv")
+
+
+```
+
 
 
 
@@ -682,6 +900,121 @@ Philopatry -> Relatedness -> Joint Aggression ->
 
 
 ```{r multifactor, echo=FALSE}
+
+
+# testes size only in promiscuous groups
+dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$relative_testes_mass,combined$corrected_species_id),]
+dstan_continuous<-dstan_continuous[dstan_continuous$MatSysPMK %in% "PRO",]
+
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+
+dat_list_continuous_phylogenetic <- list(
+  N_spp = nrow(dstan_continuous),
+  perc_won_females = as.integer(dstan_continuous$perc_won_females),
+  relative_testes_mass = standardize(dstan_continuous$relative_testes_mass),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
+  total = rep(100,nrow(dstan_continuous))
+)
+
+dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
+
+colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
+rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
+
+dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
+
+
+m_continuous_continuous_phylogenetic <- ulam(
+  alist(
+    perc_won_females ~ dbinom(total,p),
+    logit(p) <- k[species] +b*relative_testes_mass,
+    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
+    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
+    ## adaptive priors
+    b ~ dnorm(0,1),
+    etasq~exponential(1),
+    rhosq~exponential(1)
+  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
+
+precis(m_continuous_continuous_phylogenetic,depth=2)
+
+#b      0.55 0.41  -0.10  1.21   317  1.01
+
+
+
+
+
+dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$testes_mass,combined$body_mass,combined$corrected_species_id),]
+dstan_continuous<-dstan_continuous[dstan_continuous$MatSysPMK %in% "PRO",]
+
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+
+dat_list_continuous_phylogenetic <- list(
+  N_spp=nrow(dstan_continuous),
+  perc_won_females = standardize(as.integer(dstan_continuous$perc_won_females)),
+  testes_mass = standardize(exp(dstan_continuous$relative_testes_mass)),
+  body_mass = standardize(log(dstan_continuous$body_mass)),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id))
+)
+
+
+
+colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
+rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
+
+newDmat<-(matrix(ncol=nrow(dstan_continuous),nrow=nrow(dstan_continuous)))
+colnames(newDmat)<-dstan_continuous$corrected_species_id
+rownames(newDmat)<-dstan_continuous$corrected_species_id
+
+for(i in 1:nrow(newDmat)){
+  for(j in 1:ncol(newDmat)){
+    newDmat[i,j]<-Dmat[ rownames(Dmat)==rownames(newDmat)[i],colnames(Dmat)==colnames(newDmat)[j] ]
+  }
+}
+
+dat_list_continuous_phylogenetic$Dmat<-newDmat/max(newDmat)
+
+
+m_continuous_continuous_phylogenetic <- ulam(
+  alist(
+    testes_mass ~ multi_normal(mu,SIGMA),
+    mu <- a + b*body_mass + c*perc_won_females,
+    matrix[N_spp,N_spp]: SIGMA <- cov_GPL1( Dmat, etasq, rhosq, 0.01),
+    ## adaptive priors
+    a~normal(0,1),
+    b~normal(0,1),
+    c~normal(0,1),
+    etasq~half_normal(1,0.25),
+    rhosq~half_normal(3,0.25)
+  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
+
+precis(m_continuous_continuous_phylogenetic,depth=2)
+
+
+
+
 
 
 # seasonality + group sex ratio
@@ -792,6 +1125,299 @@ m_seasonality_continuous_phylogenetic <- ulam(
 precis(m_seasonality_continuous_phylogenetic,depth=2)
 
 # only sex ratio linked to seasonality but not percent won females
+
+
+
+
+
+
+
+
+# sexual receptivity, reproductive synchrony, reproductive seasonality, number of females
+dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$Synchrony,combined$r_seasonality_value,combined$females,combined$sexualreceptivity_hours,combined$corrected_species_id),]
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+
+dat_list_continuous_phylogenetic <- list(
+  N_spp = nrow(dstan_continuous),
+  perc_won_females = as.integer(dstan_continuous$perc_won_females),
+  synchrony = standardize(dstan_continuous$Synchrony),
+  sexualreceptivity = standardize(dstan_continuous$sexualreceptivity_hours),
+  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
+  females = standardize(dstan_continuous$females),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
+  total = rep(100,nrow(dstan_continuous))
+)
+
+dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
+
+colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
+rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
+
+dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
+
+
+m_continuous_continuous_phylogenetic <- ulam(
+  alist(
+    perc_won_females ~ dbinom(total,p),
+    logit(p) <- k[species] +b*synchrony+c*sexualreceptivity+d*r_seasonality_value+e*females,
+    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
+    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
+    ## adaptive priors
+    c(b,c,d,e) ~ dnorm(0,1),
+    etasq~exponential(1),
+    rhosq~exponential(1)
+  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
+
+precis(m_continuous_continuous_phylogenetic,depth=2)
+
+#b      0.55 0.41  -0.10  1.21   317  1.01
+
+
+
+
+
+dstan_continuous <- combined[ complete.cases(combined$strictfdom,combined$Synchrony,combined$r_seasonality_value,combined$females,combined$sexualreceptivity_hours,combined$corrected_species_id),]
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+dat_list_continuous_phylogenetic <- list(
+  N_spp = nrow(dstan_continuous),
+  R = as.factor(dstan_continuous$strictfdom),
+  synchrony = standardize(dstan_continuous$Synchrony),
+  sexualreceptivity = standardize(dstan_continuous$sexualreceptivity_hours),
+  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
+  females = standardize(dstan_continuous$females),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
+  total = rep(100,nrow(dstan_continuous))
+)
+
+dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
+
+colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
+rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
+
+dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
+
+  
+  m_strict_continuous_phylogenetic <- ulam(
+    alist(
+      R ~ dordlogit( phi , cutpoints ),
+      phi <- k[species] +b*synchrony+c*sexualreceptivity+d*r_seasonality_value+e*females,
+      vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
+      matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
+      c(b,c,d,e) ~ dnorm(0,1),
+      cutpoints ~ dnorm( 0 , 1.5 ),
+      etasq~exponential(1),
+      rhosq~exponential(1)
+    ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+  
+
+precis(m_strict_continuous_phylogenetic)
+
+
+
+
+
+
+
+
+
+dstan_continuous <- combined[ complete.cases(combined$strictfdom,combined$Synchrony,combined$r_seasonality_value,combined$females,combined$sexualreceptivity_hours,combined$corrected_species_id),]
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+dat_list_continuous_phylogenetic <- list(
+  N_spp = nrow(dstan_continuous),
+  R = as.factor(dstan_continuous$strictfdom),
+  synchrony = standardize(dstan_continuous$Synchrony),
+  sexualreceptivity = standardize(dstan_continuous$sexualreceptivity_hours),
+  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
+  females = standardize(dstan_continuous$females),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
+  total = rep(100,nrow(dstan_continuous))
+)
+
+dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
+
+colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
+rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
+
+dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
+
+  
+  m_strict_continuous_phylogenetic <- ulam(
+    alist(
+      R ~ dordlogit( phi , cutpoints ),
+      phi <- k[species] +b*synchrony+c*sexualreceptivity+d*r_seasonality_value+e*females,
+      vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
+      matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
+      c(b,c,d,e) ~ dnorm(0,1),
+      cutpoints ~ dnorm( 0 , 1.5 ),
+      etasq~exponential(1),
+      rhosq~exponential(1)
+    ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+  
+
+precis(m_strict_continuous_phylogenetic)
+
+
+
+
+
+
+
+
+
+# body mass + canine dimorphism
+dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$body_mass,combined$CanineDimorphism,combined$corrected_species_id),]
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+
+dat_list_continuous_phylogenetic <- list(
+  N_spp = nrow(dstan_continuous),
+  perc_won_females = as.integer(dstan_continuous$perc_won_females),
+  bodymass = standardize(log(dstan_continuous$body_mass)),
+  CanineDimorphism = standardize(dstan_continuous$CanineDimorphism),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
+  total = rep(100,nrow(dstan_continuous))
+)
+
+dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
+
+colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
+rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
+
+dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
+
+
+m_continuous_continuous_phylogenetic <- ulam(
+  alist(
+    perc_won_females ~ dbinom(total,p),
+    logit(p) <- k[species] +b*bodymass+c*CanineDimorphism,
+    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
+    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
+    ## adaptive priors
+    c(b,c) ~ dnorm(0,1),
+    etasq~exponential(1),
+    rhosq~exponential(1)
+  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
+
+precis(m_continuous_continuous_phylogenetic,depth=2)
+
+# canine dimorphism: c     -1.76 0.40  -2.42 -1.12   240  1.00
+# body mass: b      0.76 0.33   0.24  1.28   260  1.00
+
+
+
+
+
+
+
+
+
+
+# Arboreality / body size / size dimorphism
+
+dstan_continuous <- combined[ complete.cases(combined$SexualDimorphism_MaleWeight_over_FemaleWeight,combined$body_mass,combined$Strata_Wilman,combined$corrected_species_id),]
+
+spp_obs<-unique(dstan_continuous$corrected_species_id)
+spp_obs<-matrix(nrow=length(spp_obs))
+rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
+
+# We match the species in the dataset to the species in the phylogenetic tree
+missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
+# We remove species with no data from the tree
+mtree<-missing$phy
+
+# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
+Dmat<-cophenetic(mtree)
+
+dat_list_continuous_phylogenetic <- list(
+  N_spp=nrow(dstan_continuous),
+  SexualDimorphism_MaleWeight_over_FemaleWeight = standardize((dstan_continuous$SexualDimorphism_MaleWeight_over_FemaleWeight)),
+  body_mass = standardize(log(dstan_continuous$body_mass)),
+  arboreal = as.integer(dstan_continuous$Strata_Wilman=="Ar"),
+  species = as.integer(as.factor(dstan_continuous$corrected_species_id))
+)
+
+
+
+newDmat<-(matrix(ncol=nrow(dstan_continuous),nrow=nrow(dstan_continuous)))
+colnames(newDmat)<-dstan_continuous$corrected_species_id
+rownames(newDmat)<-dstan_continuous$corrected_species_id
+
+for(i in 1:nrow(newDmat)){
+  for(j in 1:ncol(newDmat)){
+    newDmat[i,j]<-Dmat[ rownames(Dmat)==rownames(newDmat)[i],colnames(Dmat)==colnames(newDmat)[j] ]
+  }
+}
+
+dat_list_continuous_phylogenetic$Dmat<-newDmat/max(newDmat)
+
+
+m_continuous_continuous_phylogenetic <- ulam(
+  alist(
+    SexualDimorphism_MaleWeight_over_FemaleWeight ~ multi_normal(mu,SIGMA),
+    mu <- a + b*body_mass + c*arboreal,
+    matrix[N_spp,N_spp]: SIGMA <- cov_GPL1( Dmat, etasq, rhosq, 0.01),
+    ## adaptive priors
+    a~normal(0,1),
+    b~normal(0,1),
+    c~normal(0,1),
+    etasq~half_normal(1,0.25),
+    rhosq~half_normal(3,0.25)
+  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
+
+precis(m_continuous_continuous_phylogenetic,depth=2)
+
+# body mass: b      0.46 0.17  0.18  0.75  1829     1
+# arboreality: c     -0.53 0.30 -1.02 -0.04  1845     1
+
+plot(exp(combined$SexualDimorphism_MaleWeight_over_FemaleWeight)~log(combined$body_mass),pch=as.integer(as.factor(combined$Strata_Wilman)),xlab="Body mass (log g)",ylab="Body size dimorphism",bty="n",xlim=c(4,12),ylim=c(0.75,2.75))
+
+legend(x="topleft",legend=c("Arboreal","Terrestrial","Scansorial"),pch=c(1,2,3),bty="n")
+
+
+plot(exp(combined$SexualDimorphism_MaleWeight_over_FemaleWeight)~(combined$females),pch=as.integer(as.factor(combined$Strata_Wilman)))
 
 
 

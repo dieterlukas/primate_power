@@ -663,7 +663,7 @@ summarizedtable<-summarizedtable[order(summarizedtable$Ovulationsigns,summarized
 summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
 
 plot_ovulationsigns <-ggplot(summarizedtable, aes(x = factor(Ovulationsigns,levels=c("Absent","Present","Exaggerated")), y = Observations, fill = StrictFemdom)) + 
-  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+
+  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1),col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1),col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1)))+
   theme(       axis.text.y=element_blank(),
                axis.ticks.y=element_blank(),
                axis.title.y = element_blank(),
@@ -947,7 +947,7 @@ previouspar<-par()
 op <- par(oma=c(0.2,0.2,0.2,0.2), mar=c(0.3,1.0,0.3,1.0), mfrow=c(1,5))
 barplot(overallprobs_speciesaverages_arboreality,col=dominance_colors,axisnames = F)
 
-barplot(overallprobs_speciesaverages_ovulation_signs,col=c( col.alpha(dominance_colors[1],0.4), col.alpha(dominance_colors[2],0.4),col.alpha(dominance_colors[3],0.4)),axisnames = F,yaxt="n")
+barplot(overallprobs_speciesaverages_ovulation_signs,col=c( col.alpha(dominance_colors[1],1), col.alpha(dominance_colors[2],1),col.alpha(dominance_colors[3],1)),axisnames = F,yaxt="n")
 
 plot( NULL , type="n" , xlab="sexual receptivity" ,
       xlim=c(min(dat_list_strict_sexualreceptivity_hours $sexualreceptivity_hours,na.rm=T),max(dat_list_strict_sexualreceptivity_hours $sexualreceptivity_hours,na.rm=T)) , ylim=c(0,1) ,  yaxp=c(0,1,4) ,bty="n",xaxt="n",ylab="",yaxt="n")
