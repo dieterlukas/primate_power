@@ -18,192 +18,14 @@ output:
     toc: true
 ---
 
-## Comparative analysis of intersexual dominance
 
-Four hypotheses have linked interspecific variation in sex differences in resource-holding power to different theoretical frameworks or social processes. First, according to the sexual monopolization hypothesis, variation in intersexual dominance is predicted by interspecific variation in mating systems. Ecological and demographic factors shape male monopolization potential, which is positively associated with sexual size and canine dimorphism, both of which contribute directly to male reproductive control, and, hence, the ability to dominate females. Second, the female sociality hypothesis posits that variation in female bonding and social support shapes patterns of intersexual dominance. Female philopatry, in particular, will favor coalitions among related females, enhancing their ability to dominate males. Third, according to the self-organization hypothesis, variation in intersexual dominance mainly reflects variation in average group sex ratios. The widespread winner-loser effect promotes a pattern of hierarchy formation that is driven by the fact that, following a conflict, winners are more likely to win and losers more likely to lose their subsequent fight. With increasing proportions of males in a group, this effect will drive more and more males towards the bottom of the hierarchy, where they are outranked by females. Finally, the ecological competition hypothesis attributes the prevalence of female dominance in some taxa to adaptations to unpredictable harsh ecological conditions that enhance female-female competition. Under such conditions, reductions in the number of (breeding) females, male-biased sexual size and canine dimorphism, and enhanced female masculinization ensue and augment females’ ability to dominate males. We employed comparative phylogenetically-controlled analyses to test predictions of these non-mutually exclusive hypotheses.
+### This file contains the R script with the analyses reported in the manuscript:
 
+## The evolution of male-female dominance relations in primate societies
+Males were long believed to dominate females socially in all but a few mammals. However, recent studies indicate more variation, opening new possibilities for exploring the extent and drivers of sex biases in social dominance. Here, we use comparative data from 226 populations of 117 primate species to show that male-female conflicts represent nearly half of all within-group conflicts, and that male dominance is far from ubiquitous. In fact, 82% of all populations show either moderate sex biases or female-biased dominance. Finally, our analyses support a scenario of sexual conflict, where the sex that acquires more control over reproduction ultimately dominates the other. Overall, these results may also contribute to a better understanding of the evolutionary origins of gender asymmetries in power in human societies.
 
 
-notes 24 April manuscript from Elise
-
-- cannot use breeding seasonality because there is only a single observation of a female dominant species
-- cannot use provisioned species because they are all co-dominant
-
-
-
-
-notes 28 Feb manuscript from Elise
-
-
-
-
-between group conflict
-
-
-Testes size only in promiscuous groups
-
-Environmental and reproductive seasonality in the same model
-
-Repeat all analyses with SSD?
-
-Female dispersal with female evictions
-Three way dispersal + Just female dispersal/ check for the specific mating system
-
-
-
-Sex ratio - check re-calculation for the figures
-
-For probability plots like testis size, show flatter line? Uncertainty? Blend colours?
-
-
-Figures:
-
-Figure 2, add the sample sizes
-
-
-
-
-do female power variables (arboreality / short receptive periods / reproductive synchrony) hold when testing only lemurs and only non-lemurs?
-
-
-sex bias plus polygyny
-
-
-
-notes 09 Feb
-
-add sample sizes to sexual selection
-
-
-in figure 2 bottom add the receptive synchrony variable that differs? 
-
-
-# arboreality
-dimorphism changes before the mating system - makes sense, only when males are large enough can they exclude other males from access to females - but sexual selection for different mating system started first, leading to selection on dimorphism
-https://onlinelibrary.wiley.com/doi/full/10.1111/mam.12191
-
-it's all body size
-https://link.springer.com/article/10.1007/BF02693740
-
- no relationship between body size and dimorphism in lemurs - also what I find here, that there are other factors that lead both to shifts in dimorphism and body size, so indirect link - terrestrial species can both be larger and have larger dimorphism, but variation in body size within each substrate much less linked to variation in dimorphism
-https://onlinelibrary.wiley.com/doi/abs/10.1002/ajp.1350210304
-
-Group sizes of arboreal species are smaller - should also link to nocturnal? - it all goes back to predation pressure? life history evolution theory says delay reproduction when uncertainty + high mortality of adults
-https://www.annualreviews.org/doi/pdf/10.1146/annurev.es.17.110186.000551
-
-
-want a model: 
-percentage fights won by females ~ arboreality + number of females + size dimorphism
-percentage fights won by females ~ arboreality + number of females 
-percentage fights won by females ~ arboreality + size dimorphism
-
-size dimorphism ~ arboreality + body mass + females
-
-
-
-
-
-multivariate
-# Number of females + Mating System
-Females, but not mating system overall - but 3 different from 1, 4 from 2, and 4 from 3 (1=Mon, 2=PAN, 3=Pol, 4=Pro): Pro has most femdom, pol has most maledom
-
-# Number of males + Mating System
-Males, but not mating system overall, 3-1, 4-1,3-2,4-3: Pro has most femdom, pol has most maledom
-
-It's because of the variation within species.
-
-
-# Canine dimorphism + Mating System
-Canine dimorphism - none of the differences among mating systems remain
-
-
-# Canine dimorphism + Body size dimorphism
-Canine dimorphism but not body size dimorphism, because there are species with no body size but canine size dimorphism (presumably species where there are constraints on the evolution of larger body sizes)
-
-
-# Sex ratio + Mating System
-Sex ratio - none of the differences among mating systems remain
-
-
-# Sex ratio, including nested in species, and additionally canine size dimorphism across observations
-Canine size dimorphism and sex ratio within species, but not sex ratio across species
-
-
-# Body size Dimorphism + Mating System + Arboreality
-Only body size dimorphism
-
-# Female canine height in the different dominance systems
-No difference after accounting for body size
-
-
-# seasonality + group sex ratio
-Seasonality and sex ratio independently influence how many fights females win
-
-
-# seasonality + mating system
-Seasonality and mating system both are associated with percentage of fights won
-
-# environmental harshness + mating system
-environmental harshness and mating system both are associated with percentage of fights won
-
-# ssd + group sex ratio
-Both sexual size dimorphism in body size and sex ratio
-
-# philopatry + relatedness
-Philopatry but not relatedness
-
-among species where groups have equal numbers of males and females in the group
- canine dimorphism -> male dominance
- sexualreceptivity -> female dominance
-
-
-# percent male-male aggression with sex ratio
-Both percent male male aggression and sex ratio
-
-
-#polygyny + female dispersal
-Both mating system and sex bias in dispersal
-
-
-# environmental seasonality versus reproductive synchrony
-Both environmental seasonality and reproductive synchrony
-
-
-
-
-Within species: with fewer males, within species more likely to find male dominance because fewer males will tilt toward polygyny - across species more likely to find female dominance because fewer males reflect monogamous and polyandrous groups. 
-
-Sex ratio is the trait that is consistent and explains variation within species.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Description of variables
-The study is based on published reports on inter-sexual interactions within social groups from across primate species. To assess which of the two sexes tends to be dominant within groups, we collected both quantitative measures of aggressive and dominance interactions and qualitative descriptions of relationships. Here, we focus on three measures: (i) the proportion of decided inter-sexual aggressive interactions won by females; (ii) a strict classification of whether the majority of individuals of one sex can be considered dominant over individuals of the other sex (>90% of aggressive interactions are won by individuals of one sex) or whether there is co-dominance without a clear pattern (for the purpose of our analyses we assume that this is a linear order, with co-dominance in between female and male dominance); and (iii) a more relaxed classification that indicates whether generally females or males are more dominant in intersexual interactions (which sex wins >50% of all aggressive interactions or has been described as dominant). 
-
-The three measures were collected on the level of individual reports of social groups, where groups were defined by the authors of the original reports. From these reports, we added information specific to this observation (circumstances of data collection, group size and composition, breeding system), generating the population-level dataset. In addition, we built a species-level dataset that contains for each of the species for which we have observations data on additional variables that are not available for each population and usually vary more among than within species (social organisation, mating system, average relatedness, sex-bias in dispersal, occurrence of coalitionary aggression, male monopolization potential, breeding synchrony, environmental seasonality, testes and male body mass, sexual dimorphism in body weight and canine size).
-
-
-
-Hypothesis 1	Sexual Selection		Mating Systems	Body size dimorphism	Canine size dimorphism	sex ratio	Male reproductive skew	Relative testes sizes	Arboreality	sexual receptivity	concealed ovulation	synchrony		
-														
-Hypothesis 2	Female sociality		Social system	average kinship	female coalitions	female dispersal								
-														
-Hypothesis 3	Self organisation		sex ratio	percentage male male fights	number of males	number of females	Between group conflict							
-														
-Hypothesis 4			captivity	environmental harshness	rainfall seasonality	rainfall unpredictability	seasonal breeding	home range overlap	number of females 	female evictions	female infanticide	Female canine size		
-														
-
+# The script can be used to load the required data from the repository at http://github.com/dieterlukas/primate_power , run the analyses, and generate the figures.
 
 
 
@@ -220,8 +42,6 @@ library(phytools)
 library(rethinking)
 library(dplyr)
 library(cmdstanr)
-library(btw)
-
 
 
 # Keep this script file in the same folder as the three input files (population data, species variables, phylogeny)
@@ -232,23 +52,79 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 source("AnalysisCode/FemaleDominance_LoadData.r")
 
+source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/AnalysisCode/FemaleDominance_LoadData.r")
+
 ```
 
 
 
 
 
+### Description of variables
+The study is based on published reports on inter-sexual interactions within social groups from across primate species. To assess which of the two sexes tends to be dominant within groups, we collected both quantitative measures of aggressive and dominance interactions and qualitative descriptions of relationships. Here, we focus on three measures: (i) the proportion of decided inter-sexual aggressive interactions won by females; (ii) a strict classification of whether the majority of individuals of one sex can be considered dominant over individuals of the other sex (>90% of aggressive interactions are won by individuals of one sex) or whether there is co-dominance without a clear pattern (for the purpose of our analyses we assume that this is a linear order, with co-dominance in between female and male dominance); and (iii) a more relaxed classification that indicates whether generally females or males are more dominant in intersexual interactions (which sex wins >50% of all aggressive interactions or has been described as dominant). 
+
+The three measures were collected on the level of individual reports of social groups, where groups were defined by the authors of the original reports. From these reports, we added information specific to this observation (circumstances of data collection, group size and composition, breeding system), generating the population-level dataset. In addition, we built a species-level dataset that contains for each of the species for which we have observations data on additional variables that are not available for each population and usually vary more among than within species. The following is the list of variables related to each of the four hypotheses we assessed:
+
+
+
+Hypothesis 1	Reproductive control:		Mating Systems	Body size dimorphism	Canine size dimorphism	sex ratio	Male reproductive skew	Relative testes sizes	Arboreality	sexual receptivity	concealed ovulation	synchrony		
+														
+Hypothesis 2	Female sociality		Social system	average kinship	female coalitions	female dispersal								
+														
+Hypothesis 3	Self organisation		sex ratio	percentage male male fights	number of males	number of females	Between group conflict							
+														
+Hypothesis 4			captivity	environmental harshness	rainfall seasonality	rainfall unpredictability	seasonal breeding	home range overlap	number of females 	female evictions	female infanticide	Female canine size		
+														
+The variables measuring intersexual dominance are "perc_won_females", the quantitative measure of the percentage of fights won by females; "strictfdom", a categorical measure where 1 indicates that m
+
 
 
 
 ### Descriptive summary of the data
 
+## Occurrence of intersexual conflict
+
+Intersexual conflicts are frequent, representing nearly half of all agonistic interactions among primates: mean percentage ±SD: 48.1±21.5
+
+Intersexual conflicts are not more (or less) frequent when most dyads in the group are between the sexes: mean estimate -0.01, 89% HPDI -0.06 - +0.04
+
+
+```{r p2 variation in intersexual conflicts, echo=FALSE}
+
+mean(combined$perc_aggression_fm,na.rm=T)
+sd(combined$perc_aggression_fm,na.rm=T)
+
+dstan_conflicts<-select(combined,corrected_species_id,perc_aggression_fm,perc_fm_dyads)
+dstan_conflicts<-dstan_conflicts[complete.cases(dstan_conflicts),]
+
+  dat_list_conflicts <- list(
+    perc_aggression_fm = as.integer(dstan_conflicts$perc_aggression_fm),
+    perc_fm_dyads = standardize(dstan_conflicts$perc_fm_dyads),
+    total = rep(100,nrow(dstan_conflicts))
+    )
+  
+  m_conflicts <- ulam(
+    alist(
+      perc_aggression_fm ~ dbinom(total,p),
+      logit(p) <-a +b*perc_fm_dyads,
+      a ~dnorm(0,1),   
+      b ~ dnorm(0,1)
+    ) , data=dat_list_conflicts , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
+
+precis(m_conflicts)  
+  
+```
+
+
+
+
+
 ## P1.1 	Intersexual dominance is continuous, and male-biased in primates
 ## P1.2 	Most of the variation in intersexual dominance is found among species, but intersexual dominance is not assumed to be fixed within species 
 
-Our final dataset consists of 222 observations from 117 primate species of all three variables of intersexual dominance. 
+Our final dataset consists of 226 observations from 117 primate species of all three variables of intersexual dominance. 
 
-With the strict classification of intersexual dominance relations, 81 observations report that males dominate over females (47 different species), in 99 there is no clear sex-bias in the intersexual dominance interactions (65 different species), and in 42 females dominate over males (28 different species). 95 species in our sample are reported with only a single pattern of strict intersexual dominance, for 21 species we found reports of both no clear sex-bias in one more observations and either female or male dominance in other population(s), and in 1 species (Miopithecus talapoin) all three patterns of strict intrasexual dominance relations were described. 
+With the strict classification of intersexual dominance relations, 82 observations report that males dominate over females (47 different species), in 109 there is no clear sex-bias in the intersexual dominance interactions (65 different species), and in 35 females dominate over males (28 different species). 95 species in our sample are reported with only a single pattern of strict intersexual dominance, for 21 species we found reports of both no clear sex-bias in one more observations and either female or male dominance in other population(s), and in 1 species (Miopithecus talapoin) all three patterns of strict intrasexual dominance relations were described. 
 
 With the relaxed classification of intersexual dominance relations, males are classified as dominating over females in 128 observations (86 species) and females as dominating over males in 69 observations (64 species). With this definition, 11 species have observation of both female and of male dominance, while 106 species only have one type of dominance relation.
 
@@ -299,38 +175,6 @@ sum(combined$perc_won_females>66,na.rm=T)
 
 
 
-## Occurrence of intersexual conflict
-
-Intersexual conflicts are frequent, representing nearly half of all agonistic interactions among primates: mean percentage ±SD: 48.1±21.5
-
-Intersexual conflicts are not more (or less) frequent when most dyads in the group are between the sexes: mean estimate -0.01, 89% HPDI -0.06 - +0.04
-
-
-```{r p2 variation in intersexual conflicts, echo=FALSE}
-
-mean(combined$perc_aggression_fm,na.rm=T)
-sd(combined$perc_aggression_fm,na.rm=T)
-
-dstan_conflicts<-select(combined,corrected_species_id,perc_aggression_fm,perc_fm_dyads)
-dstan_conflicts<-dstan_conflicts[complete.cases(dstan_conflicts),]
-
-  dat_list_conflicts <- list(
-    perc_aggression_fm = as.integer(dstan_conflicts$perc_aggression_fm),
-    perc_fm_dyads = standardize(dstan_conflicts$perc_fm_dyads),
-    total = rep(100,nrow(dstan_conflicts))
-    )
-  
-  m_conflicts <- ulam(
-    alist(
-      perc_aggression_fm ~ dbinom(total,p),
-      logit(p) <-a +b*perc_fm_dyads,
-      a ~dnorm(0,1),   
-      b ~ dnorm(0,1)
-    ) , data=dat_list_conflicts , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
-
-precis(m_conflicts)  
-  
-```
 
 
 ## Investigation whether setting of the study influences the inference
@@ -398,7 +242,7 @@ The correlations of the three variables measuring intersexual dominance and the 
 
 
 
-allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
+allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","fissionfusion","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
 
 continuous_sexualselection<-c("SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index","relative_testes_mass","sexualreceptivity_hours","Synchrony")
 continuous_femalesociality<-c("female_average_relatedness")
@@ -410,7 +254,7 @@ alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_disper
 discrete_sexualselection<-c("MatSysPMK","Strata_Wilman","ovulation_signs")
 discrete_selforganisation<-c("between_groupconflict")
 discrete_femalesociality<-c("SocOrgPMK","jointaggression_females","sexbias_dispersal")
-discrete_femalecompetition<-c("origin","female_evictions","female_infanticide")
+discrete_femalecompetition<-c("origin","female_evictions","female_infanticide","fissionfusion")
 
 samplesizetable<-matrix(ncol=5,nrow=length(allcontinuouspredictors)+length(alldiscretepredictors))
 samplesizetable<-as.data.frame(samplesizetable)
@@ -441,7 +285,7 @@ for(i in 1:length(alldiscretepredictors)){
   count<-count+1
 }
 
-write.csv(samplesizetable,file="./results/FemdomAnalyses_May2023_Samplesizes.csv")
+write.csv(samplesizetable,file="./results/FemdomAnalyses_Samplesizes.csv")
 
 
 for (k in 1:1){
@@ -498,7 +342,7 @@ sexualselection_females<-c("Strata_Wilman","sexualreceptivity_hours","relative_t
 socialbonds<-c("SocOrgPMK","female_average_relatedness","jointaggression_females","sexbias_dispersal")
 selforganisation<-c("sexratio","perc_aggression_mm","males")
 femalecompetition_environment<-c("origin","env_harshness","rainfall_annualvariation","rainfall_unpredictability")
-femalecompetition_social<-c("female_evictions","female_infanticide","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
+femalecompetition_social<-c("female_evictions","female_infanticide","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize","fissionfusion")
 
 r_percwon<-combinedresults[combinedresults$outcome %in% "perc_won",]
 r_strictdominance<-combinedresults[combinedresults$outcome %in% "strict three way",]
@@ -516,7 +360,7 @@ r_so_percwon<-r_so_percwon[c(1,4,3),]
 r_fe_percwon<-r_percwon[unique(grep(paste(femalecompetition_environment,collapse="|"),r_percwon$continuouspredictor)),]
 r_fe_percwon<-r_fe_percwon[c(5,1,3,2),]
 r_fs_percwon<-r_percwon[unique(grep(paste(femalecompetition_social,collapse="|"),r_percwon$continuouspredictor)),]
-r_fs_percwon<-r_fs_percwon[c(6,7,1,3,2,4),]
+r_fs_percwon<-r_fs_percwon[c(6,7,1,8,3,2,4),]
 
 
 r_sm_strictdominance<-r_strictdominance[unique(grep(paste(sexualselection_males,collapse="|"),r_strictdominance$continuouspredictor)),]
@@ -530,7 +374,7 @@ r_so_strictdominance<-r_so_strictdominance[c(1,4,3),]
 r_fe_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictdominance$continuouspredictor)),]
 r_fe_strictdominance<-r_fe_strictdominance[c(5,1,3,2),]
 r_fs_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_fs_strictdominance<-r_fs_strictdominance[c(6,7,1,3,2,4),]
+r_fs_strictdominance<-r_fs_strictdominance[c(6,7,1,8,3,2,4),]
 
 
 
@@ -545,7 +389,7 @@ r_so_strictfemale<-r_so_strictfemale[c(1,4,3),]
 r_fe_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictfemale$continuouspredictor)),]
 r_fe_strictfemale<-r_fe_strictfemale[c(5,1,3,2),]
 r_fs_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_fs_strictfemale<-r_fs_strictfemale[c(6,7,1,3,2,4),]
+r_fs_strictfemale<-r_fs_strictfemale[c(6,7,1,8,3,2,4),]
 
 
 r_sm_strictmale<-r_strictmale[unique(grep(paste(sexualselection_males,collapse="|"),r_strictmale$continuouspredictor)),]
@@ -559,7 +403,7 @@ r_so_strictmale<-r_so_strictmale[c(1,4,3),]
 r_fe_strictmale<-r_strictmale[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictmale$continuouspredictor)),]
 r_fe_strictmale<-r_fe_strictmale[c(5,1,3,2),]
 r_fs_strictmale<-r_strictmale[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictmale$continuouspredictor)),]
-r_fs_strictmale<-r_fs_strictmale[c(6,7,1,3,2,4),]
+r_fs_strictmale<-r_fs_strictmale[c(6,7,1,8,3,2,4),]
 
 
 ```
@@ -833,21 +677,9 @@ write.csv(rbind(r_sb_strictdominance_dimorphic,r_so_strictdominance_dimorphic,r_
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Including Plots
 
-Code to make figures
+The following code will generate the figures from the data and save them in the folder /figures.
 
 ```{r plots, echo=FALSE}
 
@@ -858,34 +690,14 @@ source("AnalysisCode/FemaleDominance_Figures.r")
 
 
 
-### Analyses of phylogenetic co-evolution
+### Analyses of variables explaining variation in intersexual dominance relations within species
 
 
-3-way: frequent changes means that the model is uncertain about ancestral states
+For some species, we have data from multiple observations (different groups or different time points). The code in the following script compares the relationship between intersexual dominance and the three variables for which population-level information exists (number of females per group, number of males per group, adult sex ratio in group) either by averaging across the effect within each species or by averaging values within species to determine the effect across species. It needs to be run manually, it is not reported in the manuscript.
 
-2-way: 6x switch from male to female dominance / 4x switch from female to male dominance - all on terminal branches
+```{r variation, echo=FALSE}
 
-Independent contrasts - separate for gains/losses
-
-
-Pagel & Meade
-- monogamy
-- seasonal or not
-- sexual dimorphism (males 10% larger or not)
-
-- UMMF or not
-- singular breeder or not
-
-such partial female dominance has thus far only been documented for despotic species: check whether rate of aggression links to dominance patterns?
-
-
-
-
-```{r bayestraits, echo=FALSE}
-
-# Multistate model investigating the transitions between male, no, female dominance
-
-source("AnalysisCode/FemaleDominance_Bayestraits.r")
+source("AnalysisCode/FemaleDominance_VariationWithinSpecies.r")
 
 
 ```
@@ -894,739 +706,12 @@ source("AnalysisCode/FemaleDominance_Bayestraits.r")
 
 ### Path analyses to identify potential multi-variable interactions
 
-Seasonal breeding -> Mating system -> Group sex ratio -> Percentage
-Environmental harshness -> Social system -> SSD -> 
-Philopatry -> Relatedness -> Joint Aggression -> 
+In the discussion, we explore some of the potential interactions among the predictor variables. The code in the following script provides examples of the functions to include more than one predictor variables to assess their influence on the respective outcome variables measuring intersexual dominance.
 
 
 ```{r multifactor, echo=FALSE}
 
-
-# testes size only in promiscuous groups
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$relative_testes_mass,combined$corrected_species_id),]
-dstan_continuous<-dstan_continuous[dstan_continuous$MatSysPMK %in% "PRO",]
-
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  relative_testes_mass = standardize(dstan_continuous$relative_testes_mass),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-
-m_continuous_continuous_phylogenetic <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- k[species] +b*relative_testes_mass,
-    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    b ~ dnorm(0,1),
-    etasq~exponential(1),
-    rhosq~exponential(1)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous_phylogenetic,depth=2)
-
-#b      0.55 0.41  -0.10  1.21   317  1.01
-
-
-
-
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$testes_mass,combined$body_mass,combined$corrected_species_id),]
-dstan_continuous<-dstan_continuous[dstan_continuous$MatSysPMK %in% "PRO",]
-
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp=nrow(dstan_continuous),
-  perc_won_females = standardize(as.integer(dstan_continuous$perc_won_females)),
-  testes_mass = standardize(exp(dstan_continuous$relative_testes_mass)),
-  body_mass = standardize(log(dstan_continuous$body_mass)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id))
-)
-
-
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-newDmat<-(matrix(ncol=nrow(dstan_continuous),nrow=nrow(dstan_continuous)))
-colnames(newDmat)<-dstan_continuous$corrected_species_id
-rownames(newDmat)<-dstan_continuous$corrected_species_id
-
-for(i in 1:nrow(newDmat)){
-  for(j in 1:ncol(newDmat)){
-    newDmat[i,j]<-Dmat[ rownames(Dmat)==rownames(newDmat)[i],colnames(Dmat)==colnames(newDmat)[j] ]
-  }
-}
-
-dat_list_continuous_phylogenetic$Dmat<-newDmat/max(newDmat)
-
-
-m_continuous_continuous_phylogenetic <- ulam(
-  alist(
-    testes_mass ~ multi_normal(mu,SIGMA),
-    mu <- a + b*body_mass + c*perc_won_females,
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL1( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    a~normal(0,1),
-    b~normal(0,1),
-    c~normal(0,1),
-    etasq~half_normal(1,0.25),
-    rhosq~half_normal(3,0.25)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
-
-precis(m_continuous_continuous_phylogenetic,depth=2)
-
-
-
-
-
-
-# seasonality + group sex ratio
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$r_seasonality_value,combined$sexratio,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
-  sexratio = standardize(dstan_continuous$sexratio),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*r_seasonality_value+c*sexratio,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-# Seasonality and sex ratio independently influence how many fights females win
-
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
-  sexratio = standardize(dstan_continuous$sexratio),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-
-m_continuous_continuous_phylogenetic <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- k[species] +b*sexratio+c*r_seasonality_value,
-    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1),
-    etasq~exponential(1),
-    rhosq~exponential(1)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous_phylogenetic,depth=2)
-
-# only seasonality linked to percentage won, but not sex ratio - so maybe seasonlity independently associated with these two?
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = standardize(as.integer(dstan_continuous$perc_won_females)),
-  r_seasonality_value = dstan_continuous$r_seasonality_value*100,
-  sexratio = standardize(dstan_continuous$sexratio),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-
-m_seasonality_continuous_phylogenetic <- ulam(
-  alist(
-    r_seasonality_value ~ dbinom(total,p),
-    logit(p) <- k[species] +b*sexratio+c*perc_won_females,
-    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1),
-    etasq~exponential(1),
-    rhosq~exponential(1)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_seasonality_continuous_phylogenetic,depth=2)
-
-# only sex ratio linked to seasonality but not percent won females
-
-
-
-
-
-
-
-
-# sexual receptivity, reproductive synchrony, reproductive seasonality, number of females
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$Synchrony,combined$r_seasonality_value,combined$females,combined$sexualreceptivity_hours,combined$corrected_species_id),]
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  synchrony = standardize(dstan_continuous$Synchrony),
-  sexualreceptivity = standardize(dstan_continuous$sexualreceptivity_hours),
-  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
-  females = standardize(dstan_continuous$females),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-
-m_continuous_continuous_phylogenetic <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- k[species] +b*synchrony+c*sexualreceptivity+d*r_seasonality_value+e*females,
-    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    c(b,c,d,e) ~ dnorm(0,1),
-    etasq~exponential(1),
-    rhosq~exponential(1)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
-
-precis(m_continuous_continuous_phylogenetic,depth=2)
-
-#b      0.55 0.41  -0.10  1.21   317  1.01
-
-
-
-
-
-dstan_continuous <- combined[ complete.cases(combined$strictfdom,combined$Synchrony,combined$r_seasonality_value,combined$females,combined$sexualreceptivity_hours,combined$corrected_species_id),]
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  R = as.factor(dstan_continuous$strictfdom),
-  synchrony = standardize(dstan_continuous$Synchrony),
-  sexualreceptivity = standardize(dstan_continuous$sexualreceptivity_hours),
-  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
-  females = standardize(dstan_continuous$females),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-  
-  m_strict_continuous_phylogenetic <- ulam(
-    alist(
-      R ~ dordlogit( phi , cutpoints ),
-      phi <- k[species] +b*synchrony+c*sexualreceptivity+d*r_seasonality_value+e*females,
-      vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-      matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-      c(b,c,d,e) ~ dnorm(0,1),
-      cutpoints ~ dnorm( 0 , 1.5 ),
-      etasq~exponential(1),
-      rhosq~exponential(1)
-    ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
-  
-
-precis(m_strict_continuous_phylogenetic)
-
-
-
-
-
-
-
-
-
-dstan_continuous <- combined[ complete.cases(combined$strictfdom,combined$Synchrony,combined$r_seasonality_value,combined$females,combined$sexualreceptivity_hours,combined$corrected_species_id),]
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  R = as.factor(dstan_continuous$strictfdom),
-  synchrony = standardize(dstan_continuous$Synchrony),
-  sexualreceptivity = standardize(dstan_continuous$sexualreceptivity_hours),
-  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
-  females = standardize(dstan_continuous$females),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-  
-  m_strict_continuous_phylogenetic <- ulam(
-    alist(
-      R ~ dordlogit( phi , cutpoints ),
-      phi <- k[species] +b*synchrony+c*sexualreceptivity+d*r_seasonality_value+e*females,
-      vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-      matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-      c(b,c,d,e) ~ dnorm(0,1),
-      cutpoints ~ dnorm( 0 , 1.5 ),
-      etasq~exponential(1),
-      rhosq~exponential(1)
-    ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
-  
-
-precis(m_strict_continuous_phylogenetic)
-
-
-
-
-
-
-
-
-
-# body mass + canine dimorphism
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$body_mass,combined$CanineDimorphism,combined$corrected_species_id),]
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  bodymass = standardize(log(dstan_continuous$body_mass)),
-  CanineDimorphism = standardize(dstan_continuous$CanineDimorphism),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-dat_list_continuous_phylogenetic$Dmat<-Dmat[ unique(dstan_continuous$corrected_species_id),unique(dstan_continuous$corrected_species_id) ]/max(Dmat)
-
-colnames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(colnames(dat_list_continuous_phylogenetic$Dmat)))
-rownames(dat_list_continuous_phylogenetic$Dmat)<-as.integer(as.factor(rownames(dat_list_continuous_phylogenetic$Dmat)))
-
-dat_list_continuous_phylogenetic$N_spp<-length(unique(dstan_continuous$corrected_species_id))
-
-
-m_continuous_continuous_phylogenetic <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- k[species] +b*bodymass+c*CanineDimorphism,
-    vector[N_spp]:k ~ multi_normal( 0 , SIGMA ),
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    c(b,c) ~ dnorm(0,1),
-    etasq~exponential(1),
-    rhosq~exponential(1)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
-
-precis(m_continuous_continuous_phylogenetic,depth=2)
-
-# canine dimorphism: c     -1.76 0.40  -2.42 -1.12   240  1.00
-# body mass: b      0.76 0.33   0.24  1.28   260  1.00
-
-
-
-
-
-
-
-
-
-
-# Arboreality / body size / size dimorphism
-
-dstan_continuous <- combined[ complete.cases(combined$SexualDimorphism_MaleWeight_over_FemaleWeight,combined$body_mass,combined$Strata_Wilman,combined$corrected_species_id),]
-
-spp_obs<-unique(dstan_continuous$corrected_species_id)
-spp_obs<-matrix(nrow=length(spp_obs))
-rownames(spp_obs)<-unique(dstan_continuous$corrected_species_id)
-
-# We match the species in the dataset to the species in the phylogenetic tree
-missing<-treedata(inputtree,data=spp_obs,warnings=FALSE)
-# We remove species with no data from the tree
-mtree<-missing$phy
-
-# We calculate the pair-wise phylogenetic distances among the species in the tree; this gives a matrix where values are the total branch length needed to connect two species (diagonal is the distance of a species to itself so zero)
-Dmat<-cophenetic(mtree)
-
-dat_list_continuous_phylogenetic <- list(
-  N_spp=nrow(dstan_continuous),
-  SexualDimorphism_MaleWeight_over_FemaleWeight = standardize((dstan_continuous$SexualDimorphism_MaleWeight_over_FemaleWeight)),
-  body_mass = standardize(log(dstan_continuous$body_mass)),
-  arboreal = as.integer(dstan_continuous$Strata_Wilman=="Ar"),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id))
-)
-
-
-
-newDmat<-(matrix(ncol=nrow(dstan_continuous),nrow=nrow(dstan_continuous)))
-colnames(newDmat)<-dstan_continuous$corrected_species_id
-rownames(newDmat)<-dstan_continuous$corrected_species_id
-
-for(i in 1:nrow(newDmat)){
-  for(j in 1:ncol(newDmat)){
-    newDmat[i,j]<-Dmat[ rownames(Dmat)==rownames(newDmat)[i],colnames(Dmat)==colnames(newDmat)[j] ]
-  }
-}
-
-dat_list_continuous_phylogenetic$Dmat<-newDmat/max(newDmat)
-
-
-m_continuous_continuous_phylogenetic <- ulam(
-  alist(
-    SexualDimorphism_MaleWeight_over_FemaleWeight ~ multi_normal(mu,SIGMA),
-    mu <- a + b*body_mass + c*arboreal,
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL1( Dmat, etasq, rhosq, 0.01),
-    ## adaptive priors
-    a~normal(0,1),
-    b~normal(0,1),
-    c~normal(0,1),
-    etasq~half_normal(1,0.25),
-    rhosq~half_normal(3,0.25)
-  ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , cmdstan=T)
-
-precis(m_continuous_continuous_phylogenetic,depth=2)
-
-# body mass: b      0.46 0.17  0.18  0.75  1829     1
-# arboreality: c     -0.53 0.30 -1.02 -0.04  1845     1
-
-plot(exp(combined$SexualDimorphism_MaleWeight_over_FemaleWeight)~log(combined$body_mass),pch=as.integer(as.factor(combined$Strata_Wilman)),xlab="Body mass (log g)",ylab="Body size dimorphism",bty="n",xlim=c(4,12),ylim=c(0.75,2.75))
-
-legend(x="topleft",legend=c("Arboreal","Terrestrial","Scansorial"),pch=c(1,2,3),bty="n")
-
-
-plot(exp(combined$SexualDimorphism_MaleWeight_over_FemaleWeight)~(combined$females),pch=as.integer(as.factor(combined$Strata_Wilman)))
-
-
-
-
-
-
-# seasonality + mating system
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$r_seasonality_value,combined$MatSysPMK,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  r_seasonality_value = standardize(dstan_continuous$r_seasonality_value),
-  MatSysPMK = as.integer(as.factor(dstan_continuous$MatSysPMK)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*r_seasonality_value+c*MatSysPMK,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-
-
-
-# environmental harshness + mating system
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$env_harshness,combined$MatSysPMK,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  env_harshness = standardize(dstan_continuous$env_harshness),
-  MatSysPMK = as.integer(as.factor(dstan_continuous$MatSysPMK)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*env_harshness+c*MatSysPMK,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-
-
-
-
-# sex ratio + mating system
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$sexratio,combined$MatSysPMK,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  sexratio = standardize(dstan_continuous$sexratio),
-  MatSysPMK = as.integer(as.factor(dstan_continuous$MatSysPMK)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*sexratio+c*MatSysPMK,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-
-
-# ssd + mating system
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$SexualDimorphism_MaleWeight_over_FemaleWeight,combined$MatSysPMK,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  SexualDimorphism_MaleWeight_over_FemaleWeight = standardize(dstan_continuous$SexualDimorphism_MaleWeight_over_FemaleWeight),
-  MatSysPMK = as.integer(as.factor(dstan_continuous$MatSysPMK)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*SexualDimorphism_MaleWeight_over_FemaleWeight+c*MatSysPMK,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-
-# ssd + social system
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$SexualDimorphism_MaleWeight_over_FemaleWeight,combined$SocOrgPMK,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  SexualDimorphism_MaleWeight_over_FemaleWeight = standardize(dstan_continuous$SexualDimorphism_MaleWeight_over_FemaleWeight),
-  SocOrgPMK = as.integer(as.factor(dstan_continuous$SocOrgPMK)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*SexualDimorphism_MaleWeight_over_FemaleWeight+c*SocOrgPMK,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-
-# ssd + group sex ratio
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$SexualDimorphism_MaleWeight_over_FemaleWeight,combined$sexratio,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  SexualDimorphism_MaleWeight_over_FemaleWeight = standardize(dstan_continuous$SexualDimorphism_MaleWeight_over_FemaleWeight),
-  sexratio = standardize(dstan_continuous$sexratio),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*SexualDimorphism_MaleWeight_over_FemaleWeight+c*sexratio,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-
-
-# philopatry + relatedness
-
-dstan_continuous <- combined[ complete.cases(combined$perc_won_females,combined$female_average_relatedness,combined$female_dispersal,combined$corrected_species_id),]
-
-# Continuous outcome: percentage of fights won by females
-dat_list_continuous <- list(
-  N_spp = nrow(dstan_continuous),
-  perc_won_females = as.integer(dstan_continuous$perc_won_females),
-  female_average_relatedness = standardize(dstan_continuous$female_average_relatedness),
-  female_dispersal = as.integer(as.factor(dstan_continuous$female_dispersal)),
-  species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
-  total = rep(100,nrow(dstan_continuous))
-)
-
-m_continuous_continuous <- ulam(
-  alist(
-    perc_won_females ~ dbinom(total,p),
-    logit(p) <- a +b*female_average_relatedness+c*female_dispersal,
-    ## adaptive priors
-    a ~ dnorm( 0 , 1 ),
-    b ~ dnorm(0,1),
-    c ~ dnorm(0,1)
-  ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T)
-
-precis(m_continuous_continuous,depth=2)
-
-plot(dstan_continuous$perc_won_females~dstan_continuous$female_average_relatedness,col=as.integer(as.factor(dstan_continuous$female_dispersal)))
-
-
-plot(combined$perc_won_females~combined$female_average_relatedness,col=as.integer(as.factor(combined$cooperative_breeder)),pch=as.integer(as.factor(combined$cooperative_breeder)),cex=2)
-
-plot(combined$perc_won_females~combined$female_average_relatedness,cex=combined$females/2)
-
-
+source("AnalysisCode/FemaleDominance_Multivariate.r")
 ```
 
 
