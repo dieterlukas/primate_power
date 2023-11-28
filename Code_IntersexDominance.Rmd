@@ -242,14 +242,14 @@ The correlations of the three variables measuring intersexual dominance and the 
 
 
 
-allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","fissionfusion","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
+allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
 
 continuous_sexualselection<-c("SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index","relative_testes_mass","sexualreceptivity_hours","Synchrony")
 continuous_femalesociality<-c("female_average_relatedness")
 continuous_selforganisation<-c("sexratio","perc_aggression_mm","males","females")
 continuous_femalecompetition<-c("env_harshness","rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
 
-alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_dispersal","sexbias_dispersal","jointaggression_females","jointaggression_males","female_evictions","female_infanticide" ,"ovulation_signs","Strata_Wilman","origin","between_groupconflict")
+alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_dispersal","sexbias_dispersal","jointaggression_females","jointaggression_males","female_evictions","female_infanticide" ,"ovulation_signs","Strata_Wilman","origin","fissionfusion","between_groupconflict")
 
 discrete_sexualselection<-c("MatSysPMK","Strata_Wilman","ovulation_signs")
 discrete_selforganisation<-c("between_groupconflict")
@@ -431,6 +431,181 @@ source("AnalysisCode/FemaleDominance_FunctionsNested.r")
 
 ### Correlations with predictor variables while nesting within another variable
 
+
+
+### Correlations with predictor variables
+
+The correlations of the three variables measuring intersexual dominance and the set of predictor variables are shown in the output table "intersexualdominance_combinedresults.csv".
+
+
+```{r p2.1 mating system, echo=FALSE}
+
+# Running the analyses with the predictor variables
+
+original<-combined
+
+for(variant in 1:2){
+  
+  if(variant==1){combined<-original[original$lemur==0,]}
+  if(variant==2){combined<-original[original$lemur==1,]}
+
+allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
+
+
+continuous_femalecompetition<-c("env_harshness","rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
+continuous_sexualselection<-c("SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index","relative_testes_mass","sexualreceptivity_hours","Synchrony")
+continuous_femalesociality<-c("female_average_relatedness")
+continuous_selforganisation<-c("sexratio","perc_aggression_mm","males","females")
+
+
+alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_dispersal","sexbias_dispersal","jointaggression_females","jointaggression_males","female_evictions","female_infanticide" ,"ovulation_signs","Strata_Wilman","origin","fissionfusion","between_groupconflict")
+
+discrete_femalecompetition<-c("origin","female_evictions","female_infanticide","fissionfusion")
+discrete_sexualselection<-c("MatSysPMK","Strata_Wilman","ovulation_signs")
+discrete_selforganisation<-c("between_groupconflict")
+discrete_femalesociality<-c("SocOrgPMK","jointaggression_females","sexbias_dispersal")
+
+
+samplesizetable<-matrix(ncol=5,nrow=length(allcontinuouspredictors)+length(alldiscretepredictors))
+samplesizetable<-as.data.frame(samplesizetable)
+colnames(samplesizetable)<-c("predictorvariable","sample size categorical classification","number of species categorical classification", "sample size percentage fights won", "number of species percentage fights won")
+count<-1
+
+for(i in 1:length(allcontinuouspredictors)){
+  continuouspredictor<-allcontinuouspredictors[i]
+  colnames(combined)[colnames(combined) %in% continuouspredictor]<-c("continuouspredictor")
+  samplesizetable[count,1]<-continuouspredictor
+  samplesizetable[count,2]<-nrow(combined[is.na(combined$continuouspredictor)==F,])
+  samplesizetable[count,3]<-length(unique(combined[is.na(combined$continuouspredictor)==F,]$corrected_species_id))
+  samplesizetable[count,4]<-nrow(combined[is.na(combined$continuouspredictor)==F & is.na(combined$perc_won_females)==F,])
+  samplesizetable[count,5]<-length(unique(combined[is.na(combined$continuouspredictor)==F & is.na(combined$perc_won_females)==F,]$corrected_species_id))
+  colnames(combined)[colnames(combined) %in% "continuouspredictor"]<-c(continuouspredictor)
+  count<-count+1
+}
+
+for(i in 1:length(alldiscretepredictors)){
+  discretepredictor<-alldiscretepredictors[i]
+  colnames(combined)[colnames(combined) %in% discretepredictor]<-c("discretepredictor")
+    samplesizetable[count,1]<-discretepredictor
+  samplesizetable[count,2]<-nrow(combined[is.na(combined$discretepredictor)==F,])
+  samplesizetable[count,3]<-length(unique(combined[is.na(combined$discretepredictor)==F,]$corrected_species_id))
+  samplesizetable[count,4]<-nrow(combined[is.na(combined$discretepredictor)==F & is.na(combined$perc_won_females)==F,])
+  samplesizetable[count,5]<-length(unique(combined[is.na(combined$discretepredictor)==F & is.na(combined$perc_won_females)==F,]$corrected_species_id))
+  colnames(combined)[colnames(combined) %in% "discretepredictor"]<-c(discretepredictor)
+  count<-count+1
+}
+
+if(variant==1){write.csv(samplesizetable,file="./results/FemdomAnalyses_NotLemur_Samplesizes.csv")}
+if(variant==2){write.csv(samplesizetable,file="./results/FemdomAnalyses_Lemur_Samplesizes.csv")}
+
+
+for (k in 1:1){
+
+# Start with the continuous predictors
+
+for (i in 1:length(allcontinuouspredictors)){
+  continuouspredictor<-allcontinuouspredictors[i]
+  print(c("continuous",i,"of",length(allcontinuouspredictors),continuouspredictor))
+  results<-run_analyses_continuouspredictor(continuouspredictor)
+  ifelse(i==1,allresults<-results,allresults<-rbind(allresults,results))
+  }
+
+
+# Next with the discrete predictors
+
+for (j in 1:length(alldiscretepredictors)){
+  discretepredictor<-alldiscretepredictors[j]
+  print(c("discrete",j,"of",length(alldiscretepredictors),discretepredictor))
+  results<-run_analyses_discretepredictor(discretepredictor)
+  ifelse(j==1,alldiscreteresults<-results,alldiscreteresults<-rbind(alldiscreteresults,results))
+}
+
+  colnames(alldiscreteresults)<-colnames(allresults)
+  combinedresults<-rbind(allresults,alldiscreteresults)
+  
+  
+combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*combinedresults$'estimate upper'<0,"not","confident" )
+
+if(variant==1){write.csv(combinedresults,file="./results/intersexualdominance_notlemur_combinedresults.csv")}
+if(variant==2){write.csv(combinedresults,file="./results/intersexualdominance_lemur_combinedresults.csv")}
+
+}
+
+
+combinedresults<-combinedresults[combinedresults$phylogeny=="Yes",]
+combinedresults<-combinedresults[combinedresults$outcome %in% c("perc_won", "strict three way"),]
+
+combinedresults$estimate.lower<-round(combinedresults$'estimate lower',3)
+combinedresults$estimate.upper<-round(combinedresults$'estimate upper',3)
+
+
+femalecompetition<-c("SocOrgPMK","SexualDimorphism_MaleWeight_over_FemaleWeight","CanineDimorphism","homerange_overlap","fissionfusion","females","female_evictions","female_infanticide","relative_femalecaninesize","origin","env_harshness","rainfall_annualvariation","rainfall_unpredictability")
+sexualselection<-c("MatSysPMK","Strata_Wilman","sexualreceptivity_hours","sexratio","M_skew_index","relative_testes_mass","Synchrony")
+selforganisation<-c("sexratio","perc_aggression_mm","males")
+socialbonds<-c("sexbias_dispersal","female_average_relatedness","jointaggression_females")
+
+sorted_variables<-c(femalecompetition,sexualselection,selforganisation,socialbonds)
+
+percwonresults<-combinedresults[combinedresults$outcome %in% "perc_won",]
+threewayresults<-combinedresults[combinedresults$outcome %in% "strict three way",]
+
+for(i in 1:length(sorted_variables)){
+  currentrows<-agrep(sorted_variables[i],percwonresults$continuouspredictor,max.distance=0.1)
+  if(i==1){sortedpercwonresults<-percwonresults[currentrows,]}else{sortedpercwonresults<-rbind(sortedpercwonresults,percwonresults[currentrows,])}
+}
+
+for(i in 1:length(sorted_variables)){
+  currentrows<-agrep(sorted_variables[i],threewayresults$continuouspredictor,max.distance=0.1)
+  if(i==1){sortedthreewayresults<-threewayresults[currentrows,]}else{sortedthreewayresults<-rbind(sortedthreewayresults,threewayresults[currentrows,])}
+}
+
+if(variant==1){
+write.csv(sortedthreewayresults,file="intersexualdominance_notlemur_sortedthreewayresults.csv")
+write.csv(sortedpercwonresults,file="intersexualdominance_notlemur_sortedpercwonresults.csv")
+}
+
+if(variant==2){
+write.csv(sortedthreewayresults,file="./results/intersexualdominance_lemur_sortedthreewayresults.csv")
+write.csv(sortedpercwonresults,file="./results/intersexualdominance_lemur_sortedpercwonresults.csv")
+}
+
+
+}
+
+combined<-original
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 We account for potential differences in the relationship between female dominance and the predictor variables between lemur and other primates, and between species with high (males more than 10% larger than females) and low degress of sexual dimorphism in body size. The correlations of the three variables measuring intersexual dominance and the set of predictor variables are shown in the output table "intersexualdominance_combinedresults_nested.csv".
 
 
@@ -552,7 +727,7 @@ for (j in 1:length(alldiscretepredictors)){
   colnames(alldiscreteresults)<-colnames(allresults)
   combinedresults<-rbind(allresults,alldiscreteresults)
   
-  write.csv(combinedresults,file="intersexualdominance_combinedresults_nestedbylemur.csv")
+  write.csv(combinedresults,file="intersexualdominance_combinedresults_nestedbylemur_Nov23.csv")
 
   
 }

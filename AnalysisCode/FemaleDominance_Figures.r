@@ -1980,6 +1980,46 @@ plot_females<-ggplot(df)+aes(y=strictfdom,x=females,fill=strictfdom)+stat_halfey
 
 
 
+# Fission fusion
+
+summarizedtable<-combined %>%
+  group_by(fissionfusion,strictfdom) %>%
+  summarize(Total = n())
+
+summarizedtable<-as.data.frame(summarizedtable)
+
+summarizedtable<-summarizedtable[c(1:5),]
+summarizedtable[6,]<-c("Yes",3,0)
+
+colnames(summarizedtable)<-c("FissionFusion","StrictFemdom","Observations")
+summarizedtable$Observations<-as.integer(summarizedtable$Observations)
+
+
+
+summarizedtable[summarizedtable$StrictFemdom ==1, ]$StrictFemdom<-"3) male dominance"
+summarizedtable[summarizedtable$StrictFemdom ==2, ]$StrictFemdom<-"2) co-dominance"
+summarizedtable[summarizedtable$StrictFemdom ==3, ]$StrictFemdom<-"1) female dominance"
+
+summarizedtable<-summarizedtable[order(summarizedtable$FissionFusion,summarizedtable$StrictFemdom),]
+
+summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
+
+plot_fissionfusion <-ggplot(summarizedtable, aes(x = factor(FissionFusion,levels=c("No","Yes")), y = Observations, fill = StrictFemdom)) + 
+  geom_bar(stat = "identity",fill=c(female_dominance_color,co_dominance_color,male_dominance_color,female_dominance_color,co_dominance_color,male_dominance_color))+
+  theme(       axis.text.y=element_blank(),
+               axis.ticks.y=element_blank(),
+               axis.title.y = element_blank(),
+               axis.title.x = element_blank(),
+               axis.text=element_text(size=10)
+  )
+
+
+
+
+
+
+
+
 # combined plot
 pdf("figures/R_Fig2f_top.pdf",width=21.6,height=4)
 plot_grid(plot_femaleevictions,plot_femaleinfanticide,plot_seasonalbreeding,plot_homerange_overlap,plot_females,plot_caninesize, rel_widths = c(3,3,3,3,3,3),nrow=1,scale=0.9)

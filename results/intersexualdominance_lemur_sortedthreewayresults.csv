@@ -1,0 +1,54 @@
+"","outcome","continuouspredictor","phylogeny","estimate.lower","estimate.upper"
+"186","strict three way","SocOrgPMK P minus G","Yes",-0.23,0.17
+"187","strict three way","SocOrgPMK S minus G","Yes",-0.29,0.13
+"188","strict three way","SocOrgPMK S minus P","Yes",-0.28,0.17
+"12","strict three way","SexualDimorphism_MaleWeight_over_FemaleWeight","Yes",-0.83,0.1
+"20","strict three way","CanineDimorphism","Yes",-0.56,0.76
+"124","strict three way","homerange_overlap","Yes",-0.83,0.49
+"28","strict three way","female_average_relatedness","Yes",-1.52,0.36
+"92","strict three way","female_canine_height","Yes",-0.41,1.03
+"108","strict three way","females","Yes",-0.59,0.47
+"172","strict three way","relative_femalecaninesize","Yes",-1.38,0.14
+"252","strict three way","female_dispersal Yes minus No","Yes",-0.26,0.21
+"292","strict three way","jointaggression_females Yes minus No","Yes",-0.21,0.2
+"300","strict three way","female_infanticide Yes minus No","Yes",-0.21,0.24
+"3001","strict three way","female_infanticide Yes minus No","Yes",-0.21,0.24
+"1721","strict three way","relative_femalecaninesize","Yes",-1.38,0.14
+"316","strict three way","origin wild minus captive","Yes",-0.12,0.24
+"60","strict three way","env_harshness","Yes",-0.71,0.72
+"76","strict three way","rainfall_annualvariation","Yes",-1.24,0.36
+"68","strict three way","rainfall_unpredictability","Yes",-1.34,0.2
+"219","strict three way","MatSysPMK PAN minus MON","Yes",-0.25,0.19
+"220","strict three way","MatSysPMK POL minus MON","Yes",-0.23,0.28
+"221","strict three way","MatSysPMK PRO minus MON","Yes",-0.16,0.26
+"222","strict three way","MatSysPMK POL minus PAN","Yes",-0.2,0.31
+"223","strict three way","MatSysPMK PRO minus PAN","Yes",-0.13,0.29
+"224","strict three way","MatSysPMK PRO minus POL","Yes",-0.22,0.27
+"140","strict three way","sexualreceptivity_hours","Yes",-1.81,0.08
+"4","strict three way","sexratio","Yes",-0.6,0.36
+"52","strict three way","M_skew_index","Yes",-0.81,1.7
+"164","strict three way","relative_testes_mass","Yes",-0.69,1.03
+"36","strict three way","Synchrony","Yes",-0.29,1.88
+"148","strict three way","receptive_synchrony","Yes",-0.57,0.96
+"41","strict three way","sexratio","Yes",-0.6,0.36
+"132","strict three way","perc_aggression_mm","Yes",-0.05,2.28
+"121","strict three way","SexualDimorphism_MaleWeight_over_FemaleWeight","Yes",-0.83,0.1
+"281","strict three way","female_average_relatedness","Yes",-1.52,0.36
+"921","strict three way","female_canine_height","Yes",-0.41,1.03
+"100","strict three way","male_canine_height","Yes",-0.42,1.11
+"1081","strict three way","females","Yes",-0.59,0.47
+"116","strict three way","males","Yes",-0.69,0.4
+"1722","strict three way","relative_femalecaninesize","Yes",-1.38,0.14
+"2521","strict three way","female_dispersal Yes minus No","Yes",-0.26,0.21
+"260","strict three way","male_dispersal Yes minus No","Yes",-0.17,0.31
+"274","strict three way","sexbias_dispersal Female minus Both","Yes",-0.3,0.23
+"276","strict three way","sexbias_dispersal Male minus Female","Yes",-0.2,0.31
+"2921","strict three way","jointaggression_females Yes minus No","Yes",-0.21,0.2
+"3002","strict three way","female_infanticide Yes minus No","Yes",-0.21,0.24
+"330","strict three way","between_groupconflict Malebiased minus Femalebiased","Yes",-0.29,0.18
+"331","strict three way","between_groupconflict Unbiased minus Femalebiased","Yes",-0.29,0.21
+"2741","strict three way","sexbias_dispersal Female minus Both","Yes",-0.3,0.23
+"275","strict three way","sexbias_dispersal Male minus Both","Yes",-0.23,0.25
+"2761","strict three way","sexbias_dispersal Male minus Female","Yes",-0.2,0.31
+"282","strict three way","female_average_relatedness","Yes",-1.52,0.36
+"2922","strict three way","jointaggression_females Yes minus No","Yes",-0.21,0.2

@@ -1,0 +1,81 @@
+"","outcome","discretepredictor","phylogeny","contrast lower","contrast upper"
+"1","perc_won","SocOrgPMK P minus G","No",0.00672959549941062,0.0931022891228645
+"2","perc_won","SocOrgPMK S minus G","No",-0.143061913243888,-0.0731560064649242
+"3","perc_won","SocOrgPMK S minus P","No",-0.206231137320062,-0.106563969113087
+"4","perc_won","SocOrgPMK P minus G","Yes",0.175462788604601,0.424522940160018
+"5","perc_won","SocOrgPMK S minus G","Yes",0.152137193647862,0.654371263055294
+"6","perc_won","SocOrgPMK S minus P","Yes",-0.138953030504423,0.362633698977603
+"7","strict three way","SocOrgPMK P minus G","No",-0.219235829858604,0.151680086813176
+"8","strict three way","SocOrgPMK S minus G","No",-0.328975005001388,0.0425250337870591
+"9","strict three way","SocOrgPMK S minus P","No",-0.307291748527444,0.0961926072452753
+"10","strict three way","SocOrgPMK P minus G","Yes",-0.235092475447706,0.188497281113336
+"11","strict three way","SocOrgPMK S minus G","Yes",-0.294343552021121,0.133279330857966
+"12","strict three way","SocOrgPMK S minus P","Yes",-0.274620327830148,0.16200731603612
+"13","strict female dominance","SocOrgPMK P minus G","No",-0.232696520751688,0.136105222831393
+"14","strict female dominance","SocOrgPMK S minus G","No",-0.332882877789985,0.0280147257636244
+"15","strict female dominance","SocOrgPMK S minus P","No",-0.302721125573041,0.101383073229617
+"16","strict female dominance","SocOrgPMK P minus G","Yes",-0.218288631774836,0.151490217256134
+"17","strict female dominance","SocOrgPMK S minus G","Yes",-0.301127476443628,0.110812170403822
+"18","strict female dominance","SocOrgPMK S minus P","Yes",-0.291643930151735,0.160919368185476
+"19","strict male dominance","SocOrgPMK P minus G","No",-0.0196121107363699,0.280519961502404
+"20","strict male dominance","SocOrgPMK S minus G","No",-0.0553952027915391,0.235705663613124
+"21","strict male dominance","SocOrgPMK S minus P","No",-0.227494747142829,0.141282359214294
+"22","strict male dominance","SocOrgPMK P minus G","Yes",-0.223094084849233,0.271236349926991
+"23","strict male dominance","SocOrgPMK S minus G","Yes",-0.238026811284851,0.281495698398293
+"24","strict male dominance","SocOrgPMK S minus P","Yes",-0.249085592601781,0.251206331354737
+"25","perc_won","MatSysPMK PAN minus MON","No",-0.106257253834503,0.00695531877367451
+"26","perc_won","MatSysPMK POL minus MON","No",0.180355500233488,0.50835130785104
+"27","perc_won","MatSysPMK PRO minus MON","No",-0.120799353620753,-0.0331805283334746
+"28","perc_won","MatSysPMK POL minus PAN","No",0.232263380716592,0.554732261771849
+"29","perc_won","MatSysPMK PRO minus PAN","No",-0.0727034804333787,0.0170870448402938
+"30","perc_won","MatSysPMK PRO minus POL","No",-0.582214723315527,-0.257619203888906
+"31","perc_won","MatSysPMK PAN minus MON","Yes",-0.128655169636503,0.298771788365741
+"32","perc_won","MatSysPMK POL minus MON","Yes",0.133277264016911,0.574948742308547
+"33","perc_won","MatSysPMK PRO minus MON","Yes",-0.452056178639815,-0.19167823512841
+"34","perc_won","MatSysPMK POL minus PAN","Yes",0.0687198942085902,0.468479996204167
+"35","perc_won","MatSysPMK PRO minus PAN","Yes",-0.575109246021592,-0.234224754986937
+"36","perc_won","MatSysPMK PRO minus POL","Yes",-0.821983488358222,-0.489172608303569
+"37","strict three way","MatSysPMK PAN minus MON","No",-0.266204855216566,0.1650158566062
+"38","strict three way","MatSysPMK POL minus MON","No",-0.219029736946764,0.262364782708897
+"39","strict three way","MatSysPMK PRO minus MON","No",-0.15404294508363,0.244223271258858
+"40","strict three way","MatSysPMK POL minus PAN","No",-0.186198676025004,0.31398492925433
+"41","strict three way","MatSysPMK PRO minus PAN","No",-0.110178561119316,0.295190833477058
+"42","strict three way","MatSysPMK PRO minus POL","No",-0.218934438276392,0.259338254289711
+"43","strict three way","MatSysPMK PAN minus MON","Yes",-0.253375149068869,0.180016953986017
+"44","strict three way","MatSysPMK POL minus MON","Yes",-0.242903630524817,0.275434762217798
+"45","strict three way","MatSysPMK PRO minus MON","Yes",-0.165805091005636,0.258437029731828
+"46","strict three way","MatSysPMK POL minus PAN","Yes",-0.181753406022439,0.311441307978276
+"47","strict three way","MatSysPMK PRO minus PAN","Yes",-0.138212889963708,0.300280656925511
+"48","strict three way","MatSysPMK PRO minus POL","Yes",-0.210851028931928,0.265632394717882
+"49","strict female dominance","MatSysPMK PAN minus MON","No",-0.270511016725197,0.164019239489285
+"50","strict female dominance","MatSysPMK POL minus MON","No",-0.229632213456381,0.221421739981049
+"51","strict female dominance","MatSysPMK PRO minus MON","No",-0.121456184717511,0.254081821790238
+"52","strict female dominance","MatSysPMK POL minus PAN","No",-0.175961417732635,0.273523141381001
+"53","strict female dominance","MatSysPMK PRO minus PAN","No",-0.0748715504575848,0.308949342347653
+"54","strict female dominance","MatSysPMK PRO minus POL","No",-0.1286991390796,0.281429593056549
+"55","strict female dominance","MatSysPMK PAN minus MON","Yes",-0.25466491940731,0.178908416634857
+"56","strict female dominance","MatSysPMK POL minus MON","Yes",-0.234704482929455,0.253352961398139
+"57","strict female dominance","MatSysPMK PRO minus MON","Yes",-0.14232583840489,0.253991951202008
+"58","strict female dominance","MatSysPMK POL minus PAN","Yes",-0.189873602504854,0.283281402865616
+"59","strict female dominance","MatSysPMK PRO minus PAN","Yes",-0.114881622057425,0.293348051438739
+"60","strict female dominance","MatSysPMK PRO minus POL","Yes",-0.193268427348092,0.289263194884748
+"61","strict male dominance","MatSysPMK PAN minus MON","No",-0.180357923869648,0.213153011434613
+"62","strict male dominance","MatSysPMK POL minus MON","No",-0.0779584811048377,0.383830905321861
+"63","strict male dominance","MatSysPMK PRO minus MON","No",-0.277774211229289,0.0521623535793621
+"64","strict male dominance","MatSysPMK POL minus PAN","No",-0.106434871679351,0.383525330329558
+"65","strict male dominance","MatSysPMK PRO minus PAN","No",-0.294885602169627,0.0441799046898186
+"66","strict male dominance","MatSysPMK PRO minus POL","No",-0.473554815072623,-0.0505677774209164
+"67","strict male dominance","MatSysPMK PAN minus MON","Yes",-0.242529184481427,0.267760558339909
+"68","strict male dominance","MatSysPMK POL minus MON","Yes",-0.227128172301189,0.279657190354886
+"69","strict male dominance","MatSysPMK PRO minus MON","Yes",-0.259400627681308,0.232681051191145
+"70","strict male dominance","MatSysPMK POL minus PAN","Yes",-0.239544908389036,0.287688986304536
+"71","strict male dominance","MatSysPMK PRO minus PAN","Yes",-0.284343903082364,0.223566953128224
+"72","strict male dominance","MatSysPMK PRO minus POL","Yes",-0.311095257539592,0.211200667625848
+"73","perc_won","Strata_Wilman S minus Ar","No",0.249054715814003,0.539399560448035
+"74","perc_won","Strata_Wilman S minus Ar","Yes",-0.617181208842876,0.089978083705655
+"75","strict three way","Strata_Wilman S minus Ar","No",-0.109156035152348,0.337593017844645
+"76","strict three way","Strata_Wilman S minus Ar","Yes",-0.192409271119254,0.305284356881004
+"77","strict female dominance","Strata_Wilman S minus Ar","No",-0.14940902570971,0.244988862403041
+"78","strict female dominance","Strata_Wilman S minus Ar","Yes",-0.220071708318326,0.259089933389457
+"79","strict male dominance","Strata_Wilman S minus Ar","No",0.0984821721307945,0.46502331185845
+"80","strict male dominance","Strata_Wilman S minus Ar","Yes",-0.191742803705304,0.329601779277709

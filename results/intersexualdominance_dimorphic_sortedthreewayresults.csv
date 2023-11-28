@@ -1,0 +1,61 @@
+"","outcome","continuouspredictor","phylogeny","estimate lower","estimate upper","association_present","estimate.lower","estimate.upper"
+"180","strict three way","SocOrgPMK P minus G","Yes",-0.0787615451399238,0.357293384157345,"not",-0.079,0.357
+"12","strict three way","SexualDimorphism_MaleWeight_over_FemaleWeight","Yes",-0.95133115,-0.307699,"confident",-0.951,-0.308
+"20","strict three way","CanineDimorphism","Yes",-1.44985555,-0.628331325,"confident",-1.45,-0.628
+"124","strict three way","homerange_overlap","Yes",-0.28945613,0.443071525,"not",-0.289,0.443
+"380","strict three way","fissionfusion Yes minus No","Yes",-0.248586232449899,0.0487246493626659,"not",-0.249,0.049
+"28","strict three way","female_average_relatedness","Yes",-1.1989395,0.229054725,"not",-1.199,0.229
+"92","strict three way","female_canine_height","Yes",-1.05484695,-0.313610175,"confident",-1.055,-0.314
+"108","strict three way","females","Yes",-0.599460955,0.00693420495000006,"not",-0.599,0.007
+"172","strict three way","relative_femalecaninesize","Yes",-0.103890565,0.54739868,"not",-0.104,0.547
+"236","strict three way","female_dispersal Yes minus No","Yes",-0.217197857936423,0.106479057573373,"not",-0.217,0.106
+"276","strict three way","jointaggression_females Yes minus No","Yes",-0.282150355077029,0.0661317696001728,"not",-0.282,0.066
+"292","strict three way","female_evictions Yes minus No","Yes",-0.335324754782128,0.0970345158394994,"not",-0.335,0.097
+"300","strict three way","female_infanticide Yes minus No","Yes",-0.264310443297134,0.0475616380916511,"not",-0.264,0.048
+"2921","strict three way","female_evictions Yes minus No","Yes",-0.335324754782128,0.0970345158394994,"not",-0.335,0.097
+"3001","strict three way","female_infanticide Yes minus No","Yes",-0.264310443297134,0.0475616380916511,"not",-0.264,0.048
+"1721","strict three way","relative_femalecaninesize","Yes",-0.103890565,0.54739868,"not",-0.104,0.547
+"362","strict three way","origin provisioned minus captive","Yes",-0.2596547990942,0.158609472798685,"not",-0.26,0.159
+"363","strict three way","origin wild minus captive","Yes",-0.0325692574411368,0.217495595301623,"not",-0.033,0.217
+"364","strict three way","origin wild minus provisioned","Yes",-0.074679947011462,0.34574989391511,"not",-0.075,0.346
+"60","strict three way","env_harshness","Yes",-0.953792165,-0.1334054,"confident",-0.954,-0.133
+"76","strict three way","rainfall_annualvariation","Yes",-0.0367558445,0.78386545,"not",-0.037,0.784
+"68","strict three way","rainfall_unpredictability","Yes",-0.622542085,0.0678877775,"not",-0.623,0.068
+"203","strict three way","MatSysPMK PAN minus MON","Yes",-0.308794240179538,0.217641263352088,"not",-0.309,0.218
+"204","strict three way","MatSysPMK POL minus MON","Yes",-0.440326014413592,-0.017789357835723,"confident",-0.44,-0.018
+"205","strict three way","MatSysPMK PRO minus MON","Yes",-0.258754222577923,0.149346302143915,"not",-0.259,0.149
+"206","strict three way","MatSysPMK POL minus PAN","Yes",-0.410091346548173,0.0568854102752125,"not",-0.41,0.057
+"207","strict three way","MatSysPMK PRO minus PAN","Yes",-0.236104796760228,0.227426938026423,"not",-0.236,0.227
+"208","strict three way","MatSysPMK PRO minus POL","Yes",0.0302062234893975,0.319875590947913,"confident",0.03,0.32
+"338","strict three way","Strata_Wilman G minus Ar","Yes",-0.362815165172687,-0.0457833531477662,"confident",-0.363,-0.046
+"339","strict three way","Strata_Wilman S minus Ar","Yes",-0.258096733054251,0.0100586245346502,"not",-0.258,0.01
+"340","strict three way","Strata_Wilman S minus G","Yes",-0.0787957743880463,0.246303832777215,"not",-0.079,0.246
+"140","strict three way","sexualreceptivity_hours","Yes",-0.4402812,0.387800215,"not",-0.44,0.388
+"4","strict three way","sexratio","Yes",0.535877045,1.21241575,"confident",0.536,1.212
+"52","strict three way","M_skew_index","Yes",-0.76963527,0.122411265,"not",-0.77,0.122
+"164","strict three way","relative_testes_mass","Yes",-0.45399169,0.200619915,"not",-0.454,0.201
+"36","strict three way","Synchrony","Yes",-0.392553645,0.4273429,"not",-0.393,0.427
+"148","strict three way","receptive_synchrony","Yes",0.022454938,0.699818085,"confident",0.022,0.7
+"41","strict three way","sexratio","Yes",0.535877045,1.21241575,"confident",0.536,1.212
+"132","strict three way","perc_aggression_mm","Yes",0.11993083,1.49041205,"confident",0.12,1.49
+"121","strict three way","SexualDimorphism_MaleWeight_over_FemaleWeight","Yes",-0.95133115,-0.307699,"confident",-0.951,-0.308
+"281","strict three way","female_average_relatedness","Yes",-1.1989395,0.229054725,"not",-1.199,0.229
+"921","strict three way","female_canine_height","Yes",-1.05484695,-0.313610175,"confident",-1.055,-0.314
+"100","strict three way","male_canine_height","Yes",-1.59979035,-0.709983325,"confident",-1.6,-0.71
+"1081","strict three way","females","Yes",-0.599460955,0.00693420495000006,"not",-0.599,0.007
+"116","strict three way","males","Yes",0.0679409415,0.731675355,"confident",0.068,0.732
+"1722","strict three way","relative_femalecaninesize","Yes",-0.103890565,0.54739868,"not",-0.104,0.547
+"2361","strict three way","female_dispersal Yes minus No","Yes",-0.217197857936423,0.106479057573373,"not",-0.217,0.106
+"244","strict three way","male_dispersal Yes minus No","Yes",-0.0857594249529434,0.243972582001098,"not",-0.086,0.244
+"258","strict three way","sexbias_dispersal Female minus Both","Yes",-0.303592089278453,0.119248139227631,"not",-0.304,0.119
+"260","strict three way","sexbias_dispersal Male minus Female","Yes",-0.100781142898089,0.226537524092107,"not",-0.101,0.227
+"2761","strict three way","jointaggression_females Yes minus No","Yes",-0.282150355077029,0.0661317696001728,"not",-0.282,0.066
+"284","strict three way","jointaggression_males Yes minus No","Yes",-0.15738201917515,0.12591785546962,"not",-0.157,0.126
+"2922","strict three way","female_evictions Yes minus No","Yes",-0.335324754782128,0.0970345158394994,"not",-0.335,0.097
+"3002","strict three way","female_infanticide Yes minus No","Yes",-0.264310443297134,0.0475616380916511,"not",-0.264,0.048
+"2581","strict three way","sexbias_dispersal Female minus Both","Yes",-0.303592089278453,0.119248139227631,"not",-0.304,0.119
+"259","strict three way","sexbias_dispersal Male minus Both","Yes",-0.21857456007842,0.178069759611049,"not",-0.219,0.178
+"2601","strict three way","sexbias_dispersal Male minus Female","Yes",-0.100781142898089,0.226537524092107,"not",-0.101,0.227
+"282","strict three way","female_average_relatedness","Yes",-1.1989395,0.229054725,"not",-1.199,0.229
+"2762","strict three way","jointaggression_females Yes minus No","Yes",-0.282150355077029,0.0661317696001728,"not",-0.282,0.066
+"2841","strict three way","jointaggression_males Yes minus No","Yes",-0.15738201917515,0.12591785546962,"not",-0.157,0.126
