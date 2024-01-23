@@ -79,6 +79,8 @@ combined[is.na(combined$female_canine_height)==F,]$relative_femalecaninesize<-lm
 combined[combined$ovulation_signs %in% "Slight",]$ovulation_signs <- "Present"
 
 
+# For the variable origin, reclassify the four instances of 'provisioned' as 'wild'
+combined[combined$origin %in% "provisioned",]$origin <- "wild"
 
 
 names(combined)

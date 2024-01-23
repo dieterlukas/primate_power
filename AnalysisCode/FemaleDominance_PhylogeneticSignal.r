@@ -130,6 +130,7 @@ rethinking_phylogenetic_gaussian_origin <- ulam(
 post <- extract.samples(rethinking_phylogenetic_gaussian_origin)
 # Given that we have multiple parameters that interact to shape the Gaussian process, it is easiest to plot the predicted outcome
 
+pdf("figures/R_Figure_PhylogeneticCovariance_PercFightsWon.pdf")
 plot( NULL , xlim=c(0,max(dat_list$Dmat)) , ylim=c(0,3.5) ,
       xlab="phylogenetic distance" , ylab="covariance" )
 # posterior
@@ -145,8 +146,7 @@ for (x in 0:100) {
   valuesacross[x+1]<-mean(valueshere)
 }
 lines(x=seq(from = 0, to =1, by=0.01), y= valuesacross, lwd=5)
-
-
+dev.off()
 
 
 
@@ -174,6 +174,8 @@ rethinking_phylogenetic_gaussian_origin <- ulam(
   ),data=dat_list,chains=4,cores=4,cmdstan=T)
 
 post <- extract.samples(rethinking_phylogenetic_gaussian_origin)
+
+pdf("figures/R_Figure_PhylogeneticCovariance_StrictClassificationIntersexualDominance.pdf")
 plot( NULL , xlim=c(0,max(dat_list$Dmat)) , ylim=c(0,30) ,
       xlab="phylogenetic distance" , ylab="covariance" )
 # posterior
@@ -188,7 +190,7 @@ for (x in 0:100) {
   valuesacross[x+1]<-mean(valueshere)
 }
 lines(x=seq(from = 0, to =1, by=0.01), y= valuesacross, lwd=5)
-
+dev.off()
 
 # Third, we estimate the covariance for the strict classification of dominance systems
 
