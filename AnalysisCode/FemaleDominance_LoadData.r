@@ -28,17 +28,13 @@ combined<-combined[combined$goodquality=="y",]
 combined<-combined[is.na(combined$strictfdom)==F,]
 
 # We sort the strict intersexual dominance relationships into the correct order (1=male dominance, 2=co-dominance, 3=female dominance)
-combined[combined$mostlyfdom %in% "f",]$mostlyfdom<-2
-combined[combined$mostlyfdom %in% "m",]$mostlyfdom<-1
-
-# We sort the binary relaxed intersexual dominance relationships into the correct order (1=male dominance, 2=female dominance)
 combined[combined$strictfdom=="f",]$strictfdom<-3
 combined[combined$strictfdom=="c",]$strictfdom<-2
 combined[combined$strictfdom=="m",]$strictfdom<-1
 
 # We create a new variable that separates lemur from non-lemur species
 combined$lemur<-0
-combined[combined$corrected_species_id %in% c("Daubentonia_madagascariensis","Eulemur_coronatus","Eulemur_flavifrons","Eulemur_fulvus","Eulemur_macaco","Eulemur_rubriventer","Eulemur_rufifrons","Hapalemur_alaotrensis","Hapalemur_griseus","Hapalemur_meridionalis","Lemur_catta","Leontocebus_tripartitus","Leontocebus_weddelli","Lepilemur_leucopus","Lepilemur_ruficaudatus","Loris_lydekkerianus","Phaner_pallescens","Varecia_rubra","Varecia_variegata","Propithecus_diadema","Propithecus_coquereli","Propithecus_edwardsi","Propithecus_coronatus","Avahi_occidentalis","Indri_indri","Propithecus_verreauxi","Microcebus_myoxinus","Microcebus_ravelobensis","Microcebus_bongolavensis","Microcebus_danfossi","Microcebus_margotmarshae","Microcebus_mamiratra","Microcebus_murinus","Microcebus_lehilahytsara"),]$lemur<-1
+combined[combined$corrected_species_id %in% c("Daubentonia_madagascariensis","Eulemur_coronatus","Eulemur_flavifrons","Eulemur_fulvus","Eulemur_macaco","Eulemur_rubriventer","Eulemur_rufifrons","Hapalemur_alaotrensis","Hapalemur_griseus","Hapalemur_meridionalis","Lemur_catta","Leontocebus_tripartitus","Leontocebus_weddelli","Lepilemur_leucopus","Lepilemur_ruficaudatus","Loris_lydekkerianus","Phaner_pallescens","Varecia_rubra","Varecia_variegata","Propithecus_diadema","Propithecus_coquereli","Propithecus_edwardsi","Propithecus_coronatus","Avahi_occidentalis","Indri_indri","Propithecus_verreauxi","Microcebus_myoxinus","Microcebus_ravelobensis","Microcebus_bongolavensis","Microcebus_danfossi","Microcebus_margotmarshae","Microcebus_mamiratra","Microcebus_murinus","Microcebus_lehilahytsara","Microcebus_griseorufus","Lepilemur_edwardsi"),]$lemur<-1
 
 # We create a new variable that splits species depending on the extent of sexual dimorphism in body size
 combined$dimorphic<-0
