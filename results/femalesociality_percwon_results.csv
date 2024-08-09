@@ -1,0 +1,6 @@
+"","outcome","continuouspredictor","phylogeny","estimate_lower","estimate_upper","association_present"
+"106","perc_won","female_average_relatedness","Yes",-1.665,-0.304,"confident"
+"268","perc_won","sexbias_dispersal Female minus Both","Yes",-0.416,-0.078,"confident"
+"269","perc_won","sexbias_dispersal Male minus Both","Yes",-0.207,0.047,"not"
+"270","perc_won","sexbias_dispersal Male minus Female","Yes",0,0.343,"confident"
+"290","perc_won","jointaggression_females Yes minus No","Yes",-0.551,-0.224,"confident"

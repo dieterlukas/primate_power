@@ -1,0 +1,7 @@
+"","outcome","continuouspredictor","phylogeny","estimate_lower","estimate_upper","association_present"
+"32","strict male dominance","females","Yes",0.561,1.137,"confident"
+"80","strict male dominance","sexratio","Yes",-1.473,-0.815,"confident"
+"120","strict male dominance","sexratio","Yes",-1.455,-0.838,"confident"
+"128","strict male dominance","perc_aggression_mm","Yes",-1.531,-0.58,"confident"
+"136","strict male dominance","males","Yes",-0.232,0.308,"not"
+"296","strict male dominance","jointaggression_females Yes minus No","Yes",0,0.278,"confident"

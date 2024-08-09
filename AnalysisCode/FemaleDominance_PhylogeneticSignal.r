@@ -55,31 +55,12 @@ phylosignal_strict<-phylosig(tree=stricttree,x=strictdata$strictfdom,method="K",
 
 # Calculation of phylogenetic signal
 
-# Third, for the more relaxed classification of the dominance system
-
-mostly_females_phylodata_1<-combined
-mostly_females_phylodata_1$mostlyfdom<-as.numeric(as.factor(combined$mostlyfdom))
-mostly_females_phylodata_1<-as.data.frame(mostly_females_phylodata_1 %>% group_by(corrected_species_id) %>% summarise(mean(mostlyfdom,na.rm=T )) )
-mostly_females_phylodata_2<-as.data.frame(mostly_females_phylodata_1[,2])
-row.names(mostly_females_phylodata_2)<-mostly_females_phylodata_1[,1]
-colnames(mostly_females_phylodata_2)<-"mostlyfdom"
-mostly_females_phylodata_3<-as.data.frame(mostly_females_phylodata_2[is.na(mostly_females_phylodata_2$mostlyfdom)==FALSE,])
-row.names(mostly_females_phylodata_3)<-row.names(mostly_females_phylodata_2)[is.na(mostly_females_phylodata_2$mostlyfdom)==FALSE]
-colnames(mostly_females_phylodata_3)<-"mostlyfdom"
-missing<-treedata(inputtree,data=mostly_females_phylodata_3,warnings=FALSE)
-mostlytree<-missing$phy
-speciesnames<-mostlytree$tip.label
-mostlydata<-data.frame(mostly_females_phylodata_3[speciesnames,])
-colnames(mostlydata)<-"mostlyfdom"
-row.names(mostlydata)<-speciesnames
-phylosignal_relaxed<-phylosig(tree=mostlytree,x=mostlydata$mostlyfdom,method="K",test=T)
-
-phylosignals<-matrix(nrow=3,ncol=3)
+phylosignals<-matrix(nrow=2,ncol=3)
 phylosignals<-as.data.frame(phylosignals)
 colnames(phylosignals)<-c("variable","phylogenetic_signal_Blomberg_K","significance")
-phylosignals$variable<-c("Percentage fights won by females","Strict three-way classification","Relaxed two-way classification")
-phylosignals$phylogenetic_signal_Blomberg_K<-c(phylosignal_percwon$K,phylosignal_strict$K,phylosignal_relaxed$K)
-phylosignals$significance<-c(phylosignal_percwon$P,phylosignal_strict$P,phylosignal_relaxed$P)
+phylosignals$variable<-c("Percentage fights won by females","Strict three-way classification")
+phylosignals$phylogenetic_signal_Blomberg_K<-c(phylosignal_percwon$K,phylosignal_strict$K)
+phylosignals$significance<-c(phylosignal_percwon$P,phylosignal_strict$P)
 write.csv(phylosignals,file="./results/FemaleDominance_PhylogeneticSignal.csv")
 
 ##########################################################################################
@@ -191,42 +172,3 @@ for (x in 0:100) {
 }
 lines(x=seq(from = 0, to =1, by=0.01), y= valuesacross, lwd=5)
 dev.off()
-
-# Third, we estimate the covariance for the strict classification of dominance systems
-
-mostlyfdom_females_phylodata<-mdata[ complete.cases(mdata$mostlyfdom,mdata$corrected_species_id),]
-
-dat_list <- list(
-  N_spp = nrow(mostlyfdom_females_phylodata),
-  mostlyfdom = standardize(as.integer(as.factor(mostlyfdom_females_phylodata$mostlyfdom))),
-  G = rep(1,nrow(mostlyfdom_females_phylodata))
-)
-
-dat_list$Dmat<-Dmat[ mostlyfdom_females_phylodata$corrected_species_id,mostlyfdom_females_phylodata$corrected_species_id ]/max(Dmat)
-
-rethinking_phylogenetic_gaussian_origin <- ulam(
-  alist(
-    vector[N_spp]:mostlyfdom ~ multi_normal( mu , SIGMA ),
-    mu <- a+bG*G,
-    matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
-    a~normal(0,1),
-    bG~normal(0,0.5),
-    etasq~exponential(1),
-    rhosq~exponential(1)
-  ),data=dat_list,chains=4,cores=4,cmdstan=T)
-
-post <- extract.samples(rethinking_phylogenetic_gaussian_origin)
-plot( NULL , xlim=c(0,max(dat_list$Dmat)) , ylim=c(0,300) ,
-      xlab="phylogenetic distance" , ylab="covariance" )
-# posterior
-for ( i in 1:230 )
-  curve( post$etasq[i]*exp(-post$rhosq[i]*x^2 ) , add=TRUE , col=rangi2 )
-valuesacross<-rep(NA,101)
-for (x in 0:100) {
-  valueshere<-rep(NA,500)
-  for ( i in 1:500 ) {
-    valueshere[i]<-post$etasq[i]*exp(-post$rhosq[i]*(x/100)^2 )
-  } 
-  valuesacross[x+1]<-mean(valueshere)
-}
-lines(x=seq(from = 0, to =1, by=0.01), y= valuesacross, lwd=5)

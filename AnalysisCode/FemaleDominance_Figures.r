@@ -5,6 +5,8 @@ library(tidyr)
 library(ggstance)
 library(ggdist)
 library(cowplot)
+library(ggplot2)
+
 
 # Colour schemes:
 
@@ -130,8 +132,6 @@ fightswondata_range_min$Count<-c(1:nrow(fightswondata_range_min))
 fightswondata_range_min$delta_long<-fightswondata_range_max$max_perc_won_females- fightswondata_range_min$min_perc_won_females
 fightswondata_range_min$delta_lat<-rep(0,nrow(fightswondata_range_min))
 fightswondata_range_min[fightswondata_range_min$delta_long %in% 0 ,]$delta_long<-2
-fightswondata_range_min[fightswondata_range_min$delta_long %in% "0.2" ,]$delta_long<-2
-fightswondata_range_min[fightswondata_range_min$delta_long %in% "0.41" ,]$delta_long<-2
 fightswondata_range_min[fightswondata_range_min$min_perc_won_females %in% 100 & fightswondata_range_min$delta_long %in% 2,]$min_perc_won_females<-98
 
 
@@ -144,7 +144,7 @@ row.names(fightdistributiondata)<-speciesnames
 
 fightdistributiondata_long<-as.data.frame(pivot_longer(fightdistributiondata,cols=c("between the sexes","among females","among males")))
 fightdistributiondata_long$numericspecies<-NA
-for (i in 1:117){
+for (i in 1:length(unique(fightdistributiondata_long$Species))){
   fightdistributiondata_long[ ((i-1)*3+1):((i-1)*3+3),]$numericspecies<-i
 }
 
@@ -152,7 +152,7 @@ for (i in 1:117){
 fightdistributiondata_long[is.na(fightdistributiondata_long$value)==T,]$value<-0
 
 
-p3 <- facet_plot(treeplot, panel="Distribution of aggression", data=fightdistributiondata_long, geom=geom_barh, mapping=aes(fill = name,y = numericspecies, x = value),stat="identity", cex=1,fill=rep(c(fm_aggression,mm_aggression,ff_aggression),117))
+p3 <- facet_plot(treeplot, panel="Distribution of aggression", data=fightdistributiondata_long, geom=geom_barh, mapping=aes(fill = name,y = numericspecies, x = value),stat="identity", cex=1,fill=rep(c(fm_aggression,mm_aggression,ff_aggression),length(unique(fightdistributiondata_long$Species))))
 
 
 
@@ -168,18 +168,23 @@ dominancedata[dominancedata$strictfdom==2,]$colours<-co_dominance_color
 dominancedata[dominancedata$strictfdom==3,]$colours<-female_dominance_color
 dominancedata$placeholder<-1
 
-p3 <- facet_plot(treeplot, panel="Intersexual dominance", data=dominancedata, geom=geom_point, aes(x=placeholder), color=c(dominancedata$colours),pch=15,cex=2)
+p4 <- facet_plot(treeplot, panel="Intersexual dominance", data=dominancedata, geom=geom_point, aes(x=placeholder), color=c(dominancedata$colours),pch=15,cex=2)
 
 
 
 ################################################################################
 
 
-# Figure 1
+# Figure 1: three panels with distribution of data
 
-treeplot+geom_facet(panel="Distribution of aggression", data=fightdistributiondata_long, geom=geom_barh, mapping=aes(fill = name,y = numericspecies, x = value),stat="identity", cex=1,fill=rep(c(fm_aggression,mm_aggression,ff_aggression),117))+geom_facet(panel="Percentage fights won by females", data=fightswondata_range_min, geom=geom_segment, aes(x=min_perc_won_females,xend=min_perc_won_females+delta_long,y=Count,yend=Count+delta_lat), size=2,color=c("black"))+geom_facet(panel="Intersexual dominance", data=dominancedata, geom=geom_point, aes(x=placeholder), cex=2,color=c(dominancedata$colours),pch=15)+theme_tree()
 
-pdf("/figures/R_Figure1.pdf")
+pdf("figures/L_Figure1.pdf")
+treeplot+geom_facet(panel="Distribution of aggression", data=fightdistributiondata_long, geom=geom_barh, mapping=aes(fill = name,y = numericspecies, x = value),stat="identity", cex=1,fill=rep(c(fm_aggression,mm_aggression,ff_aggression),121))+geom_facet(panel="Percentage fights won by females", data=fightswondata_range_min, geom=geom_segment, aes(x=min_perc_won_females,xend=min_perc_won_females+delta_long,y=Count,yend=Count+delta_lat), size=2,color=c("black"))+geom_facet(panel="Intersexual dominance", data=dominancedata, geom=geom_point, aes(x=placeholder), cex=2,color=c(dominancedata$colours),pch=15)+theme_tree()
+dev.off()
+
+# Figure 1: one panel with phylogeny
+
+pdf("figures/R_Figure1.pdf")
 plot(obj,lwd=5,outline=FALSE,direction="leftwards")
 dev.off()
 
@@ -195,25 +200,18 @@ dev.off()
 ################################################################################
 ################################################################################
 
-# Figure 2
-# 2a) Mating system, dimorphism body size, dimorphism canine size, sex ratio, male reproductive skew
+# Figure 2 - only raw data
+# top row: a) social organization, b) fission-fusion, c) sexual size dimorphism, d) canine size dimorphism,  e) home range overlap, f) number of females
+# bottom row:  g) female evictions, h) population origin (ns), i) harshness (ns), j) rainfall seasonality (ns), k) rainfall unpredictability(ns), l) female infanticide (ns), m) relative canine size (ns)
 
-# 2b) Arboreality, sexual receptivity, concealed ovulation, testes size, reproductive synchrony
+# Figure 3 - only raw data
+# single row: a) mating system, b) foraging location, c) sexual receptivity, d) adult sex ratio, e) male reproductive skew (ns), f) receptive synchrony (ns), g) relative testes mass (ns)
 
-# 2c) Social system, (average female kinship), female coalitions, female philopatry
-
-# 2d) number of males, proportion of male-male conflicts, 
-
-# 2e) * Captivity, * environmental harshness, rainfall seasonality, rainfall unpredictability, *  seasonal breeding, * home range overlap, number of females, * female eviction, female infanticide, female canine size
-
+# Figure 4 - only raw data
+# single row: a) sex bias in dispersal, b) female relatedness (ns), c) female coalitions (ns), d) adult sex ratio, e) male-male conflicts (ns), f) number of males (ns)
 
 
-# 2a) Mating system * , dimorphism body size *, dimorphism canine size *, sex ratio *, male reproductive skew *
-# 2b) Arboreality *, sexual receptivity * , concealed ovulation NO, testes size NO, reproductive synchrony NO
-# 2c) Social system *, female coalitions *, female philopatry *, number of males *, proportion of male-male conflicts NO
-# 2d) Captivity NO, environmental harshness *, seasonal breeding *, home range overlap *, female eviction *
-
-
+# use this order for the table - 4 tables.
 
 ################################################################################
 ##### Figure 2 a: dominance and male mating

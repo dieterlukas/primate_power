@@ -47,12 +47,13 @@ library(rethinking)
 library(cmdstanr)
 
 
+# This command will then tell R where to find these input files and where to save the output files.
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 # Loading the data
 
 # Version 1: from files locally on computer
 # Keep this script file in the same folder as the three input files (population data, species variables, phylogeny)
-# This command will then tell R where to find these input files
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("AnalysisCode/FemaleDominance_LoadData.r")
 
 
@@ -105,11 +106,6 @@ precis(m_conflicts)
 
 ## Distribution of intersexual dominance
 
-Our final dataset consists of 226 observations from 117 primate species for the three-way categorical classification of intersexual dominance, and 128 observations from 77 primate species for the quantitative measure of the percentage of fights won by females. 
-
-With the strict classification of intersexual dominance relations, 82 observations report that males dominate over females (47 different species), in 109 there is no clear sex-bias in the intersexual dominance interactions (65 different species), and in 35 females dominate over males (28 different species). 95 species in our sample are reported with only a single pattern of strict intersexual dominance, for 21 species we found reports of both no clear sex-bias in one more observations and either female or male dominance in other population(s), and in 1 species (Miopithecus talapoin) all three patterns of strict intrasexual dominance relations were described. 
-
-Of the 128 quantitative measures of aggressive intersexual interactions, 23 show that females always win and another 21 show that males always win.
 
 
 ```{r p1 variation in intersexual dominance, echo=FALSE}
@@ -134,6 +130,11 @@ nrow(species_femdom_summarytable[species_femdom_summarytable$strictfdom=="2",])
 nrow(species_femdom_summarytable[species_femdom_summarytable$strictfdom=="3",])
 
 # Determine the extent of variation within species
+
+sum(table(combined$corrected_species_id)>1)
+
+sum(table(combined$corrected_species_id)==1)
+
 
 speciesvariation_femdom_summarytable<-as.data.frame((combined %>% group_by(corrected_species_id) %>% summarize(unique(strictfdom)) ))
 
@@ -175,7 +176,7 @@ These evolutionary patterns limit the ability to reconstruct co-evolutionary pat
 
 ```{r p1.4 phylogeny, echo=FALSE}
 
-source("AnalysisCode/FemaleDominance_PhylogeneticSignal.r")
+source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/AnalysisCode/FemaleDominance_PhylogeneticSignal.r")
 
 # Running this code will generate a csv output file with a table reporting the extent of the phylogenetic signal and their significance (results/FemaleDominance_PhylogeneticSignal.csv). In addition, it will generate two plots that show the estimated phylogenetic covariance based on the Bayesian model (figures/R_Figure_PhylogeneticCovariance...pdf).
 
@@ -193,7 +194,7 @@ We link each of the predictor variables to the three outcome variables measuring
 
 ```{r functions, echo=FALSE}
 
-source("AnalysisCode/FemaleDominance_FunctionsPairwise.r")
+source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/AnalysisCode/FemaleDominance_FunctionsPairwise.r")
 
 
 ```
@@ -210,23 +211,51 @@ The correlations of the two variables measuring intersexual dominance and the se
 
 ```{r p2.1 mating system, echo=FALSE}
 
-# Running the analyses with the predictor variables
+# Running the analyses with the predictor variables for the female competition hypothesis
+
+# a) social organization, b) fission-fusion, c) sexual size dimorphism, d) canine size dimorphism,  e) home range overlap, f) number of females
+# bottom row: g) female evictions, h) population origin (ns), i) harshness (ns), j) rainfall seasonality (ns), k) rainfall unpredictability(ns), l) female infanticide (ns), m) relative canine size (ns), 
+
+discrete_femalecompetition<-c("SocOrgPMK","fissionfusion","female_evictions","origin","female_infanticide")
+
+continuous_femalecompetition<-c("SexualDimorphism_MaleWeight_over_FemaleWeight","CanineDimorphism","homerange_overlap","females","env_harshness","rainfall_annualvariation","rainfall_unpredictability","relative_femalecaninesize")
 
 
+# Running the analyses with the predictor variables for the reproductive control hypothesis
 
-allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
+# a) mating system, b) foraging location, c) sexual receptivity, d) adult sex ratio, e) male reproductive skew (ns), f) receptive synchrony (ns), g) relative testes mass (ns)
 
-continuous_sexualselection<-c("SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index","relative_testes_mass","sexualreceptivity_hours","Synchrony")
+continuous_sexualselection<-c("sexualreceptivity_hours","sexratio","M_skew_index","Synchrony","relative_testes_mass")
+
+discrete_sexualselection<-c("MatSysPMK","Strata_Wilman")
+
+
+# Running the analyses with the predictor variables for the female bonds hypothesis
+
+# a) sex bias in dispersal, b) female relatedness (ns), c) female coalitions (ns)
+
 continuous_femalesociality<-c("female_average_relatedness")
-continuous_selforganisation<-c("sexratio","perc_aggression_mm","males","females")
-continuous_femalecompetition<-c("env_harshness","rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
 
-alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_dispersal","sexbias_dispersal","jointaggression_females","jointaggression_males","female_evictions","female_infanticide" ,"ovulation_signs","Strata_Wilman","origin","fissionfusion","between_groupconflict")
+discrete_femalesociality<-c("sexbias_dispersal","jointaggression_females")
 
-discrete_sexualselection<-c("MatSysPMK","Strata_Wilman","ovulation_signs")
-discrete_selforganisation<-c("between_groupconflict")
-discrete_femalesociality<-c("SocOrgPMK","jointaggression_females","sexbias_dispersal")
-discrete_femalecompetition<-c("origin","female_evictions","female_infanticide","fissionfusion")
+
+# Running the analyses with the predictor variables for the self organisation hypothesis
+
+# d) adult sex ratio, e) male-male conflicts (ns), f) number of males (ns)
+
+continuous_selforganisation<-c("sexratio","perc_aggression_mm","males")
+
+
+
+allcontinuouspredictors<-c(continuous_femalecompetition,continuous_sexualselection,continuous_femalesociality,continuous_selforganisation)
+
+
+
+alldiscretepredictors<-c(discrete_femalecompetition,discrete_sexualselection,discrete_femalesociality)
+
+
+
+
 
 samplesizetable<-matrix(ncol=5,nrow=length(allcontinuouspredictors)+length(alldiscretepredictors))
 samplesizetable<-as.data.frame(samplesizetable)
@@ -287,13 +316,22 @@ for (j in 1:length(alldiscretepredictors)){
   
 combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*combinedresults$'estimate upper'<0,"not","confident" )
 
-write.csv(combinedresults,file="./results/intersexualdominance_combinedresults.csv")
+# write.csv(combinedresults,file="./results/intersexualdominance_combinedresults.csv")
 
 }
 
 
 
+clip <- pipe("pbcopy", "w") 
+write.table(allresults,sep=", ", file=clip)
+close(clip)
+
+
 ```
+
+
+
+
 
 
 
@@ -306,77 +344,95 @@ combinedresults<-read.csv("results/intersexualdominance_combinedresults.csv")
 
 combinedresults<-combinedresults[combinedresults$phylogeny=="Yes",]
 
-combinedresults$estimate.lower<-round(combinedresults$estimate.lower,3)
-combinedresults$estimate.upper<-round(combinedresults$estimate.upper,3)
+combinedresults$estimate_lower<-round(combinedresults$estimate_lower,3)
+combinedresults$estimate_upper<-round(combinedresults$estimate_upper,3)
 
-sexualselection_males<-c("MatSysPMK","SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index")
-sexualselection_females<-c("Strata_Wilman","sexualreceptivity_hours","relative_testes_mass","ovulation_signs","Synchrony")
-socialbonds<-c("SocOrgPMK","female_average_relatedness","jointaggression_females","sexbias_dispersal")
-selforganisation<-c("sexratio","perc_aggression_mm","males")
-femalecompetition_environment<-c("origin","env_harshness","rainfall_annualvariation","rainfall_unpredictability")
-femalecompetition_social<-c("female_evictions","female_infanticide","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize","fissionfusion")
 
 r_percwon<-combinedresults[combinedresults$outcome %in% "perc_won",]
-r_strictdominance<-combinedresults[combinedresults$outcome %in% "strict three way",]
-r_strictfemale<-combinedresults[combinedresults$outcome %in% "strict female dominance",]
-r_strictmale<-combinedresults[combinedresults$outcome %in% "strict male dominance",]
-
-r_sm_percwon<-r_percwon[unique(grep(paste(sexualselection_males,collapse="|"),r_percwon$continuouspredictor)),]
-r_sm_percwon<-r_sm_percwon[c(5:10,2,3,1,4),]
-r_sf_percwon<-r_percwon[unique(grep(paste(sexualselection_females,collapse="|"),r_percwon$continuouspredictor)),]
-r_sf_percwon<-r_sf_percwon[c(7:9,2,3,4:6,1),]
-r_sb_percwon<-r_percwon[unique(grep(paste(socialbonds,collapse="|"),r_percwon$continuouspredictor)),]
-r_sb_percwon<-r_sb_percwon[c(2:4,1,8,5:7),]
-r_so_percwon<-r_percwon[unique(grep(paste(selforganisation,collapse="|"),r_percwon$continuouspredictor)),]
-r_so_percwon<-r_so_percwon[c(1,4,3),]
-r_fe_percwon<-r_percwon[unique(grep(paste(femalecompetition_environment,collapse="|"),r_percwon$continuouspredictor)),]
-r_fe_percwon<-r_fe_percwon[c(5,1,3,2),]
-r_fs_percwon<-r_percwon[unique(grep(paste(femalecompetition_social,collapse="|"),r_percwon$continuouspredictor)),]
-r_fs_percwon<-r_fs_percwon[c(6,7,1,8,3,2,4),]
-
-
-r_sm_strictdominance<-r_strictdominance[unique(grep(paste(sexualselection_males,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_sm_strictdominance<-r_sm_strictdominance[c(5:10,2,3,1,4),]
-r_sf_strictdominance<-r_strictdominance[unique(grep(paste(sexualselection_females,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_sf_strictdominance<-r_sf_strictdominance[c(7:9,2,3,4:6,1),]
-r_sb_strictdominance<-r_strictdominance[unique(grep(paste(socialbonds,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_sb_strictdominance<-r_sb_strictdominance[c(2:4,1,8,5:7),]
-r_so_strictdominance<-r_strictdominance[unique(grep(paste(selforganisation,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_so_strictdominance<-r_so_strictdominance[c(1,4,3),]
-r_fe_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_fe_strictdominance<-r_fe_strictdominance[c(5,1,3,2),]
-r_fs_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictdominance$continuouspredictor)),]
-r_fs_strictdominance<-r_fs_strictdominance[c(6,7,1,8,3,2,4),]
+r_strictdominance<-combinedresults[combinedresults$outcome %in% combinedresults$outcome[2],]
+r_strictfemale<-combinedresults[combinedresults$outcome %in% combinedresults$outcome[3],]
+r_strictmale<-combinedresults[combinedresults$outcome %in% combinedresults$outcome[4],]
 
 
 
-r_sm_strictfemale<-r_strictfemale[unique(grep(paste(sexualselection_males,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_sm_strictfemale<-r_sm_strictfemale[c(5:10,2,3,1,4),]
-r_sf_strictfemale<-r_strictfemale[unique(grep(paste(sexualselection_females,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_sf_strictfemale<-r_sf_strictfemale[c(7:9,2,3,4:6,1),]
-r_sb_strictfemale<-r_strictfemale[unique(grep(paste(socialbonds,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_sb_strictfemale<-r_sb_strictfemale[c(2:4,1,8,5:7),]
-r_so_strictfemale<-r_strictfemale[unique(grep(paste(selforganisation,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_so_strictfemale<-r_so_strictfemale[c(1,4,3),]
-r_fe_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_fe_strictfemale<-r_fe_strictfemale[c(5,1,3,2),]
-r_fs_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictfemale$continuouspredictor)),]
-r_fs_strictfemale<-r_fs_strictfemale[c(6,7,1,8,3,2,4),]
+femalecompetition<-c(discrete_femalecompetition,continuous_femalecompetition)
+
+r_femalecompetition_percwon<-r_percwon[unique(grep(paste(femalecompetition,collapse="|"),r_percwon$continuouspredictor)),]
+r_femalecompetition_strictdominance<-r_strictdominance[unique(grep(paste(femalecompetition,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_femalecompetition_strictfemale<-r_strictfemale[unique(grep(paste(femalecompetition,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_femalecompetition_strictmale<-r_strictmale[unique(grep(paste(femalecompetition,collapse="|"),r_strictmale$continuouspredictor)),]
+
+write.csv(r_femalecompetition_percwon,file="results/femalecompetition_percwon_results.csv")
+write.csv(r_femalecompetition_strictdominance,file="results/femalecompetition_strictthreeway_results.csv")
+write.csv(r_femalecompetition_strictfemale,file="results/femalecompetition_strictfemale_results.csv")
+write.csv(r_femalecompetition_strictmale,file="results/femalecompetition_strictmale_results.csv")
+
+femalecompetition_comparison<-combinedresults[unique(grep(paste(femalecompetition,collapse="|"),combinedresults$continuouspredictor)),]
+femalecompetition_comparison<-femalecompetition_comparison[,c(1,2,6)]
+femalecompetition_comparison<-femalecompetition_comparison %>% pivot_wider(names_from = outcome,values_from = association_present)
+femalecompetition_comparison<-as.data.frame(femalecompetition_comparison)
+write.csv(femalecompetition_comparison,file="results/femalecompetition_resultcomparison.csv")
 
 
-r_sm_strictmale<-r_strictmale[unique(grep(paste(sexualselection_males,collapse="|"),r_strictmale$continuouspredictor)),]
-r_sm_strictmale<-r_sm_strictmale[c(5:10,2,3,1,4),]
-r_sf_strictmale<-r_strictmale[unique(grep(paste(sexualselection_females,collapse="|"),r_strictmale$continuouspredictor)),]
-r_sf_strictmale<-r_sf_strictmale[c(7:9,2,3,4:6,1),]
-r_sb_strictmale<-r_strictmale[unique(grep(paste(socialbonds,collapse="|"),r_strictmale$continuouspredictor)),]
-r_sb_strictmale<-r_sb_strictmale[c(2:4,1,8,5:7),]
-r_so_strictmale<-r_strictmale[unique(grep(paste(selforganisation,collapse="|"),r_strictmale$continuouspredictor)),]
-r_so_strictmale<-r_so_strictmale[c(1,4,3),]
-r_fe_strictmale<-r_strictmale[unique(grep(paste(femalecompetition_environment,collapse="|"),r_strictmale$continuouspredictor)),]
-r_fe_strictmale<-r_fe_strictmale[c(5,1,3,2),]
-r_fs_strictmale<-r_strictmale[unique(grep(paste(femalecompetition_social,collapse="|"),r_strictmale$continuouspredictor)),]
-r_fs_strictmale<-r_fs_strictmale[c(6,7,1,8,3,2,4),]
 
+
+sexualselection<-c(discrete_sexualselection,continuous_sexualselection)
+
+r_sexualselection_percwon<-r_percwon[unique(grep(paste(sexualselection,collapse="|"),r_percwon$continuouspredictor)),]
+r_sexualselection_strictdominance<-r_strictdominance[unique(grep(paste(sexualselection,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_sexualselection_strictfemale<-r_strictfemale[unique(grep(paste(sexualselection,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_sexualselection_strictmale<-r_strictmale[unique(grep(paste(sexualselection,collapse="|"),r_strictmale$continuouspredictor)),]
+
+write.csv(r_sexualselection_percwon,file="results/sexualselection_percwon_results.csv")
+write.csv(r_sexualselection_strictdominance,file="results/sexualselection_strictthreeway_results.csv")
+write.csv(r_sexualselection_strictfemale,file="results/sexualselection_strictfemale_results.csv")
+write.csv(r_sexualselection_strictmale,file="results/sexualselection_strictmale_results.csv")
+
+sexualselection_comparison<-combinedresults[unique(grep(paste(sexualselection,collapse="|"),combinedresults$continuouspredictor)),]
+sexualselection_comparison<-sexualselection_comparison[,c(1,2,6)]
+sexualselection_comparison<-sexualselection_comparison %>% pivot_wider(names_from = outcome,values_from = association_present,values_fn = {unique})
+sexualselection_comparison<-as.data.frame(sexualselection_comparison)
+write.csv(sexualselection_comparison,file="results/sexualselection_resultcomparison.csv")
+
+
+
+femalesociality<-c(discrete_femalesociality,continuous_femalesociality)
+
+r_femalesociality_percwon<-r_percwon[unique(grep(paste(femalesociality,collapse="|"),r_percwon$continuouspredictor)),]
+r_femalesociality_strictdominance<-r_strictdominance[unique(grep(paste(femalesociality,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_femalesociality_strictfemale<-r_strictfemale[unique(grep(paste(femalesociality,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_femalesociality_strictmale<-r_strictmale[unique(grep(paste(femalesociality,collapse="|"),r_strictmale$continuouspredictor)),]
+
+write.csv(r_femalesociality_percwon,file="results/femalesociality_percwon_results.csv")
+write.csv(r_femalesociality_strictdominance,file="results/femalesociality_strictthreeway_results.csv")
+write.csv(r_femalesociality_strictfemale,file="results/femalesociality_strictfemale_results.csv")
+write.csv(r_femalesociality_strictmale,file="results/femalesociality_strictmale_results.csv")
+
+femalesociality_comparison<-combinedresults[unique(grep(paste(femalesociality,collapse="|"),combinedresults$continuouspredictor)),]
+femalesociality_comparison<-femalesociality_comparison[,c(1,2,6)]
+femalesociality_comparison<-femalesociality_comparison %>% pivot_wider(names_from = outcome,values_from = association_present)
+femalesociality_comparison<-as.data.frame(femalesociality_comparison)
+write.csv(femalesociality_comparison,file="results/femalesociality_resultcomparison.csv")
+
+
+
+selforganisation<-c(continuous_selforganisation)
+
+r_selforganisation_percwon<-r_percwon[unique(grep(paste(selforganisation,collapse="|"),r_percwon$continuouspredictor)),]
+r_selforganisation_strictdominance<-r_strictdominance[unique(grep(paste(selforganisation,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_selforganisation_strictfemale<-r_strictfemale[unique(grep(paste(selforganisation,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_selforganisation_strictmale<-r_strictmale[unique(grep(paste(selforganisation,collapse="|"),r_strictmale$continuouspredictor)),]
+
+write.csv(r_selforganisation_percwon,file="results/selforganisation_percwon_results.csv")
+write.csv(r_selforganisation_strictdominance,file="results/selforganisation_strictthreeway_results.csv")
+write.csv(r_selforganisation_strictfemale,file="results/selforganisation_strictfemale_results.csv")
+write.csv(r_selforganisation_strictmale,file="results/selforganisation_strictmale_results.csv")
+
+selforganisation_comparison<-combinedresults[unique(grep(paste(selforganisation,collapse="|"),combinedresults$continuouspredictor)),]
+selforganisation_comparison<-selforganisation_comparison[,c(1,2,6)]
+selforganisation_comparison<-selforganisation_comparison %>% pivot_wider(names_from = outcome,values_from = association_present,values_fn = {unique})
+selforganisation_comparison<-as.data.frame(selforganisation_comparison)
+write.csv(selforganisation_comparison,file="results/selforganisation_resultcomparison.csv")
 
 ```
 
@@ -397,6 +453,19 @@ The correlations of the three variables measuring intersexual dominance and the 
 
 original<-combined
 
+
+discrete_femalecompetition<-c("SocOrgPMK","fissionfusion","female_evictions","origin","female_infanticide")
+continuous_femalecompetition<-c("SexualDimorphism_MaleWeight_over_FemaleWeight","CanineDimorphism","homerange_overlap","females","env_harshness","rainfall_annualvariation","rainfall_unpredictability","relative_femalecaninesize")
+continuous_sexualselection<-c("sexualreceptivity_hours","sexratio","M_skew_index","Synchrony","relative_testes_mass")
+discrete_sexualselection<-c("MatSysPMK","Strata_Wilman")
+continuous_femalesociality<-c("female_average_relatedness")
+discrete_femalesociality<-c("sexbias_dispersal","jointaggression_females")
+continuous_selforganisation<-c("sexratio","perc_aggression_mm","males")
+allcontinuouspredictors<-unique(c(continuous_femalecompetition,continuous_sexualselection,continuous_femalesociality,continuous_selforganisation))
+alldiscretepredictors<-c(discrete_femalecompetition,discrete_sexualselection,discrete_femalesociality)
+
+
+
 for(nestingvariable in 1:2){
 
 for(variant in 1:2){
@@ -406,22 +475,6 @@ for(variant in 1:2){
   
   if(variant==1 & nestingvariable==2){combined<-original[original$dimorphic==0,]} 
   if(variant==2 & nestingvariable==2){combined<-original[original$dimorphic==1,]}
-
-allcontinuouspredictors<-c("sexratio", "SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism", "female_average_relatedness", "Synchrony", "r_seasonality_value", "M_skew_index", "env_harshness", "rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality", "female_canine_height", "male_canine_height", "females","males","homerange_overlap","perc_aggression_mm","sexualreceptivity_hours","receptive_synchrony","body_mass","relative_testes_mass","relative_femalecaninesize")
-
-
-continuous_femalecompetition<-c("env_harshness","rainfall_unpredictability","rainfall_annualvariation","NDVI_Seasonality","r_seasonality_value","homerange_overlap","females","relative_femalecaninesize")
-continuous_sexualselection<-c("SexualDimorphism_MaleWeight_over_FemaleWeight", "CanineDimorphism","sexratio","M_skew_index","relative_testes_mass","sexualreceptivity_hours","Synchrony")
-continuous_femalesociality<-c("female_average_relatedness")
-continuous_selforganisation<-c("sexratio","perc_aggression_mm","males","females")
-
-
-alldiscretepredictors<-c("SocOrgPMK","MatSysPMK","female_dispersal","male_dispersal","sexbias_dispersal","jointaggression_females","jointaggression_males","female_evictions","female_infanticide" ,"ovulation_signs","Strata_Wilman","origin","fissionfusion","between_groupconflict")
-
-discrete_femalecompetition<-c("origin","female_evictions","female_infanticide","fissionfusion")
-discrete_sexualselection<-c("MatSysPMK","Strata_Wilman","ovulation_signs")
-discrete_selforganisation<-c("between_groupconflict")
-discrete_femalesociality<-c("SocOrgPMK","jointaggression_females","sexbias_dispersal")
 
 
 samplesizetable<-matrix(ncol=5,nrow=length(allcontinuouspredictors)+length(alldiscretepredictors))
@@ -453,8 +506,16 @@ for(i in 1:length(alldiscretepredictors)){
   count<-count+1
 }
 
-if(variant==1){write.csv(samplesizetable,file="./results/FemdomAnalyses_NotLemur_Samplesizes.csv")}
-if(variant==2){write.csv(samplesizetable,file="./results/FemdomAnalyses_Lemur_Samplesizes.csv")}
+# if(variant==1 & nestingvariable==1){write.csv(samplesizetable,file="./results/FemdomAnalyses_NotLemur_Samplesizes.csv")}
+if(variant==1 & nestingvariable==1){FemdomAnalyses_NotLemur_Samplesizes<-samplesizetable}
+# if(variant==2 & nestingvariable==1){write.csv(samplesizetable,file="./results/FemdomAnalyses_Lemur_Samplesizes.csv")}
+if(variant==2 & nestingvariable==1){FemdomAnalyses_Lemur_Samplesizes<-samplesizetable}
+
+# if(variant==1 & nestingvariable==2){write.csv(samplesizetable,file="./results/FemdomAnalyses_NotDimorphic_Samplesizes.csv")}
+if(variant==1 & nestingvariable==2){FemdomAnalyses_NotDimorphic_Samplesizes<-samplesizetable}
+# if(variant==2 & nestingvariable==2){write.csv(samplesizetable,file="./results/FemdomAnalyses_Dimorphic_Samplesizes.csv")}
+if(variant==2 & nestingvariable==2){FemdomAnalyses_Dimorphic_Samplesizes<-samplesizetable}
+
 
 
 for (k in 1:1){
@@ -484,10 +545,26 @@ for (j in 1:length(alldiscretepredictors)){
   
 combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*combinedresults$'estimate upper'<0,"not","confident" )
 
-if(variant==1){write.csv(combinedresults,file="./results/intersexualdominance_notlemur_combinedresults.csv")}
-if(variant==2){write.csv(combinedresults,file="./results/intersexualdominance_lemur_combinedresults.csv")}
+# if(variant==1){write.csv(combinedresults,file="./results/intersexualdominance_notlemur_combinedresults.csv")}
+if(variant==1 & nestingvariable==1){intersexualdominance_notlemur_combinedresults<-combinedresults}
+#if(variant==2){write.csv(combinedresults,file="./results/intersexualdominance_lemur_combinedresults.csv")}
+if(variant==2 & nestingvariable==1){intersexualdominance_lemur_combinedresults<-combinedresults}
+
+if(variant==1 & nestingvariable==2){intersexualdominance_notdimorphic_combinedresults<-combinedresults}
+if(variant==2 & nestingvariable==2){intersexualdominance_dimorphic_combinedresults<-combinedresults}
+
+
 
 }
+
+
+}
+
+}
+
+combined<-original
+
+
 
 
 combinedresults<-combinedresults[combinedresults$phylogeny=="Yes",]
@@ -518,28 +595,32 @@ for(i in 1:length(sorted_variables)){
 }
 
 if(variant==1 & nestingvariable==1){
-write.csv(sortedthreewayresults,file="intersexualdominance_notlemur_sortedthreewayresults.csv")
-write.csv(sortedpercwonresults,file="intersexualdominance_notlemur_sortedpercwonresults.csv")
+# write.csv(sortedthreewayresults,file="intersexualdominance_notlemur_sortedthreewayresults.csv")
+# write.csv(sortedpercwonresults,file="intersexualdominance_notlemur_sortedpercwonresults.csv")
+intersexualdominance_notlemur_sortedthreewayresults<-sortedthreewayresults
+intersexualdominance_notlemur_sortedpercwonresults<-sortedpercwonresults
 }
 
 if(variant==2 & nestingvariable==1){
-write.csv(sortedthreewayresults,file="./results/intersexualdominance_lemur_sortedthreewayresults.csv")
-write.csv(sortedpercwonresults,file="./results/intersexualdominance_lemur_sortedpercwonresults.csv")
+# write.csv(sortedthreewayresults,file="./results/intersexualdominance_lemur_sortedthreewayresults.csv")
+# write.csv(sortedpercwonresults,file="./results/intersexualdominance_lemur_sortedpercwonresults.csv")
+intersexualdominance_lemur_sortedthreewayresults<-sortedthreewayresults
+intersexualdominance_lemur_sortedpercwonresults<-sortedpercwonresults  
 }
 
 if(variant==1 & nestingvariable==2){
-write.csv(sortedthreewayresults,file="intersexualdominance_notdimorphic_sortedthreewayresults.csv")
-write.csv(sortedpercwonresults,file="intersexualdominance_notdimorphic_sortedpercwonresults.csv")
+# write.csv(sortedthreewayresults,file="intersexualdominance_notdimorphic_sortedthreewayresults.csv")
+# write.csv(sortedpercwonresults,file="intersexualdominance_notdimorphic_sortedpercwonresults.csv")
+intersexualdominance_notdimorphic_sortedthreewayresults<-sortedthreewayresults
+intersexualdominance_notdimorphic_sortedpercwonresults<-sortedpercwonresults
 }
 
 if(variant==2 & nestingvariable==2){
-write.csv(sortedthreewayresults,file="./results/intersexualdominance_dimorphic_sortedthreewayresults.csv")
-write.csv(sortedpercwonresults,file="./results/intersexualdominance_dimorphic_sortedpercwonresults.csv")
-}
+# write.csv(sortedthreewayresults,file="./results/intersexualdominance_dimorphic_sortedthreewayresults.csv")
+# write.csv(sortedpercwonresults,file="./results/intersexualdominance_dimorphic_sortedpercwonresults.csv")
+intersexualdominance_dimorphic_sortedthreewayresults<-sortedthreewayresults
+intersexualdominance_dimorphic_sortedpercwonresults<-sortedpercwonresults
 
-}
-}
-combined<-original
 
 ```
 

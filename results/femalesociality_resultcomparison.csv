@@ -1,0 +1,6 @@
+"","continuouspredictor","perc_won","strict three way","strict female dominance","strict male dominance"
+"1","female_average_relatedness","confident","not","not","not"
+"2","sexbias_dispersal Female minus Both","confident","not","not","confident"
+"3","sexbias_dispersal Male minus Both","not","not","not","not"
+"4","sexbias_dispersal Male minus Female","confident","confident","not","confident"
+"5","jointaggression_females Yes minus No","confident","confident","not","confident"

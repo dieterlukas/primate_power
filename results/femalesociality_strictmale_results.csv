@@ -1,0 +1,6 @@
+"","outcome","continuouspredictor","phylogeny","estimate_lower","estimate_upper","association_present"
+"112","strict male dominance","female_average_relatedness","Yes",-0.954,0.112,"not"
+"286","strict male dominance","sexbias_dispersal Female minus Both","Yes",0.044,0.379,"confident"
+"287","strict male dominance","sexbias_dispersal Male minus Both","Yes",-0.125,0.186,"not"
+"288","strict male dominance","sexbias_dispersal Male minus Female","Yes",-0.337,-0.028,"confident"
+"296","strict male dominance","jointaggression_females Yes minus No","Yes",0,0.278,"confident"

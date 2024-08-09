@@ -1,0 +1,7 @@
+"","outcome","continuouspredictor","phylogeny","estimate_lower","estimate_upper","association_present"
+"28","strict three way","females","Yes",-1.119,-0.578,"confident"
+"76","strict three way","sexratio","Yes",0.844,1.4,"confident"
+"116","strict three way","sexratio","Yes",0.843,1.397,"confident"
+"124","strict three way","perc_aggression_mm","Yes",0.398,1.108,"confident"
+"132","strict three way","males","Yes",-0.266,0.216,"not"
+"292","strict three way","jointaggression_females Yes minus No","Yes",-0.283,-0.017,"confident"

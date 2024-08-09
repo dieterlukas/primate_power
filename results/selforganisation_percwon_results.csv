@@ -1,0 +1,7 @@
+"","outcome","continuouspredictor","phylogeny","estimate_lower","estimate_upper","association_present"
+"26","perc_won","females","Yes",-0.784,-0.482,"confident"
+"74","perc_won","sexratio","Yes",0.612,0.854,"confident"
+"114","perc_won","sexratio","Yes",0.62,0.856,"confident"
+"122","perc_won","perc_aggression_mm","Yes",-0.347,-0.111,"confident"
+"130","perc_won","males","Yes",-0.004,0.217,"not"
+"290","perc_won","jointaggression_females Yes minus No","Yes",-0.551,-0.224,"confident"

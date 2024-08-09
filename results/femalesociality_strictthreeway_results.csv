@@ -1,0 +1,6 @@
+"","outcome","continuouspredictor","phylogeny","estimate_lower","estimate_upper","association_present"
+"108","strict three way","female_average_relatedness","Yes",-0.283,0.618,"not"
+"274","strict three way","sexbias_dispersal Female minus Both","Yes",-0.334,0.023,"not"
+"275","strict three way","sexbias_dispersal Male minus Both","Yes",-0.091,0.219,"not"
+"276","strict three way","sexbias_dispersal Male minus Female","Yes",0.074,0.384,"confident"
+"292","strict three way","jointaggression_females Yes minus No","Yes",-0.283,-0.017,"confident"

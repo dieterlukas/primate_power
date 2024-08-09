@@ -1,0 +1,297 @@
+﻿outcome,continuouspredictor,phylogeny,estimate_lower,estimate_upper,association_present
+perc_won,SexualDimorphism_MaleWeight_over_FemaleWeight,No,-1.54635605,-1.45901,confident
+perc_won,SexualDimorphism_MaleWeight_over_FemaleWeight,Yes,-2.8959519,-2.2092097,confident
+strict three way,SexualDimorphism_MaleWeight_over_FemaleWeight,No,-1.58452035,-1.0765956,confident
+strict three way,SexualDimorphism_MaleWeight_over_FemaleWeight,Yes,-1.5934173,-1.0491156,confident
+strict female dominance,SexualDimorphism_MaleWeight_over_FemaleWeight,No,-1.990978,-1.1953418,confident
+strict female dominance,SexualDimorphism_MaleWeight_over_FemaleWeight,Yes,-2.7773726,-1.59366345,confident
+strict male dominance,SexualDimorphism_MaleWeight_over_FemaleWeight,No,0.76320686,1.2473569,confident
+strict male dominance,SexualDimorphism_MaleWeight_over_FemaleWeight,Yes,0.829091995,1.3550562,confident
+perc_won,CanineDimorphism,No,-2.52168035,-2.3720578,confident
+perc_won,CanineDimorphism,Yes,-2.3593075,-1.58103475,confident
+strict three way,CanineDimorphism,No,-2.193239,-1.42735425,confident
+strict three way,CanineDimorphism,Yes,-2.27775915,-1.4846647,confident
+strict female dominance,CanineDimorphism,No,-1.95976735,-1.0991989,confident
+strict female dominance,CanineDimorphism,Yes,-2.64442625,-1.44741405,confident
+strict male dominance,CanineDimorphism,No,0.989823145,1.69108405,confident
+strict male dominance,CanineDimorphism,Yes,1.1941881,2.06471485,confident
+perc_won,homerange_overlap,No,-0.871111875,-0.795906785,confident
+perc_won,homerange_overlap,Yes,-0.41318318,0.152118835,not
+strict three way,homerange_overlap,No,-0.85494598,-0.307556055,confident
+strict three way,homerange_overlap,Yes,-0.8976354,-0.31727656,confident
+strict female dominance,homerange_overlap,No,-1.11703225,-0.410795175,confident
+strict female dominance,homerange_overlap,Yes,-1.4996064,-0.54948499,confident
+strict male dominance,homerange_overlap,No,0.14649316,0.68671336,confident
+strict male dominance,homerange_overlap,Yes,0.15783554,0.70617568,confident
+perc_won,females,No,-1.19120275,-1.11441175,confident
+perc_won,females,Yes,-0.78403626,-0.482020315,confident
+strict three way,females,No,-1.19055235,-0.727294315,confident
+strict three way,females,Yes,-1.11892715,-0.57823835,confident
+strict female dominance,females,No,-1.2856469,-0.685375095,confident
+strict female dominance,females,Yes,-1.298702,-0.553204445,confident
+strict male dominance,females,No,0.563439655,1.0606953,confident
+strict male dominance,females,Yes,0.56068617,1.1368556,confident
+perc_won,env_harshness,No,-0.51680772,-0.4334527,confident
+perc_won,env_harshness,Yes,-0.53680872,0.253743575,not
+strict three way,env_harshness,No,-0.793735155,-0.22484384,confident
+strict three way,env_harshness,Yes,-0.943411955,-0.245874525,confident
+strict female dominance,env_harshness,No,-0.73456601,-0.012055807,confident
+strict female dominance,env_harshness,Yes,-1.0624,-0.166341065,confident
+strict male dominance,env_harshness,No,0.199280745,0.74685535,confident
+strict male dominance,env_harshness,Yes,0.193921895,0.83329417,confident
+perc_won,rainfall_annualvariation,No,0.105764985,0.176921045,confident
+perc_won,rainfall_annualvariation,Yes,-0.47132845,0.562064345,not
+strict three way,rainfall_annualvariation,No,0.001324326,0.5561659,confident
+strict three way,rainfall_annualvariation,Yes,0.005992032,0.6645876,confident
+strict female dominance,rainfall_annualvariation,No,-0.18569355,0.496592605,not
+strict female dominance,rainfall_annualvariation,Yes,-0.133861965,0.693576755,not
+strict male dominance,rainfall_annualvariation,No,-0.536013585,-0.000607343,confident
+strict male dominance,rainfall_annualvariation,Yes,-0.619084875,-0.002582613,confident
+perc_won,rainfall_unpredictability,No,-0.361387265,-0.28731812,confident
+perc_won,rainfall_unpredictability,Yes,0.053581044,0.90668412,confident
+strict three way,rainfall_unpredictability,No,-0.800846565,-0.255371165,confident
+strict three way,rainfall_unpredictability,Yes,-1.0083497,-0.34209011,confident
+strict female dominance,rainfall_unpredictability,No,-1.11458125,-0.381045365,confident
+strict female dominance,rainfall_unpredictability,Yes,-1.5855277,-0.62020732,confident
+strict male dominance,rainfall_unpredictability,No,0.047129773,0.611777465,confident
+strict male dominance,rainfall_unpredictability,Yes,0.014111601,0.691064055,confident
+perc_won,relative_femalecaninesize,No,-0.7256503,-0.63318157,confident
+perc_won,relative_femalecaninesize,Yes,-0.71274927,-0.098859106,confident
+strict three way,relative_femalecaninesize,No,-0.76525697,-0.25937757,confident
+strict three way,relative_femalecaninesize,Yes,-0.918582565,-0.20791567,confident
+strict female dominance,relative_femalecaninesize,No,-1.08048485,-0.34696216,confident
+strict female dominance,relative_femalecaninesize,Yes,-1.22572105,-0.166683285,confident
+strict male dominance,relative_femalecaninesize,No,0.092548476,0.61910405,confident
+strict male dominance,relative_femalecaninesize,Yes,0.153684795,0.86358822,confident
+perc_won,sexualreceptivity_hours,No,-1.24934155,-1.14427835,confident
+perc_won,sexualreceptivity_hours,Yes,-2.38641275,-1.59110015,confident
+strict three way,sexualreceptivity_hours,No,-1.53905665,-0.848234675,confident
+strict three way,sexualreceptivity_hours,Yes,-1.6635273,-0.882753395,confident
+strict female dominance,sexualreceptivity_hours,No,-1.758355,-0.948965105,confident
+strict female dominance,sexualreceptivity_hours,Yes,-2.60781145,-1.38223725,confident
+strict male dominance,sexualreceptivity_hours,No,0.310525615,0.969825935,confident
+strict male dominance,sexualreceptivity_hours,Yes,0.362583205,1.1769617,confident
+perc_won,sexratio,No,0.97374792,1.04577165,confident
+perc_won,sexratio,Yes,0.61184257,0.85376199,confident
+strict three way,sexratio,No,0.7929801,1.27644465,confident
+strict three way,sexratio,Yes,0.844238785,1.39966495,confident
+strict female dominance,sexratio,No,0.57308554,1.1571662,confident
+strict female dominance,sexratio,Yes,0.627725515,1.36492175,confident
+strict male dominance,sexratio,No,-1.21439925,-0.70364634,confident
+strict male dominance,sexratio,Yes,-1.47338825,-0.815069645,confident
+perc_won,M_skew_index,No,-0.426328395,-0.32322724,confident
+perc_won,M_skew_index,Yes,0.213077645,0.960273165,confident
+strict three way,M_skew_index,No,-0.76428699,-0.079260213,confident
+strict three way,M_skew_index,Yes,-0.772713655,-0.06249737,confident
+strict female dominance,M_skew_index,No,-0.649715265,0.14566879,not
+strict female dominance,M_skew_index,Yes,-0.7540803,0.210408465,not
+strict male dominance,M_skew_index,No,0.115378925,0.92532855,confident
+strict male dominance,M_skew_index,Yes,0.13697185,1.2027157,confident
+perc_won,Synchrony,No,-1.06261705,-0.911816075,confident
+perc_won,Synchrony,Yes,-2.13972035,-1.026245,confident
+strict three way,Synchrony,No,-0.81462917,-0.189700295,confident
+strict three way,Synchrony,Yes,-0.972566605,-0.126562035,confident
+strict female dominance,Synchrony,No,-0.751813065,0.076454825,not
+strict female dominance,Synchrony,Yes,-0.99158494,0.096132149,not
+strict male dominance,Synchrony,No,0.125121665,0.73869086,confident
+strict male dominance,Synchrony,Yes,0.10462168,0.83734683,confident
+perc_won,relative_testes_mass,No,-0.3952951,-0.314946195,confident
+perc_won,relative_testes_mass,Yes,1.14893615,1.9475576,confident
+strict three way,relative_testes_mass,No,-0.66424839,-0.13584009,confident
+strict three way,relative_testes_mass,Yes,-0.57925067,0.150132955,not
+strict female dominance,relative_testes_mass,No,-0.781030465,-0.108905425,confident
+strict female dominance,relative_testes_mass,Yes,-0.86380996,-0.053938766,confident
+strict male dominance,relative_testes_mass,No,0.038662056,0.568682915,confident
+strict male dominance,relative_testes_mass,Yes,0.019362894,0.65666114,confident
+perc_won,female_average_relatedness,No,0.15295254,0.253116905,confident
+perc_won,female_average_relatedness,Yes,-1.6651784,-0.30415595,confident
+strict three way,female_average_relatedness,No,-0.081059098,0.722789465,not
+strict three way,female_average_relatedness,Yes,-0.282704875,0.61800904,not
+strict female dominance,female_average_relatedness,No,-0.294699475,0.625656155,not
+strict female dominance,female_average_relatedness,Yes,-0.7153348,0.51021665,not
+strict male dominance,female_average_relatedness,No,-0.80281814,0.05470693,not
+strict male dominance,female_average_relatedness,Yes,-0.9536784,0.11194749,not
+perc_won,sexratio,No,0.97294902,1.04516825,confident
+perc_won,sexratio,Yes,0.62009956,0.856160835,confident
+strict three way,sexratio,No,0.815928815,1.28654365,confident
+strict three way,sexratio,Yes,0.842839305,1.3971719,confident
+strict female dominance,sexratio,No,0.58833229,1.15827015,confident
+strict female dominance,sexratio,Yes,0.62113206,1.3839309,confident
+strict male dominance,sexratio,No,-1.2206011,-0.70264956,confident
+strict male dominance,sexratio,Yes,-1.4552907,-0.838423525,confident
+perc_won,perc_aggression_mm,No,0.44717023,0.52196943,confident
+perc_won,perc_aggression_mm,Yes,-0.34737133,-0.1106168,confident
+strict three way,perc_aggression_mm,No,0.427062045,1.09271715,confident
+strict three way,perc_aggression_mm,Yes,0.397523595,1.10767455,confident
+strict female dominance,perc_aggression_mm,No,-0.047113982,0.68275526,not
+strict female dominance,perc_aggression_mm,Yes,-0.18510067,0.90865064,not
+strict male dominance,perc_aggression_mm,No,-1.2495708,-0.458791845,confident
+strict male dominance,perc_aggression_mm,Yes,-1.53106825,-0.58031425,confident
+perc_won,males,No,-0.50156698,-0.44418058,confident
+perc_won,males,Yes,-0.003823489,0.21722311,not
+strict three way,males,No,-0.46893682,-0.066345852,confident
+strict three way,males,Yes,-0.26636134,0.215663055,not
+strict female dominance,males,No,-0.635708035,-0.094318686,confident
+strict female dominance,males,Yes,-0.691711885,-0.021259357,confident
+strict male dominance,males,No,-0.030667942,0.390701215,not
+strict male dominance,males,Yes,-0.23247715,0.307690385,not
+perc_won,SocOrgPMK P minus G,No,0.392151884,0.499656475,confident
+perc_won,SocOrgPMK S minus G,No,0.367117436,0.473285058,confident
+perc_won,SocOrgPMK S minus P,No,-0.059787076,0.00649218,not
+perc_won,SocOrgPMK P minus G,Yes,0.699244392,0.864347854,confident
+perc_won,SocOrgPMK S minus G,Yes,0.518429284,0.808260904,confident
+perc_won,SocOrgPMK S minus P,Yes,-0.290491746,0.02788688,not
+strict three way,SocOrgPMK P minus G,No,0.24127918,0.513902902,confident
+strict three way,SocOrgPMK S minus G,No,0.200337034,0.480855383,confident
+strict three way,SocOrgPMK S minus P,No,-0.212944532,0.133260581,not
+strict three way,SocOrgPMK P minus G,Yes,0.235739555,0.530131531,confident
+strict three way,SocOrgPMK S minus G,Yes,0.166083963,0.485161888,confident
+strict three way,SocOrgPMK S minus P,Yes,-0.254418222,0.133536598,not
+strict female dominance,SocOrgPMK P minus G,No,0.228483612,0.503814487,confident
+strict female dominance,SocOrgPMK S minus G,No,0.181769361,0.468697355,confident
+strict female dominance,SocOrgPMK S minus P,No,-0.241595461,0.155514547,not
+strict female dominance,SocOrgPMK P minus G,Yes,0.17455354,0.487103102,confident
+strict female dominance,SocOrgPMK S minus G,Yes,0.084249108,0.41500947,confident
+strict female dominance,SocOrgPMK S minus P,Yes,-0.285454643,0.124620081,not
+strict male dominance,SocOrgPMK P minus G,No,-0.298048755,-0.037969679,confident
+strict male dominance,SocOrgPMK S minus G,No,-0.273405922,-0.025136851,confident
+strict male dominance,SocOrgPMK S minus P,No,-0.148738514,0.178836861,not
+strict male dominance,SocOrgPMK P minus G,Yes,-0.500096208,-0.145115718,confident
+strict male dominance,SocOrgPMK S minus G,Yes,-0.489964374,-0.126052705,confident
+strict male dominance,SocOrgPMK S minus P,Yes,-0.205914607,0.222892452,not
+perc_won,fissionfusion Yes minus No,No,-0.340839723,-0.230089738,confident
+perc_won,fissionfusion Yes minus No,Yes,-0.752622666,-0.504629872,confident
+strict three way,fissionfusion Yes minus No,No,-0.360113433,-0.12077205,confident
+strict three way,fissionfusion Yes minus No,Yes,-0.471066101,-0.205519249,confident
+strict female dominance,fissionfusion Yes minus No,No,-0.133250011,0.041904488,not
+strict female dominance,fissionfusion Yes minus No,Yes,-0.425457956,-0.053805767,confident
+strict male dominance,fissionfusion Yes minus No,No,0.105099937,0.346053955,confident
+strict male dominance,fissionfusion Yes minus No,Yes,0.154616458,0.431747303,confident
+perc_won,female_evictions Yes minus No,No,0.44966531,0.609895774,confident
+perc_won,female_evictions Yes minus No,Yes,0.573891459,0.771339458,confident
+strict three way,female_evictions Yes minus No,No,0.279290716,0.53255943,confident
+strict three way,female_evictions Yes minus No,Yes,0.244763785,0.519453558,confident
+strict female dominance,female_evictions Yes minus No,No,0.264434552,0.509469113,confident
+strict female dominance,female_evictions Yes minus No,Yes,0.279174283,0.584293495,confident
+strict male dominance,female_evictions Yes minus No,No,-0.442739242,-0.155572482,confident
+strict male dominance,female_evictions Yes minus No,Yes,-0.432827645,-0.145519178,confident
+perc_won,origin wild minus captive,No,-0.09765448,-0.060474347,confident
+perc_won,origin wild minus captive,Yes,0.190371011,0.342834145,confident
+strict three way,origin wild minus captive,No,-0.125440896,0.053944806,not
+strict three way,origin wild minus captive,Yes,-0.166418431,0.048358363,not
+strict female dominance,origin wild minus captive,No,-0.134763096,0.029662797,not
+strict female dominance,origin wild minus captive,Yes,-0.190886269,0.065353013,not
+strict male dominance,origin wild minus captive,No,-0.076532685,0.112755453,not
+strict male dominance,origin wild minus captive,Yes,-0.059972704,0.177208107,not
+perc_won,female_infanticide Yes minus No,No,-0.049276285,-0.006271149,confident
+perc_won,female_infanticide Yes minus No,Yes,-0.071090263,0.192121284,not
+strict three way,female_infanticide Yes minus No,No,-0.151593374,0.084090239,not
+strict three way,female_infanticide Yes minus No,Yes,-0.114698432,0.190578281,not
+strict female dominance,female_infanticide Yes minus No,No,-0.053133189,0.140974931,not
+strict female dominance,female_infanticide Yes minus No,Yes,-0.132584326,0.204102513,not
+strict male dominance,female_infanticide Yes minus No,No,-0.078365597,0.165166502,not
+strict male dominance,female_infanticide Yes minus No,Yes,-0.135591968,0.134255087,not
+perc_won,MatSysPMK PAN minus MON,No,-0.280587911,-0.146085759,confident
+perc_won,MatSysPMK POL minus MON,No,-0.685243651,-0.604813905,confident
+perc_won,MatSysPMK PRO minus MON,No,-0.454188734,-0.315952442,confident
+perc_won,MatSysPMK POL minus PAN,No,-0.494908963,-0.342446132,confident
+perc_won,MatSysPMK PRO minus PAN,No,-0.206336863,-0.155691295,confident
+perc_won,MatSysPMK PRO minus POL,No,0.173676772,0.318904677,confident
+perc_won,MatSysPMK PAN minus MON,Yes,-0.568380803,-0.171115123,confident
+perc_won,MatSysPMK POL minus MON,Yes,-0.81871906,-0.496254271,confident
+perc_won,MatSysPMK PRO minus MON,Yes,-0.853604801,-0.684618177,confident
+perc_won,MatSysPMK POL minus PAN,Yes,-0.523148704,-0.088886704,confident
+perc_won,MatSysPMK PRO minus PAN,Yes,-0.59444759,-0.238650198,confident
+perc_won,MatSysPMK PRO minus POL,Yes,-0.272388274,0.036628338,not
+strict three way,MatSysPMK PAN minus MON,No,-0.296634902,0.015055942,not
+strict three way,MatSysPMK POL minus MON,No,-0.585241325,-0.329986625,confident
+strict three way,MatSysPMK PRO minus MON,No,-0.395580768,-0.144241089,confident
+strict three way,MatSysPMK POL minus PAN,No,-0.466743964,-0.172289333,confident
+strict three way,MatSysPMK PRO minus PAN,No,-0.273354752,0.006060329,not
+strict three way,MatSysPMK PRO minus POL,No,0.078832214,0.301184719,confident
+strict three way,MatSysPMK PAN minus MON,Yes,-0.33856173,0.017476213,not
+strict three way,MatSysPMK POL minus MON,Yes,-0.567952154,-0.279824447,confident
+strict three way,MatSysPMK PRO minus MON,Yes,-0.375524386,-0.099640937,confident
+strict three way,MatSysPMK POL minus PAN,Yes,-0.43476601,-0.091778986,confident
+strict three way,MatSysPMK PRO minus PAN,Yes,-0.23821462,0.09070223,not
+strict three way,MatSysPMK PRO minus POL,Yes,0.067603109,0.315184694,confident
+strict female dominance,MatSysPMK PAN minus MON,No,-0.348346485,0.003081676,not
+strict female dominance,MatSysPMK POL minus MON,No,-0.477830458,-0.169995039,confident
+strict female dominance,MatSysPMK PRO minus MON,No,-0.445583665,-0.168857489,confident
+strict female dominance,MatSysPMK POL minus PAN,No,-0.290446058,-0.016015929,confident
+strict female dominance,MatSysPMK PRO minus PAN,No,-0.270453307,-0.004289595,confident
+strict female dominance,MatSysPMK PRO minus POL,No,-0.077893957,0.105877939,not
+strict female dominance,MatSysPMK PAN minus MON,Yes,-0.39453234,0.002760917,not
+strict female dominance,MatSysPMK POL minus MON,Yes,-0.49146612,-0.104657324,confident
+strict female dominance,MatSysPMK PRO minus MON,Yes,-0.365607682,-0.028023676,confident
+strict female dominance,MatSysPMK POL minus PAN,Yes,-0.313690748,0.103075724,not
+strict female dominance,MatSysPMK PRO minus PAN,Yes,-0.183497608,0.174865278,not
+strict female dominance,MatSysPMK PRO minus POL,Yes,-0.067312139,0.27508927,not
+strict male dominance,MatSysPMK PAN minus MON,No,-0.112496216,0.203368296,not
+strict male dominance,MatSysPMK POL minus MON,No,0.232927518,0.511774934,confident
+strict male dominance,MatSysPMK PRO minus MON,No,0.019299034,0.252553747,confident
+strict male dominance,MatSysPMK POL minus PAN,No,0.182538082,0.481954063,confident
+strict male dominance,MatSysPMK PRO minus PAN,No,-0.032734535,0.217575399,not
+strict male dominance,MatSysPMK PRO minus POL,No,-0.358087721,-0.109865825,confident
+strict male dominance,MatSysPMK PAN minus MON,Yes,-0.122473563,0.245253444,not
+strict male dominance,MatSysPMK POL minus MON,Yes,0.252636577,0.565561028,confident
+strict male dominance,MatSysPMK PRO minus MON,Yes,0.06013543,0.361991321,confident
+strict male dominance,MatSysPMK POL minus PAN,Yes,0.178499782,0.520293694,confident
+strict male dominance,MatSysPMK PRO minus PAN,Yes,-0.012646453,0.313344034,not
+strict male dominance,MatSysPMK PRO minus POL,Yes,-0.326241191,-0.075938038,confident
+perc_won,Strata_Wilman G minus Ar,No,-0.631898814,-0.511316176,confident
+perc_won,Strata_Wilman S minus Ar,No,-0.410130112,-0.311636204,confident
+perc_won,Strata_Wilman S minus G,No,0.133955836,0.282326901,confident
+perc_won,Strata_Wilman G minus Ar,Yes,-0.946884292,-0.810591523,confident
+perc_won,Strata_Wilman S minus Ar,Yes,-0.807324665,-0.535755435,confident
+perc_won,Strata_Wilman S minus G,Yes,0.063162671,0.372751879,confident
+strict three way,Strata_Wilman G minus Ar,No,-0.498213036,-0.250683524,confident
+strict three way,Strata_Wilman S minus Ar,No,-0.380617182,-0.197631283,confident
+strict three way,Strata_Wilman S minus G,No,-0.051535814,0.224839637,not
+strict three way,Strata_Wilman G minus Ar,Yes,-0.520220424,-0.238913543,confident
+strict three way,Strata_Wilman S minus Ar,Yes,-0.445115151,-0.184507282,confident
+strict three way,Strata_Wilman S minus G,Yes,-0.106499849,0.229509181,not
+strict female dominance,Strata_Wilman G minus Ar,No,-0.184345121,0.032833228,not
+strict female dominance,Strata_Wilman S minus Ar,No,-0.216516283,-0.058362988,confident
+strict female dominance,Strata_Wilman S minus G,No,-0.170017602,0.047742758,not
+strict female dominance,Strata_Wilman G minus Ar,Yes,-0.485108777,-0.096250434,confident
+strict female dominance,Strata_Wilman S minus Ar,Yes,-0.48703945,-0.174648434,confident
+strict female dominance,Strata_Wilman S minus G,Yes,-0.257877814,0.161552846,not
+strict male dominance,Strata_Wilman G minus Ar,No,0.232948799,0.496845296,confident
+strict male dominance,Strata_Wilman S minus Ar,No,0.168996355,0.36613388,confident
+strict male dominance,Strata_Wilman S minus G,No,-0.242935696,0.037722784,not
+strict male dominance,Strata_Wilman G minus Ar,Yes,0.233948369,0.491952815,confident
+strict male dominance,Strata_Wilman S minus Ar,Yes,0.158686679,0.370330287,confident
+strict male dominance,Strata_Wilman S minus G,Yes,-0.24728519,0.056733331,not
+perc_won,sexbias_dispersal Female minus Both,No,-0.273015933,-0.188153687,confident
+perc_won,sexbias_dispersal Male minus Both,No,-0.095039041,-0.047753534,confident
+perc_won,sexbias_dispersal Male minus Female,No,0.123004382,0.196894573,confident
+perc_won,sexbias_dispersal Female minus Both,Yes,-0.415729459,-0.077855959,confident
+perc_won,sexbias_dispersal Male minus Both,Yes,-0.206868017,0.047334995,not
+perc_won,sexbias_dispersal Male minus Female,Yes,0.000417048,0.342535403,confident
+strict three way,sexbias_dispersal Female minus Both,No,-0.34344452,-0.032486497,confident
+strict three way,sexbias_dispersal Male minus Both,No,-0.178537907,0.079024923,not
+strict three way,sexbias_dispersal Male minus Female,No,-0.00304738,0.273005213,not
+strict three way,sexbias_dispersal Female minus Both,Yes,-0.334374738,0.023023806,not
+strict three way,sexbias_dispersal Male minus Both,Yes,-0.091282767,0.219219483,not
+strict three way,sexbias_dispersal Male minus Female,Yes,0.073582113,0.384381786,confident
+strict female dominance,sexbias_dispersal Female minus Both,No,-0.181672598,0.103841635,not
+strict female dominance,sexbias_dispersal Male minus Both,No,-0.150214992,0.090271069,not
+strict female dominance,sexbias_dispersal Male minus Female,No,-0.113855198,0.123580867,not
+strict female dominance,sexbias_dispersal Female minus Both,Yes,-0.230973689,0.195576284,not
+strict female dominance,sexbias_dispersal Male minus Both,Yes,-0.035003965,0.336362159,not
+strict female dominance,sexbias_dispersal Male minus Female,Yes,-0.019069384,0.361892541,not
+strict male dominance,sexbias_dispersal Female minus Both,No,0.058111844,0.376954992,confident
+strict male dominance,sexbias_dispersal Male minus Both,No,-0.043491571,0.235135897,not
+strict male dominance,sexbias_dispersal Male minus Female,No,-0.256336752,0.024289478,not
+strict male dominance,sexbias_dispersal Female minus Both,Yes,0.043842623,0.378959269,confident
+strict male dominance,sexbias_dispersal Male minus Both,Yes,-0.124936982,0.185939306,not
+strict male dominance,sexbias_dispersal Male minus Female,Yes,-0.337003093,-0.027659523,confident
+perc_won,jointaggression_females Yes minus No,No,-0.103858842,-0.064289973,confident
+perc_won,jointaggression_females Yes minus No,Yes,-0.550642722,-0.223693045,confident
+strict three way,jointaggression_females Yes minus No,No,-0.176099297,0.047912783,not
+strict three way,jointaggression_females Yes minus No,Yes,-0.282933256,-0.016638363,confident
+strict female dominance,jointaggression_females Yes minus No,No,-0.158663995,0.042608028,not
+strict female dominance,jointaggression_females Yes minus No,Yes,-0.219996953,0.087985052,not
+strict male dominance,jointaggression_females Yes minus No,No,-0.04018221,0.18672131,not
+strict male dominance,jointaggression_females Yes minus No,Yes,0.000462614,0.278392062,confident

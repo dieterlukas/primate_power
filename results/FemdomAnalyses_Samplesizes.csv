@@ -1,0 +1,27 @@
+"","predictorvariable","sample size categorical classification","number of species categorical classification","sample size percentage fights won","number of species percentage fights won"
+"1","SexualDimorphism_MaleWeight_over_FemaleWeight",253,121,151,84
+"2","CanineDimorphism",163,66,97,50
+"3","homerange_overlap",150,63,99,48
+"4","females",236,113,146,82
+"5","env_harshness",135,68,86,48
+"6","rainfall_annualvariation",134,69,85,48
+"7","rainfall_unpredictability",135,68,86,48
+"8","relative_femalecaninesize",153,59,89,43
+"9","sexualreceptivity_hours",105,33,64,29
+"10","sexratio",235,112,145,81
+"11","M_skew_index",71,19,46,18
+"12","Synchrony",104,38,60,32
+"13","relative_testes_mass",141,52,77,37
+"14","female_average_relatedness",51,16,39,14
+"15","sexratio",235,112,145,81
+"16","perc_aggression_mm",91,51,81,45
+"17","males",236,113,146,82
+"18","SocOrgPMK",253,121,151,84
+"19","fissionfusion",253,121,151,84
+"20","female_evictions",101,33,58,25
+"21","origin",253,121,151,84
+"22","female_infanticide",153,63,93,45
+"23","MatSysPMK",242,115,144,79
+"24","Strata_Wilman",249,118,150,83
+"25","sexbias_dispersal",153,66,94,47
+"26","jointaggression_females",210,99,127,69
