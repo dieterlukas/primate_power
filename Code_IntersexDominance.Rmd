@@ -535,6 +535,7 @@ for (i in 1:length(allcontinuouspredictors)){
 for (j in 1:length(alldiscretepredictors)){
   discretepredictor<-alldiscretepredictors[j]
   print(c("discrete",j,"of",length(alldiscretepredictors),discretepredictor))
+  if(length(unique(combined$discretepredictor))==1){next}
   results<-run_analyses_discretepredictor(discretepredictor)
   ifelse(j==1,alldiscreteresults<-results,alldiscreteresults<-rbind(alldiscreteresults,results))
 }

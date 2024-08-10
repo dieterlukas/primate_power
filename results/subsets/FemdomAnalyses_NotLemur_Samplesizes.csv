@@ -1,0 +1,26 @@
+﻿predictorvariable,sample size categorical classification,number of species categorical classification,sample size continuous,number of species continuous
+SexualDimorphism_MaleWeight_over_FemaleWeight,189,85,95,51
+CanineDimorphism,130,51,70,37
+homerange_overlap,118,51,73,38
+females,172,77,90,49
+env_harshness,107,51,61,32
+rainfall_annualvariation,105,51,59,31
+rainfall_unpredictability,107,51,61,32
+relative_femalecaninesize,124,48,66,34
+sexualreceptivity_hours,86,29,49,25
+sexratio,172,77,90,49
+M_skew_index,57,17,36,16
+Synchrony,91,31,49,25
+relative_testes_mass,116,42,58,29
+female_average_relatedness,36,12,27,11
+perc_aggression_mm,70,42,63,36
+males,172,77,90,49
+SocOrgPMK,189,85,95,51
+fissionfusion,189,85,95,51
+female_evictions,84,28,47,22
+origin,189,85,95,51
+female_infanticide,125,52,71,36
+MatSysPMK,185,84,95,51
+Strata_Wilman,185,82,94,50
+sexbias_dispersal,125,56,72,39
+jointaggression_females,164,75,87,47
