@@ -794,15 +794,15 @@ summarizedtable<-summarizedtable[1:5,]
 summarizedtable[6,]<-c("Yes",1,0)
 colnames(summarizedtable)<-c("Park","StrictFemdom","Observations")
 summarizedtable$Observations<-as.integer(summarizedtable$Observations)
-summarizedtable[summarizedtable$Park =="Yes", ]$Park<-"Offspring parked"
-summarizedtable[summarizedtable$Park =="No", ]$Park<-"Offspring carried"
+summarizedtable[summarizedtable$Park =="Yes", ]$Park<-"parked"
+summarizedtable[summarizedtable$Park =="No", ]$Park<-"carried"
 summarizedtable[summarizedtable$StrictFemdom ==1, ]$StrictFemdom<-"3) male dominance"
 summarizedtable[summarizedtable$StrictFemdom ==2, ]$StrictFemdom<-"2) co-dominance"
 summarizedtable[summarizedtable$StrictFemdom ==3, ]$StrictFemdom<-"1) female dominance"
 summarizedtable<-summarizedtable[order(summarizedtable$Park,summarizedtable$StrictFemdom),]
 summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
 
-plot_park <-ggplot(summarizedtable, aes(x = factor(Park,levels=c("Offspring parked","Offspring carried")), y = Observations, fill = StrictFemdom)) + 
+plot_park <-ggplot(summarizedtable, aes(x = factor(Park,levels=c("parked","carried")), y = Observations, fill = StrictFemdom)) + 
   geom_bar(stat = "identity",fill=c(female_dominance_color,co_dominance_color,male_dominance_color,female_dominance_color,co_dominance_color,male_dominance_color))+
   theme(       axis.text.y=element_blank(),
                axis.ticks.y=element_blank(),
@@ -889,12 +889,34 @@ plot_AlloMaternalCare <-ggplot(summarizedtable, aes(x = factor(AlloMaternalCare,
                axis.text=element_text(size=10)
   )
 
+# allomaternal care continuous
+
+df_AlloMaternalCare_continuous <- combined[ complete.cases(combined$strictfdom,combined$AlloMaternalCare_continuous),]
+
+df_AlloMaternalCare_continuous[df_AlloMaternalCare_continuous$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_AlloMaternalCare_continuous[df_AlloMaternalCare_continuous$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_AlloMaternalCare_continuous[df_AlloMaternalCare_continuous$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_AlloMaternalCare_continuous$strictfdom,
+  AlloMaternalCare_continuous=df_AlloMaternalCare_continuous$AlloMaternalCare_continuous
+)
+
+plot_AlloMaternalCare_continuous<-ggplot(df[1:153,])+aes(y=strictfdom,x=AlloMaternalCare_continuous,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(        axis.text.y=element_blank(),
+                axis.ticks.y=element_blank(),
+                axis.title.y = element_blank(),
+                axis.title.x = element_blank(),
+                axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+scale_fill_manual(values=c(col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1) ))+theme(legend.position="none")
+
 
 
 
 # combined plot
 pdf("figures/R_Fig4_left_new.pdf",width=14.4,height=4)
-plot_grid(plot_park, plot_RelativeLactationDuration,plot_maleinfanticide,plot_AlloMaternalCare, rel_widths = c(4,3,3),nrow=1,scale=0.9)
+plot_grid(plot_park, plot_RelativeLactationDuration,plot_maleinfanticide,plot_AlloMaternalCare,plot_AlloMaternalCare_continuous, rel_widths = c(3,4,3,3,4),nrow=1,scale=0.9)
 dev.off()
 
 

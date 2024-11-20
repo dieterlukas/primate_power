@@ -1,33 +1,41 @@
-"","outcome","continuouspredictor","phylogeny","estimate lower","estimate upper","association_present"
-"1","perc_won","RelativeLactationDuration","No",-1.37660715,-1.27522725,"confident"
-"2","perc_won","RelativeLactationDuration","Yes",-1.17774365,-0.611927825,"confident"
-"3","strict three way","RelativeLactationDuration","No",-1.18388,-0.62284908,"confident"
-"4","strict three way","RelativeLactationDuration","Yes",-1.3364963,-0.68662216,"confident"
-"5","strict female dominance","RelativeLactationDuration","No",-1.7864741,-0.92819153,"confident"
-"6","strict female dominance","RelativeLactationDuration","Yes",-2.3451942,-1.2122589,"confident"
-"7","strict male dominance","RelativeLactationDuration","No",0.32951256,0.913808435,"confident"
-"8","strict male dominance","RelativeLactationDuration","Yes",0.44779929,1.0724473,"confident"
-"9","perc_won","Park Yes minus No","No",0.392735055328368,0.512023652984427,"confident"
-"10","perc_won","Park Yes minus No","Yes",0.316152533893373,0.659870237031968,"confident"
-"11","strict three way","Park Yes minus No","No",0.293225620748865,0.524072355508327,"confident"
-"12","strict three way","Park Yes minus No","Yes",0.269388806610813,0.544565362304337,"confident"
-"13","strict female dominance","Park Yes minus No","No",0.281294727344727,0.537341716739588,"confident"
-"14","strict female dominance","Park Yes minus No","Yes",0.204177327104096,0.49848364339581,"confident"
-"15","strict male dominance","Park Yes minus No","No",-0.291382214754492,-0.083413655088453,"confident"
-"16","strict male dominance","Park Yes minus No","Yes",-0.496629326749818,-0.164296431459763,"confident"
-"17","perc_won","maleinfanticide Yes minus No","No",-0.0882761767598056,-0.048213129422197,"confident"
-"18","perc_won","maleinfanticide Yes minus No","Yes",-0.00711100280758936,0.303713684810858,"not"
-"19","strict three way","maleinfanticide Yes minus No","No",-0.266663793581656,-0.0501204554722342,"confident"
-"20","strict three way","maleinfanticide Yes minus No","Yes",-0.27708682061144,-0.00381159373469056,"confident"
-"21","strict female dominance","maleinfanticide Yes minus No","No",-0.0567785584699022,0.130316472352403,"not"
-"22","strict female dominance","maleinfanticide Yes minus No","Yes",-0.0743235211610203,0.294055103312272,"not"
-"23","strict male dominance","maleinfanticide Yes minus No","No",0.133434813354147,0.367856234665359,"confident"
-"24","strict male dominance","maleinfanticide Yes minus No","Yes",0.142488426454921,0.386219317164957,"confident"
-"25","perc_won","AlloMaternalCare Yes minus No","No",0.0888689261603171,0.144198271216434,"confident"
-"26","perc_won","AlloMaternalCare Yes minus No","Yes",-0.306289189345476,0.081954291447381,"not"
-"27","strict three way","AlloMaternalCare Yes minus No","No",0.037275915405117,0.276738280399048,"confident"
-"28","strict three way","AlloMaternalCare Yes minus No","Yes",-0.0258905628663542,0.272688814245715,"not"
-"29","strict female dominance","AlloMaternalCare Yes minus No","No",-0.0556668515469873,0.166413976873236,"not"
-"30","strict female dominance","AlloMaternalCare Yes minus No","Yes",-0.282552949914007,0.08628842817985,"not"
-"31","strict male dominance","AlloMaternalCare Yes minus No","No",-0.342876916542184,-0.115906045391521,"confident"
-"32","strict male dominance","AlloMaternalCare Yes minus No","Yes",-0.449637470697429,-0.14767242232007,"confident"
+,outcome,continuouspredictor,phylogeny,estimate lower,estimate upper,association_present
+1,perc_won,RelativeLactationDuration,No,-1.37660715,-1.27522725,confident
+2,perc_won,RelativeLactationDuration,Yes,-1.17774365,-0.611927825,confident
+3,strict three way,RelativeLactationDuration,No,-1.18388,-0.62284908,confident
+4,strict three way,RelativeLactationDuration,Yes,-1.3364963,-0.68662216,confident
+5,strict female dominance,RelativeLactationDuration,No,-1.7864741,-0.92819153,confident
+6,strict female dominance,RelativeLactationDuration,Yes,-2.3451942,-1.2122589,confident
+7,strict male dominance,RelativeLactationDuration,No,0.32951256,0.913808435,confident
+8,strict male dominance,RelativeLactationDuration,Yes,0.44779929,1.0724473,confident
+9,perc_won,Park Yes minus No,No,0.392735055,0.512023653,confident
+10,perc_won,Park Yes minus No,Yes,0.316152534,0.659870237,confident
+11,strict three way,Park Yes minus No,No,0.293225621,0.524072356,confident
+12,strict three way,Park Yes minus No,Yes,0.269388807,0.544565362,confident
+13,strict female dominance,Park Yes minus No,No,0.281294727,0.537341717,confident
+14,strict female dominance,Park Yes minus No,Yes,0.204177327,0.498483643,confident
+15,strict male dominance,Park Yes minus No,No,-0.291382215,-0.083413655,confident
+16,strict male dominance,Park Yes minus No,Yes,-0.496629327,-0.164296431,confident
+17,perc_won,maleinfanticide Yes minus No,No,-0.088276177,-0.048213129,confident
+18,perc_won,maleinfanticide Yes minus No,Yes,-0.007111003,0.303713685,not
+19,strict three way,maleinfanticide Yes minus No,No,-0.266663794,-0.050120455,confident
+20,strict three way,maleinfanticide Yes minus No,Yes,-0.277086821,-0.003811594,confident
+21,strict female dominance,maleinfanticide Yes minus No,No,-0.056778558,0.130316472,not
+22,strict female dominance,maleinfanticide Yes minus No,Yes,-0.074323521,0.294055103,not
+23,strict male dominance,maleinfanticide Yes minus No,No,0.133434813,0.367856235,confident
+24,strict male dominance,maleinfanticide Yes minus No,Yes,0.142488426,0.386219317,confident
+25,perc_won,AlloMaternalCare Yes minus No,No,0.088868926,0.144198271,confident
+26,perc_won,AlloMaternalCare Yes minus No,Yes,-0.306289189,0.081954291,not
+27,strict three way,AlloMaternalCare Yes minus No,No,0.037275915,0.27673828,confident
+28,strict three way,AlloMaternalCare Yes minus No,Yes,-0.025890563,0.272688814,not
+29,strict female dominance,AlloMaternalCare Yes minus No,No,-0.055666852,0.166413977,not
+30,strict female dominance,AlloMaternalCare Yes minus No,Yes,-0.28255295,0.086288428,not
+31,strict male dominance,AlloMaternalCare Yes minus No,No,-0.342876917,-0.115906045,confident
+32,strict male dominance,AlloMaternalCare Yes minus No,Yes,-0.449637471,-0.147672422,confident
+33,perc_won,AlloMaternalCare_continuous,No,0.30910875,0.379984385,confident
+34,perc_won,AlloMaternalCare_continuous,Yes,0.263240545,0.862697755,confident
+35,strict three way,AlloMaternalCare_continuous,No,0.083048176,0.516442345,confident
+36,strict three way,AlloMaternalCare_continuous,Yes,0.16223698,0.77314514,confident
+37,strict female dominance,AlloMaternalCare_continuous,No,-0.331993795,0.3146849,not
+38,strict female dominance,AlloMaternalCare_continuous,Yes,-0.42123729,0.50220328,not
+39,strict male dominance,AlloMaternalCare_continuous,No,-0.925034085,-0.244543375,confident
+40,strict male dominance,AlloMaternalCare_continuous,Yes,-1.21855435,-0.391462375,confident
