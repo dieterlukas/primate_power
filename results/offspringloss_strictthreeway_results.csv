@@ -1,0 +1,5 @@
+"","outcome","continuouspredictor","phylogeny","estimate lower","estimate upper","association_present","estimate_lower"
+"4","strict three way","RelativeLactationDuration","Yes",-1.3364963,-0.68662216,"confident",-0.687
+"12","strict three way","Park Yes minus No","Yes",0.269388806610813,0.544565362304337,"confident",0.545
+"20","strict three way","maleinfanticide Yes minus No","Yes",-0.27708682061144,-0.00381159373469056,"confident",-0.004
+"28","strict three way","AlloMaternalCare Yes minus No","Yes",-0.0258905628663542,0.272688814245715,"not",0.273

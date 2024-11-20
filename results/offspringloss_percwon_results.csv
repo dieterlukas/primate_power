@@ -1,0 +1,5 @@
+"","outcome","continuouspredictor","phylogeny","estimate lower","estimate upper","association_present","estimate_lower"
+"2","perc_won","RelativeLactationDuration","Yes",-1.17774365,-0.611927825,"confident",-0.612
+"10","perc_won","Park Yes minus No","Yes",0.316152533893373,0.659870237031968,"confident",0.66
+"18","perc_won","maleinfanticide Yes minus No","Yes",-0.00711100280758936,0.303713684810858,"not",0.304
+"26","perc_won","AlloMaternalCare Yes minus No","Yes",-0.306289189345476,0.081954291447381,"not",0.082

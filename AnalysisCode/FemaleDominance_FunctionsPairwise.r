@@ -24,7 +24,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   dat_list_continuous <- list(
     N_spp = nrow(dstan_continuous),
     perc_won_females = as.integer(dstan_continuous$perc_won_females),
-    continuouspredictor = standardize(dstan_continuous$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_continuous$continuouspredictor),
     species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
     total = rep(100,nrow(dstan_continuous))
   )
@@ -59,7 +59,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   
   dat_list_continuous_phylogenetic <- list(
     perc_won_females = as.integer(dstan_continuous$perc_won_females),
-    continuouspredictor = standardize(dstan_continuous$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_continuous$continuouspredictor),
     species = as.integer(as.factor(dstan_continuous$corrected_species_id)),
     total = rep(100,nrow(dstan_continuous))
   )
@@ -93,7 +93,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   
   dat_list_strict <- list(
     R = as.integer(as.factor(dstan_strict$strictfdom)),
-    continuouspredictor = standardize(dstan_strict$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_strict$continuouspredictor),
     species = as.integer(as.factor(dstan_strict$corrected_species_id))
   )
   
@@ -113,7 +113,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   
   dat_list_strict_phylogenetic <- list(
     R = as.integer(as.factor(dstan_strict$strictfdom)),
-    continuouspredictor = standardize(dstan_strict$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_strict$continuouspredictor),
     species = as.integer(as.factor(dstan_strict$corrected_species_id))
   )
   
@@ -158,7 +158,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   # Female dominance classification of intersexual dominance
   dat_list_relaxed <- list(
     R = as.integer(as.factor(dstan_strict$strictfdom %in% 3))-1,
-    continuouspredictor = standardize(dstan_strict$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_strict$continuouspredictor),
     species = as.integer(as.factor(dstan_strict$corrected_species_id))
   )
   
@@ -192,7 +192,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   dat_list_relaxed_phylogenetic <- list(
     N_spp = nrow(dstan_strict),
     R = as.integer(as.factor(dstan_strict$strictfdom %in% 3))-1,
-    continuouspredictor = standardize(dstan_strict$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_strict$continuouspredictor),
     species = as.integer(as.factor(dstan_strict$corrected_species_id))
   )
   
@@ -225,7 +225,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   # Female dominance classification of intersexual dominance
   dat_list_relaxed <- list(
     R = as.integer(as.factor(dstan_strict$strictfdom %in% 1))-1,
-    continuouspredictor = standardize(dstan_strict$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_strict$continuouspredictor),
     species = as.integer(as.factor(dstan_strict$corrected_species_id))
   )
   
@@ -260,7 +260,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
   dat_list_relaxed_phylogenetic <- list(
     N_spp = nrow(dstan_strict),
     R = as.integer(as.factor(dstan_strict$strictfdom %in% 1))-1,
-    continuouspredictor = standardize(dstan_strict$continuouspredictor),
+    continuouspredictor = rethinking::standardize(dstan_strict$continuouspredictor),
     species = as.integer(as.factor(dstan_strict$corrected_species_id))
   )
   

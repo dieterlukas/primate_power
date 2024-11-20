@@ -1,0 +1,5 @@
+"","outcome","continuouspredictor","phylogeny","estimate lower","estimate upper","association_present","estimate_lower"
+"8","strict male dominance","RelativeLactationDuration","Yes",0.44779929,1.0724473,"confident",1.072
+"16","strict male dominance","Park Yes minus No","Yes",-0.496629326749818,-0.164296431459763,"confident",-0.164
+"24","strict male dominance","maleinfanticide Yes minus No","Yes",0.142488426454921,0.386219317164957,"confident",0.386
+"32","strict male dominance","AlloMaternalCare Yes minus No","Yes",-0.449637470697429,-0.14767242232007,"confident",-0.148

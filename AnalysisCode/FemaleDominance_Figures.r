@@ -779,8 +779,133 @@ plot_grid(plot_matingsystem,plot_arboreality,plot_sexualreceptivity, plot_sexrat
 dev.off()
 
 
+
 ################################################################################
-##### Figure 4 female sociality
+##### Figure 4 offspring loss
+
+
+# Park
+summarizedtable<-combined %>%
+  group_by(Park,strictfdom) %>%
+  summarize(Total = n())
+
+summarizedtable<-as.data.frame(summarizedtable)
+summarizedtable<-summarizedtable[1:5,]
+summarizedtable[6,]<-c("Yes",1,0)
+colnames(summarizedtable)<-c("Park","StrictFemdom","Observations")
+summarizedtable$Observations<-as.integer(summarizedtable$Observations)
+summarizedtable[summarizedtable$Park =="Yes", ]$Park<-"Offspring parked"
+summarizedtable[summarizedtable$Park =="No", ]$Park<-"Offspring carried"
+summarizedtable[summarizedtable$StrictFemdom ==1, ]$StrictFemdom<-"3) male dominance"
+summarizedtable[summarizedtable$StrictFemdom ==2, ]$StrictFemdom<-"2) co-dominance"
+summarizedtable[summarizedtable$StrictFemdom ==3, ]$StrictFemdom<-"1) female dominance"
+summarizedtable<-summarizedtable[order(summarizedtable$Park,summarizedtable$StrictFemdom),]
+summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
+
+plot_park <-ggplot(summarizedtable, aes(x = factor(Park,levels=c("Offspring parked","Offspring carried")), y = Observations, fill = StrictFemdom)) + 
+  geom_bar(stat = "identity",fill=c(female_dominance_color,co_dominance_color,male_dominance_color,female_dominance_color,co_dominance_color,male_dominance_color))+
+  theme(       axis.text.y=element_blank(),
+               axis.ticks.y=element_blank(),
+               axis.title.y = element_blank(),
+               axis.title.x = element_blank(),
+               axis.text=element_text(size=10)
+  )
+
+
+
+# relative lactation duration
+df_RelativeLactationDuration <- combined[ complete.cases(combined$strictfdom,combined$RelativeLactationDuration),]
+
+df_RelativeLactationDuration[df_RelativeLactationDuration$strictfdom==1,]$strictfdom<-"c) Strict male dominance"
+df_RelativeLactationDuration[df_RelativeLactationDuration$strictfdom==2,]$strictfdom<-"b) Co dominance"
+df_RelativeLactationDuration[df_RelativeLactationDuration$strictfdom==3,]$strictfdom<-"a) Strict female dominance"
+
+df = data.frame(
+  strictfdom=df_RelativeLactationDuration$strictfdom,
+  RelativeLactationDuration=df_RelativeLactationDuration$RelativeLactationDuration
+)
+
+plot_RelativeLactationDuration<-ggplot(df[1:153,])+aes(y=strictfdom,x=RelativeLactationDuration,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+  theme(        axis.text.y=element_blank(),
+                axis.ticks.y=element_blank(),
+                axis.title.y = element_blank(),
+                axis.title.x = element_blank(),
+                axis.text=element_text(size=10)
+  )+
+  scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+scale_fill_manual(values=c(col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1) ))+theme(legend.position="none")
+
+
+
+# infanticide
+
+summarizedtable<-combined %>%
+  group_by(maleinfanticide,strictfdom) %>%
+  summarize(Total = n())
+summarizedtable<-as.data.frame(summarizedtable)
+summarizedtable<-summarizedtable[1:6,]
+colnames(summarizedtable)<-c("maleinfanticide","StrictFemdom","Observations")
+summarizedtable$Observations<-as.integer(summarizedtable$Observations)
+summarizedtable[summarizedtable$maleinfanticide =="Yes", ]$maleinfanticide<-"present"
+summarizedtable[summarizedtable$maleinfanticide =="No", ]$maleinfanticide<-"absent"
+summarizedtable[summarizedtable$StrictFemdom ==1, ]$StrictFemdom<-"3) male dominance"
+summarizedtable[summarizedtable$StrictFemdom ==2, ]$StrictFemdom<-"2) co-dominance"
+summarizedtable[summarizedtable$StrictFemdom ==3, ]$StrictFemdom<-"1) female dominance"
+summarizedtable<-summarizedtable[order(summarizedtable$maleinfanticide,summarizedtable$StrictFemdom),]
+summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
+
+plot_maleinfanticide <-ggplot(summarizedtable, aes(x = factor(maleinfanticide,levels=c("absent","present")), y = Observations, fill = StrictFemdom)) + 
+  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+
+  theme(       axis.text.y=element_blank(),
+               axis.ticks.y=element_blank(),
+               axis.title.y = element_blank(),
+               axis.title.x = element_blank(),
+               axis.text=element_text(size=10)
+  )
+
+
+# allomaternal care
+
+summarizedtable<-combined %>%
+  group_by(AlloMaternalCare,strictfdom) %>%
+  summarize(Total = n())
+summarizedtable<-as.data.frame(summarizedtable)
+summarizedtable<-summarizedtable[1:6,]
+colnames(summarizedtable)<-c("AlloMaternalCare","StrictFemdom","Observations")
+summarizedtable$Observations<-as.integer(summarizedtable$Observations)
+summarizedtable[summarizedtable$AlloMaternalCare =="Yes", ]$AlloMaternalCare<-"present"
+summarizedtable[summarizedtable$AlloMaternalCare =="No", ]$AlloMaternalCare<-"absent"
+summarizedtable[summarizedtable$StrictFemdom ==1, ]$StrictFemdom<-"3) male dominance"
+summarizedtable[summarizedtable$StrictFemdom ==2, ]$StrictFemdom<-"2) co-dominance"
+summarizedtable[summarizedtable$StrictFemdom ==3, ]$StrictFemdom<-"1) female dominance"
+summarizedtable<-summarizedtable[order(summarizedtable$AlloMaternalCare,summarizedtable$StrictFemdom),]
+summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
+
+plot_AlloMaternalCare <-ggplot(summarizedtable, aes(x = factor(AlloMaternalCare,levels=c("absent","present")), y = Observations, fill = StrictFemdom)) + 
+  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+
+  theme(       axis.text.y=element_blank(),
+               axis.ticks.y=element_blank(),
+               axis.title.y = element_blank(),
+               axis.title.x = element_blank(),
+               axis.text=element_text(size=10)
+  )
+
+
+
+
+# combined plot
+pdf("figures/R_Fig4_left_new.pdf",width=14.4,height=4)
+plot_grid(plot_park, plot_RelativeLactationDuration,plot_maleinfanticide,plot_AlloMaternalCare, rel_widths = c(4,3,3),nrow=1,scale=0.9)
+dev.off()
+
+
+
+
+
+
+
+
+################################################################################
+##### Figure 5 female sociality
 
 
 
@@ -867,7 +992,7 @@ plot_jointaggression_females <-ggplot(summarizedtable, aes(x = factor(jointaggre
 
 
 # combined plot
-pdf("figures/R_Fig4_left.pdf",width=14.4,height=4)
+pdf("figures/R_Fig5_left.pdf",width=14.4,height=4)
 plot_grid(plot_sexbias_dispersal, plot_female_relatedness,plot_jointaggression_females, rel_widths = c(4,3,3),nrow=1,scale=0.9)
 dev.off()
 
@@ -878,7 +1003,7 @@ dev.off()
 
 
 ################################################################################
-##### Figure 4 self organisation
+##### Figure 6 self organisation
 
 # sex ratio
 df_sexratio <- combined[ complete.cases(combined$strictfdom,combined$sexratio),]
@@ -953,7 +1078,7 @@ plot_males<-ggplot(df)+aes(y=strictfdom,x=males,fill=strictfdom)+stat_halfeye(ae
 
 
 # combined plot
-pdf("figures/R_Fig4_right.pdf",width=10.8,height=4)
+pdf("figures/R_Fig5_right.pdf",width=10.8,height=4)
 plot_grid(plot_sexratio,plot_percaggress_mm, plot_males, rel_widths = c(3,3,3),nrow=1,scale=0.9)
 dev.off()
 

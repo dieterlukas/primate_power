@@ -3,15 +3,15 @@
 # Loading the data
 
 # We load the phylogenetic tree
-inputtree<-read.tree("https://raw.githubusercontent.com/dieterlukas/primate_power/main/data/PrimatePhylogeny_IntersexDominance.tre")
+ifelse(fileorigin=="github",inputtree<-read.tree("https://raw.githubusercontent.com/dieterlukas/primate_power/main/data/PrimatePhylogeny_IntersexDominance.tre"),inputtree<-read.tree("data/PrimatePhylogeny_IntersexDominance.tre"))
 
 
 # We load the population data with the response variables
-inputdata<-read.table("https://raw.githubusercontent.com/dieterlukas/primate_power/main/data/PopulationData_IntersexDominance.csv",sep=",",header=T)
+ifelse(fileorigin=="github",inputdata<-read.table("https://raw.githubusercontent.com/dieterlukas/primate_power/main/data/PopulationData_IntersexDominance.csv",sep=",",header=T),inputdata<-read.table("data/PopulationData_IntersexDominance.csv",sep=",",header=T))
 
 
 # We load the species-level predictor variables
-specieslevelpredictors<-read.table("https://raw.githubusercontent.com/dieterlukas/primate_power/main/data/SpeciesLevelPredictors_IntersexDominance.txt")
+ifelse(fileorigin=="github",specieslevelpredictors<-read.table("https://raw.githubusercontent.com/dieterlukas/primate_power/main/data/SpeciesLevelPredictors_IntersexDominance.txt"),specieslevelpredictors<-read.table("data/SpeciesLevelPredictors_IntersexDominance.txt"))
 
 # We add the species names as a separate variable in a separate column for matching
 specieslevelpredictors$corrected_species_id<-row.names(specieslevelpredictors)

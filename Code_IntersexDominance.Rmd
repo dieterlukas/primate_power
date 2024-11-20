@@ -25,7 +25,11 @@ Authors: Elise Huchard, Dieter Lukas, Nikolaos Smit, Claudia Fichtel, Peter M. K
 
 
 ## Abstract
-In all but a few mammalian species, males were long believed to dominate females socially. However, recent studies indicate more variation, opening new possibilities for exploring the extent and drivers of sex biases in dominance relations. Here, we use comparative data from 226 populations of 117 primate species to show that male-female conflicts represent nearly half of all within-group conflicts, and that strict male dominance is found in <20% of study populations. Our analyses further indicate that female dominance emerges over evolutionary times as females face more reproductive competition and gain more reproductive control. These results shed new light on the evolutionary origins of power asymmetries between the sexes in non-human primates, with potential implications for understanding gender asymmetries in human societies.
+). Historically, it was assumed that males dominate females socially in most mammalian species. However, recent studies reveal significant variation within and among species, opening new possibilities to explore the extent and drivers of sex biases in dominance relations. This study utilizes comparative data from 253 populations across 121 primate species to demonstrate that male-female contests are common, accounting for nearly half of all within-group contests. Notably, strict male dominance is observed in less than 20% of the populations examined.
+Our analyses suggest that traits promoting female dominance often arise in contexts of intense female-female competition, as seen in solitary or pair-living species where females defend exclusive home ranges. Additionally, in sexually monogamous species with weak sexual size dimorphism and balanced sex ratios, significant female reproductive control is also associated with female dominance.
+Furthermore, our findings indicate that the evolution of terrestriality marks a pivotal shift in male-female power dynamics in primates, favoring male dominance through enhanced reproductive control. While male power often relies on coercion, female empowerment frequently hinges on alternative strategies, such as leveraging reproductive control.
+By identifying the traits associated with the emergence of female versus male dominance in primate evolutionary history, our results also illuminate the origins of gender power asymmetries in human societies. Specifically, the combination of traits observed in humans—such as flexible social organization, variable mating systems, terrestriality, and moderate sexual size dimorphism—does not align with the traits characteristic of species at either ends of the dominance spectrum.
+
 
 
 # The script can be used to load the required data from the repository at http://github.com/dieterlukas/primate_power , run the analyses, and generate the figures.
@@ -43,24 +47,28 @@ library(ape)
 library(geiger)
 library(phytools)
 library(dplyr)
+library(tidyr)
 library(rethinking)
 library(cmdstanr)
 
-
-# This command will then tell R where to find these input files and where to save the output files.
+# Keep this file (Code_IntersexDominance.Rmd) in a folder on your computer where you want all the output to be generated.
+# This command will then tell R where to find the input files (if you choose the command versions operating locally) and where to save the output files.
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 # Loading the data
 
 # Version 1: from files locally on computer
 # Keep this script file in the same folder as the three input files (population data, species variables, phylogeny)
-source("AnalysisCode/FemaleDominance_LoadData.r")
-
-
+fileorigin<-"local"
 # Version 2: accessing the code and data directly from the online repository
-source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/AnalysisCode/FemaleDominance_LoadData.r")
+fileorigin<-"github"
 
-# This should generate four files: the phylogenetic tree ('inputtree'), the population level data with the observations from the primary literature ('inputdata'), the species level data with predictors ('specieslevelpredictors'), and the data file combining these two datasets for the analyes ('combined').
+
+ifelse(fileorigin=="local",source("AnalysisCode/FemaleDominance_LoadData.r"),source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/AnalysisCode/FemaleDominance_LoadData.r"))
+
+
+
+# This should generate four files: the phylogenetic tree ('inputtree'), the population level data with the observations from the primary literature ('inputdata'), the species level data with predictors ('specieslevelpredictors'), and the data file combining these two datasets for the analyses ('combined'). It will also display in the console the list of variables.
 
 ```
 
@@ -230,6 +238,15 @@ continuous_sexualselection<-c("sexualreceptivity_hours","sexratio","M_skew_index
 discrete_sexualselection<-c("MatSysPMK","Strata_Wilman")
 
 
+# Running the analyses with the predictor variables for the risk of offspring loss hypothesis
+
+# a) parking offspring, b) short lactation periods, c) male infanticide, d) allomaternal care
+
+continuous_offspringloss<-c("RelativeLactationDuration","AlloMaternalCare_continuous")
+
+discrete_offspringloss<-c("Park","maleinfanticide","AlloMaternalCare")
+
+
 # Running the analyses with the predictor variables for the female bonds hypothesis
 
 # a) sex bias in dispersal, b) female relatedness (ns), c) female coalitions (ns)
@@ -241,17 +258,20 @@ discrete_femalesociality<-c("sexbias_dispersal","jointaggression_females")
 
 # Running the analyses with the predictor variables for the self organisation hypothesis
 
-# d) adult sex ratio, e) male-male conflicts (ns), f) number of males (ns)
+# a) adult sex ratio, b) male-male conflicts (ns), c) number of males (ns)
 
 continuous_selforganisation<-c("sexratio","perc_aggression_mm","males")
 
 
 
-allcontinuouspredictors<-c(continuous_femalecompetition,continuous_sexualselection,continuous_femalesociality,continuous_selforganisation)
 
 
+# Combine all continuous predictors from the five hypotheses
+allcontinuouspredictors<-c(continuous_femalecompetition,continuous_sexualselection,continuous_offspringloss,continuous_femalesociality,continuous_selforganisation)
 
-alldiscretepredictors<-c(discrete_femalecompetition,discrete_sexualselection,discrete_femalesociality)
+
+# Combine all discrete predictors from the five hypotheses
+alldiscretepredictors<-c(discrete_femalecompetition,discrete_sexualselection,discrete_offspringloss,discrete_femalesociality)
 
 
 
@@ -286,7 +306,7 @@ for(i in 1:length(alldiscretepredictors)){
   count<-count+1
 }
 
-write.csv(samplesizetable,file="./results/FemdomAnalyses_Samplesizes.csv")
+write.csv(samplesizetable,file="./results/FemdomAnalyses_Samplesize.csv")
 
 
 for (k in 1:1){
@@ -319,7 +339,6 @@ combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*com
 # write.csv(combinedresults,file="./results/intersexualdominance_combinedresults.csv")
 
 }
-
 
 
 clip <- pipe("pbcopy", "w") 
@@ -413,6 +432,27 @@ femalesociality_comparison<-femalesociality_comparison[,c(1,2,6)]
 femalesociality_comparison<-femalesociality_comparison %>% pivot_wider(names_from = outcome,values_from = association_present)
 femalesociality_comparison<-as.data.frame(femalesociality_comparison)
 write.csv(femalesociality_comparison,file="results/femalesociality_resultcomparison.csv")
+
+
+
+offspringloss<-c(discrete_offspringloss,continuous_offspringloss)
+
+r_offspringloss_percwon<-r_percwon[unique(grep(paste(offspringloss,collapse="|"),r_percwon$continuouspredictor)),]
+r_offspringloss_strictdominance<-r_strictdominance[unique(grep(paste(offspringloss,collapse="|"),r_strictdominance$continuouspredictor)),]
+r_offspringloss_strictfemale<-r_strictfemale[unique(grep(paste(offspringloss,collapse="|"),r_strictfemale$continuouspredictor)),]
+r_offspringloss_strictmale<-r_strictmale[unique(grep(paste(offspringloss,collapse="|"),r_strictmale$continuouspredictor)),]
+
+write.csv(r_offspringloss_percwon,file="results/offspringloss_percwon_results.csv")
+write.csv(r_offspringloss_strictdominance,file="results/offspringloss_strictthreeway_results.csv")
+write.csv(r_offspringloss_strictfemale,file="results/offspringloss_strictfemale_results.csv")
+write.csv(r_offspringloss_strictmale,file="results/offspringloss_strictmale_results.csv")
+
+offspringloss_comparison<-combinedresults[unique(grep(paste(offspringloss,collapse="|"),combinedresults$continuouspredictor)),]
+offspringloss_comparison<-offspringloss_comparison[,c(1,2,6)]
+offspringloss_comparison<-offspringloss_comparison %>% pivot_wider(names_from = outcome,values_from = association_present)
+offspringloss_comparison<-as.data.frame(offspringloss_comparison)
+write.csv(offspringloss_comparison,file="results/offspringloss_resultcomparison.csv")
+
 
 
 
@@ -622,7 +662,7 @@ if(variant==2 & nestingvariable==2){
 # write.csv(sortedpercwonresults,file="./results/intersexualdominance_dimorphic_sortedpercwonresults.csv")
 intersexualdominance_dimorphic_sortedthreewayresults<-sortedthreewayresults
 intersexualdominance_dimorphic_sortedpercwonresults<-sortedpercwonresults
-
+}
 
 ```
 
