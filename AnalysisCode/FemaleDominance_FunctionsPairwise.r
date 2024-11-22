@@ -318,7 +318,6 @@ run_analyses_discretepredictor <- function(discretepredictor){
   
   totalvariants<-length(unique(dstan_continuous$discretepredictor))
   numberofcontrasts<-totalvariants*(totalvariants-1)/2
-  if(totalvariants==1){next}
   results<-matrix(nrow=numberofcontrasts*4*2,ncol=5)    
   results<-as.data.frame(results)
   colnames(results)<-c("outcome", "discretepredictor","phylogeny", "contrast lower","contrast upper")

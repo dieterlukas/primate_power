@@ -461,19 +461,28 @@ for (i in 1:length(allcontinuouspredictors)){
 
 # Next with the discrete predictors
 
-for (j in 1:length(alldiscretepredictors)){
-  discretepredictor<-alldiscretepredictors[j]
-  print(c("discrete",j,"of",length(alldiscretepredictors),discretepredictor))
-    dstan_strict <- combined[ complete.cases(combined$strictfdom,combined$discretepredictor,combined$corrected_species_id),]
-  if(length(unique(dstan_strict$discretepredictor))==1){next}
+includeddiscretepredictors<-alldiscretepredictors  
+for (j in 1:length(includeddiscretepredictors)){  
+  colnames(combined)[colnames(combined) %in% discretepredictor]<-c("discretepredictor")
+  dstan_strict <- combined[ complete.cases(combined$strictfdom,combined$discretepredictor,combined$corrected_species_id),]
+  if(length(unique(dstan_strict$discretepredictor))==1){includeddiscretepredictors<-includeddiscretepredictors[-1]}
+  colnames(combined)[colnames(combined) %in% "discretepredictor"]<-c(discretepredictor)
+}
+  
+if(length(includeddiscretepredictors)>0){  
+for (j in 1:length(includeddiscretepredictors)){
+  discretepredictor<-includeddiscretepredictors[j]
+  print(c("discrete",j,"of",length(includeddiscretepredictors),discretepredictor))
   results<-run_analyses_discretepredictor(discretepredictor)
   ifelse(j==1,alldiscreteresults<-results,alldiscreteresults<-rbind(alldiscreteresults,results))
 }
 
   colnames(alldiscreteresults)<-colnames(allresults)
   combinedresults<-rbind(allresults,alldiscreteresults)
+}
   
-  
+if(length(includeddiscretepredictors)==0){combinedresults<-allresults}
+    
 combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*combinedresults$'estimate upper'<0,"not","confident" )
 
 # if(variant==1){write.csv(combinedresults,file="./results/intersexualdominance_notlemur_combinedresults.csv")}
