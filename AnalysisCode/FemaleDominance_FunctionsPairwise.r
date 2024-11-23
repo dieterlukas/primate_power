@@ -36,7 +36,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       ## adaptive priors
       a ~ dnorm( 0 , 1 ),
       b ~ dnorm(0,1)
-    ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   results[1,4:5]<-precis(m_continuous_continuous)[2,3:4]
   
@@ -82,7 +82,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       b ~ dnorm(0,1),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_continuous_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   results[2,4:5]<-precis(m_continuous_continuous_phylogenetic)[1,3:4]
   
@@ -104,7 +104,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       a ~ dnorm( 0 , 1 ),
       b ~ dnorm(0,1),
       cutpoints ~ dnorm( 0 , 1.5 )
-    ) , data=dat_list_strict , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_strict , chains=4 , cores=4 ,cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   results[3,4:5]<-precis(m_strict_continuous)[2,3:4]
   
@@ -147,7 +147,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       cutpoints ~ dnorm( 0 , 1.5 ),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_strict_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_strict_phylogenetic , chains=4 , cores=4 ,cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   results[4,4:5]<-precis(m_strict_continuous_phylogenetic)[1,3:4]
   
@@ -170,7 +170,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       a ~ dnorm( 0 , 1 ),
       b ~ dnorm( 0 , 0.5 ),
       cutpoints ~ dnorm( 0 , 1.5 )
-    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, messages=FALSE )
+    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, show_messages=FALSE, show_exceptions=FALSE, refresh=0 )
   
   results[5,4:5]<-precis(m_relaxed_continuouspredictor)[2,3:4]
   
@@ -215,7 +215,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       cutpoints ~ dnorm( 0 , 1.5 ),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4 ,cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   results[6,4:5]<-precis(m_relaxed_continuous_phylogenetic)[1,3:4]
   
@@ -237,7 +237,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       a ~ dnorm( 0 , 1 ),
       b ~ dnorm( 0 , 0.5 ),
       cutpoints ~ dnorm( 0 , 1.5 )
-    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, messages=FALSE )
+    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, show_messages=FALSE, show_exceptions=FALSE, refresh=0 )
   
   results[7,4:5]<-precis(m_relaxed_continuouspredictor)[2,3:4]
   
@@ -283,7 +283,7 @@ run_analyses_continuouspredictor <- function(continuouspredictor){
       cutpoints ~ dnorm( 0 , 1.5 ),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4 ,cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   results[8,4:5]<-precis(m_relaxed_continuous_phylogenetic)[1,3:4]
   
@@ -345,7 +345,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       ## adaptive priors
       a ~ dnorm( 0 , 1 ),
       b[discretepredictor] ~ dnorm(0,1)
-    ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_continuous , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   posterior<-extract.samples(m_continuous_discrete)
   
@@ -406,7 +406,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       b[discretepredictor] ~ dnorm(0,1),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_continuous_discrete_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_continuous_discrete_phylogenetic , chains=4 , cores=4 , log_lik=TRUE , cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   posterior<-extract.samples(m_continuous_discrete_phylogenetic)
   
@@ -436,7 +436,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       phi <- b[origin] ,
       b[origin] ~ dnorm( 0 , 0.5 ),
       cutpoints ~ dnorm( 0 , 1.5 )
-    ) , data=dat_list , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list , chains=4 , cores=4 ,cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   posterior<-extract.samples(m_strict_discrete)
   
@@ -494,7 +494,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_strict_phylogenetic , chains=4 , cores=4 ,cmdstan=T, messages=FALSE, refresh=0)
+    ) , data=dat_list_strict_phylogenetic , chains=4 , cores=4 ,cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0)
   
   
   posterior<-extract.samples(m_strict_discrete_phylogenetic)
@@ -526,7 +526,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       logit(p) <- b[origin] ,
       b[origin] ~ dnorm( 0 , 0.5 ),
       cutpoints ~ dnorm( 0 , 1.5 )
-    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, messages=FALSE )
+    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, show_messages=FALSE, show_exceptions=FALSE, refresh=0 )
   
   posterior<-extract.samples(m_relaxed_discrete)
   
@@ -582,7 +582,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4, cmdstan=T, messages=FALSE )
+    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4, cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0 )
   
   posterior<-extract.samples(m_relaxed_discrete_phylogenetic)
   
@@ -612,7 +612,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       logit(p) <- b[origin] ,
       b[origin] ~ dnorm( 0 , 0.5 ),
       cutpoints ~ dnorm( 0 , 1.5 )
-    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, messages=FALSE )
+    ) , data=dat_list_relaxed , chains=4 , cores=4 , cmdstan = T, show_messages=FALSE, show_exceptions=FALSE, refresh=0 )
   
   posterior<-extract.samples(m_relaxed_discrete)
   
@@ -669,7 +669,7 @@ run_analyses_discretepredictor <- function(discretepredictor){
       matrix[N_spp,N_spp]: SIGMA <- cov_GPL2( Dmat, etasq, rhosq, 0.01),
       etasq~exponential(1),
       rhosq~exponential(1)
-    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4, cmdstan=T, messages=FALSE )
+    ) , data=dat_list_relaxed_phylogenetic , chains=4 , cores=4, cmdstan=T, show_messages=FALSE, show_exceptions=FALSE, refresh=0 )
   
   posterior<-extract.samples(m_relaxed_discrete_phylogenetic)
   

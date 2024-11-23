@@ -151,3 +151,43 @@ strict male dominance,SocOrgPMK S minus P,No,-0.209621491,0.144469649,not
 strict male dominance,SocOrgPMK P minus G,Yes,-0.220958226,0.295782901,not
 strict male dominance,SocOrgPMK S minus G,Yes,-0.220800111,0.274157967,not
 strict male dominance,SocOrgPMK S minus P,Yes,-0.275059316,0.254731256,not
+perc_won,RelativeLactationDuration,No,-0.42525653,-0.174305665,confident
+perc_won,RelativeLactationDuration,Yes,-0.295859045,0.686812945,not
+strict three way,RelativeLactationDuration,No,-0.655097945,0.760374835,not
+strict three way,RelativeLactationDuration,Yes,-0.668872755,0.73319455,not
+strict female dominance,RelativeLactationDuration,No,-0.542625535,0.50772848,not
+strict female dominance,RelativeLactationDuration,Yes,-0.597023005,0.731621855,not
+strict male dominance,RelativeLactationDuration,No,-0.682986995,0.628976725,not
+strict male dominance,RelativeLactationDuration,Yes,-1.19261455,0.95568282,not
+perc_won,AlloMaternalCare_continuous,No,-0.92799275,-0.632844885,confident
+perc_won,AlloMaternalCare_continuous,Yes,-2.0381242,-0.736426595,confident
+strict three way,AlloMaternalCare_continuous,No,-0.48179881,0.92678101,not
+strict three way,AlloMaternalCare_continuous,Yes,-0.59407982,0.920227595,not
+strict female dominance,AlloMaternalCare_continuous,No,-0.45090895,0.67455681,not
+strict female dominance,AlloMaternalCare_continuous,Yes,-0.533400065,0.883494975,not
+strict male dominance,AlloMaternalCare_continuous,No,-0.643557255,0.635789055,not
+strict male dominance,AlloMaternalCare_continuous,Yes,-1.2436447,0.962372905,not
+perc_won,Park Yes minus No,No,-0.089252453,-0.02957603,confident
+perc_won,Park Yes minus No,Yes,-0.108383119,0.117456864,not
+strict three way,Park Yes minus No,No,-0.182781591,0.150745744,not
+strict three way,Park Yes minus No,Yes,-0.17417781,0.181592821,not
+strict female dominance,Park Yes minus No,No,-0.191100323,0.126079756,not
+strict female dominance,Park Yes minus No,Yes,-0.163753306,0.161147861,not
+strict male dominance,Park Yes minus No,No,-0.057305373,0.176135736,not
+strict male dominance,Park Yes minus No,Yes,-0.212640296,0.281611141,not
+perc_won,maleinfanticide Yes minus No,No,0.163210531,0.390952171,confident
+perc_won,maleinfanticide Yes minus No,Yes,0.188716325,0.63956442,confident
+strict three way,maleinfanticide Yes minus No,No,-0.018344569,0.426153644,not
+strict three way,maleinfanticide Yes minus No,Yes,-0.03527026,0.413490395,not
+strict female dominance,maleinfanticide Yes minus No,No,0.043195688,0.449084118,confident
+strict female dominance,maleinfanticide Yes minus No,Yes,-0.010040186,0.418895727,not
+strict male dominance,maleinfanticide Yes minus No,No,-0.35433947,0.039943163,not
+strict male dominance,maleinfanticide Yes minus No,Yes,-0.304431452,0.214174778,not
+perc_won,AlloMaternalCare Yes minus No,No,-0.125065815,-0.004129721,confident
+perc_won,AlloMaternalCare Yes minus No,Yes,-0.596699041,0.04734165,not
+strict three way,AlloMaternalCare Yes minus No,No,-0.237741739,0.193412053,not
+strict three way,AlloMaternalCare Yes minus No,Yes,-0.251109112,0.217571629,not
+strict female dominance,AlloMaternalCare Yes minus No,No,-0.323901297,0.045995064,not
+strict female dominance,AlloMaternalCare Yes minus No,Yes,-0.286291911,0.177972557,not
+strict male dominance,AlloMaternalCare Yes minus No,No,0.070000808,0.427542139,confident
+strict male dominance,AlloMaternalCare Yes minus No,Yes,-0.201055151,0.320700191,not

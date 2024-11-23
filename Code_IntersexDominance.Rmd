@@ -399,11 +399,16 @@ for(nestingvariable in 1:2){
 
 for(variant in 1:2){
   
-  if(variant==1 & nestingvariable==1){combined<-original[original$lemur==0,]} 
-  if(variant==2 & nestingvariable==1){combined<-original[original$lemur==1,]}
+  if(variant==1 & nestingvariable==1){
+    combined<-original[original$lemur==0,]
+    print("Lemurs")} 
+  if(variant==2 & nestingvariable==1){combined<-original[original$lemur==1,]
+  print("Not Lemurs")}
   
-  if(variant==1 & nestingvariable==2){combined<-original[original$dimorphic==0,]} 
-  if(variant==2 & nestingvariable==2){combined<-original[original$dimorphic==1,]}
+  if(variant==1 & nestingvariable==2){combined<-original[original$dimorphic==0,]
+  print("Dimorphic")} 
+  if(variant==2 & nestingvariable==2){combined<-original[original$dimorphic==1,]
+  print("Not Dimorphic")}
 
 
 samplesizetable<-matrix(ncol=5,nrow=length(allcontinuouspredictors)+length(alldiscretepredictors))
@@ -435,14 +440,14 @@ for(i in 1:length(alldiscretepredictors)){
   count<-count+1
 }
 
-# if(variant==1 & nestingvariable==1){write.csv(samplesizetable,file="./results/FemdomAnalyses_NotLemur_Samplesizes.csv")}
+if(variant==1 & nestingvariable==1){write.csv(samplesizetable,file="./results/subsets/FemdomAnalyses_NotLemur_Samplesizes.csv")}
 if(variant==1 & nestingvariable==1){FemdomAnalyses_NotLemur_Samplesizes<-samplesizetable}
-# if(variant==2 & nestingvariable==1){write.csv(samplesizetable,file="./results/FemdomAnalyses_Lemur_Samplesizes.csv")}
+if(variant==2 & nestingvariable==1){write.csv(samplesizetable,file="./results/subsets/FemdomAnalyses_Lemur_Samplesizes.csv")}
 if(variant==2 & nestingvariable==1){FemdomAnalyses_Lemur_Samplesizes<-samplesizetable}
 
-# if(variant==1 & nestingvariable==2){write.csv(samplesizetable,file="./results/FemdomAnalyses_NotDimorphic_Samplesizes.csv")}
+if(variant==1 & nestingvariable==2){write.csv(samplesizetable,file="./results/subsets/FemdomAnalyses_NotDimorphic_Samplesizes.csv")}
 if(variant==1 & nestingvariable==2){FemdomAnalyses_NotDimorphic_Samplesizes<-samplesizetable}
-# if(variant==2 & nestingvariable==2){write.csv(samplesizetable,file="./results/FemdomAnalyses_Dimorphic_Samplesizes.csv")}
+if(variant==2 & nestingvariable==2){write.csv(samplesizetable,file="./results/subsets/FemdomAnalyses_Dimorphic_Samplesizes.csv")}
 if(variant==2 & nestingvariable==2){FemdomAnalyses_Dimorphic_Samplesizes<-samplesizetable}
 
 
@@ -462,7 +467,9 @@ for (i in 1:length(allcontinuouspredictors)){
 # Next with the discrete predictors
 
 includeddiscretepredictors<-alldiscretepredictors  
-for (j in 1:length(includeddiscretepredictors)){  
+
+for (k in 1:length(includeddiscretepredictors)){  
+  discretepredictor<-alldiscretepredictors[k]
   colnames(combined)[colnames(combined) %in% discretepredictor]<-c("discretepredictor")
   dstan_strict <- combined[ complete.cases(combined$strictfdom,combined$discretepredictor,combined$corrected_species_id),]
   if(length(unique(dstan_strict$discretepredictor))==1){includeddiscretepredictors<-includeddiscretepredictors[-1]}
@@ -485,18 +492,17 @@ if(length(includeddiscretepredictors)==0){combinedresults<-allresults}
     
 combinedresults$association_present<-ifelse(combinedresults$'estimate lower'*combinedresults$'estimate upper'<0,"not","confident" )
 
-# if(variant==1){write.csv(combinedresults,file="./results/intersexualdominance_notlemur_combinedresults.csv")}
+if(variant==1 & nestingvariable==1){write.csv(combinedresults,file="./results/subsets/intersexualdominance_notlemur_combinedresults.csv")}
 if(variant==1 & nestingvariable==1){intersexualdominance_notlemur_combinedresults<-combinedresults}
-#if(variant==2){write.csv(combinedresults,file="./results/intersexualdominance_lemur_combinedresults.csv")}
+if(variant==2 & nestingvariable==1){write.csv(combinedresults,file="./results/subsets/intersexualdominance_lemur_combinedresults.csv")}
 if(variant==2 & nestingvariable==1){intersexualdominance_lemur_combinedresults<-combinedresults}
 
+if(variant==1 & nestingvariable==2){write.csv(combinedresults,file="./results/subsets/intersexualdominance_notdimorphic_combinedresults.csv")}
 if(variant==1 & nestingvariable==2){intersexualdominance_notdimorphic_combinedresults<-combinedresults}
+if(variant==2 & nestingvariable==2){write.csv(combinedresults,file="./results/subsets/intersexualdominance_dimorphic_combinedresults.csv")}
 if(variant==2 & nestingvariable==2){intersexualdominance_dimorphic_combinedresults<-combinedresults}
 
-
-
 }
-
 
 }
 
@@ -518,8 +524,9 @@ femalecompetition<-c("SocOrgPMK","SexualDimorphism_MaleWeight_over_FemaleWeight"
 sexualselection<-c("MatSysPMK","Strata_Wilman","sexualreceptivity_hours","sexratio","M_skew_index","relative_testes_mass","Synchrony")
 selforganisation<-c("sexratio","perc_aggression_mm","males")
 socialbonds<-c("sexbias_dispersal","female_average_relatedness","jointaggression_females")
+offspringloss<-c("RelativeLactationDuration","Park","AlloMaternalCare","AlloMaternalCare_continuous",             "maleinfanticide")
 
-sorted_variables<-c(femalecompetition,sexualselection,selforganisation,socialbonds)
+sorted_variables<-c(femalecompetition,sexualselection,offspringloss,selforganisation,socialbonds)
 
 percwonresults<-combinedresults[combinedresults$outcome %in% "perc_won",]
 threewayresults<-combinedresults[combinedresults$outcome %in% "strict three way",]
@@ -535,29 +542,29 @@ for(i in 1:length(sorted_variables)){
 }
 
 if(variant==1 & nestingvariable==1){
-# write.csv(sortedthreewayresults,file="intersexualdominance_notlemur_sortedthreewayresults.csv")
-# write.csv(sortedpercwonresults,file="intersexualdominance_notlemur_sortedpercwonresults.csv")
+write.csv(sortedthreewayresults,file="./results/subsets/intersexualdominance_notlemur_sortedthreewayresults.csv")
+write.csv(sortedpercwonresults,file="./results/subsets/intersexualdominance_notlemur_sortedpercwonresults.csv")
 intersexualdominance_notlemur_sortedthreewayresults<-sortedthreewayresults
 intersexualdominance_notlemur_sortedpercwonresults<-sortedpercwonresults
 }
 
 if(variant==2 & nestingvariable==1){
-# write.csv(sortedthreewayresults,file="./results/intersexualdominance_lemur_sortedthreewayresults.csv")
-# write.csv(sortedpercwonresults,file="./results/intersexualdominance_lemur_sortedpercwonresults.csv")
+write.csv(sortedthreewayresults,file="./results/subsets/intersexualdominance_lemur_sortedthreewayresults.csv")
+write.csv(sortedpercwonresults,file="./results/subsets/intersexualdominance_lemur_sortedpercwonresults.csv")
 intersexualdominance_lemur_sortedthreewayresults<-sortedthreewayresults
 intersexualdominance_lemur_sortedpercwonresults<-sortedpercwonresults  
 }
 
 if(variant==1 & nestingvariable==2){
-# write.csv(sortedthreewayresults,file="intersexualdominance_notdimorphic_sortedthreewayresults.csv")
-# write.csv(sortedpercwonresults,file="intersexualdominance_notdimorphic_sortedpercwonresults.csv")
+write.csv(sortedthreewayresults,file="./results/subsets/intersexualdominance_notdimorphic_sortedthreewayresults.csv")
+write.csv(sortedpercwonresults,file="./results/subsets/intersexualdominance_notdimorphic_sortedpercwonresults.csv")
 intersexualdominance_notdimorphic_sortedthreewayresults<-sortedthreewayresults
 intersexualdominance_notdimorphic_sortedpercwonresults<-sortedpercwonresults
 }
 
 if(variant==2 & nestingvariable==2){
-# write.csv(sortedthreewayresults,file="./results/intersexualdominance_dimorphic_sortedthreewayresults.csv")
-# write.csv(sortedpercwonresults,file="./results/intersexualdominance_dimorphic_sortedpercwonresults.csv")
+write.csv(sortedthreewayresults,file="./results/subsets/intersexualdominance_dimorphic_sortedthreewayresults.csv")
+write.csv(sortedpercwonresults,file="./results/subsets/intersexualdominance_dimorphic_sortedpercwonresults.csv")
 intersexualdominance_dimorphic_sortedthreewayresults<-sortedthreewayresults
 intersexualdominance_dimorphic_sortedpercwonresults<-sortedpercwonresults
 }
