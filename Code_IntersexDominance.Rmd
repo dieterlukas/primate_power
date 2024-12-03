@@ -166,6 +166,29 @@ length(unique(combined[is.na(combined$perc_won_females)==FALSE,]$corrected_speci
 table(combined$perc_won_females)
 hist(combined$perc_won_females)
 
+
+# Checking for influence of captivity
+dstan_captive <- combined[ complete.cases(combined$perc_won_females,combined$origin,combined$corrected_species_id),]
+
+double<-as.data.frame(table(dstan_captive %>% group_by(corrected_species_id) %>% summarise(unique(origin))))
+double<-double[double$Freq==1,]
+
+table(double$corrected_species_id)[table(double$corrected_species_id)>1]
+
+doublespecies<-names(table(double$corrected_species_id)[table(double$corrected_species_id)>1])
+
+doubedstan_captive<-dstan_captive[dstan_captive$corrected_species_id %in% doublespecies,]
+
+doubledstan_comp<-as.data.frame(doubedstan_captive %>% group_by(corrected_species_id,origin) %>% summarise(mean(perc_won_females)))
+
+comparison<-NA
+for (i in 1:7){
+  
+  comparison[i]<-doubledstan_comp[(2*i),]$`mean(perc_won_females)` - doubledstan_comp[(2*i-1),]$`mean(perc_won_females)`
+}
+
+comparison
+
 ```
 
 
