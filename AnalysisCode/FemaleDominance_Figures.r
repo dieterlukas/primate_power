@@ -836,7 +836,7 @@ plot_RelativeLactationDuration<-ggplot(df[1:153,])+aes(y=strictfdom,x=RelativeLa
 
 
 
-# infanticide
+# male infanticide
 
 summarizedtable<-combined %>%
   group_by(maleinfanticide,strictfdom) %>%
@@ -854,7 +854,7 @@ summarizedtable<-summarizedtable[order(summarizedtable$maleinfanticide,summarize
 summarizedtable$StrictFemdom<-as.factor(summarizedtable$StrictFemdom)
 
 plot_maleinfanticide <-ggplot(summarizedtable, aes(x = factor(maleinfanticide,levels=c("absent","present")), y = Observations, fill = StrictFemdom)) + 
-  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4),col.alpha(female_dominance_color,0.4),col.alpha(co_dominance_color,0.4),col.alpha(male_dominance_color,0.4)))+
+  geom_bar(stat = "identity",fill=c(col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1),col.alpha(female_dominance_color,1),col.alpha(co_dominance_color,1),col.alpha(male_dominance_color,1)))+
   theme(       axis.text.y=element_blank(),
                axis.ticks.y=element_blank(),
                axis.title.y = element_blank(),
