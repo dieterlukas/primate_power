@@ -315,7 +315,7 @@ plot_caninesizedimorphism<-ggplot(df)+aes(y=strictfdom,x=log(CanineDimorphism),f
         axis.title.x = element_blank(),
         axis.text=element_text(size=10)
   )+
-  scale_x_continuous(name="Male canine size relative to female canine size",breaks=c(0,0.4054651,0.6931472,0.9162907,1.098612,1.252763,1.386294,1.504077,1.609438),labels=c(1,1.5,2,2.5,3,3.5,4,4.5,5))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
+  scale_x_continuous(name="Male canine size relative to female canine size",breaks=c(0,0.6931472,1.098612,1.386294,1.609438),labels=c(1,2,3,4,5))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
 
 
 # home range overlap
