@@ -215,7 +215,7 @@ dev.off()
 ################################################################################
 ##### Figure 2: female competition
 
-
+# Social organization
 summarizedtable<-combined %>%
   group_by(SocOrgPMK,strictfdom) %>%
   summarize(Total = n())
@@ -283,7 +283,7 @@ df = data.frame(
   SexualDimorphism_MaleWeight_over_FemaleWeight=exp(df_bodysizedimorphism$SexualDimorphism_MaleWeight_over_FemaleWeight)
 )
 
-plot_bodysizedimorphism<-ggplot(df)+aes(y=strictfdom,x=SexualDimorphism_MaleWeight_over_FemaleWeight,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+plot_bodysizedimorphism<-ggplot(df)+aes(y=strictfdom,x=log(SexualDimorphism_MaleWeight_over_FemaleWeight),fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
   theme(axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
         axis.title.y = element_blank(),
@@ -291,7 +291,7 @@ plot_bodysizedimorphism<-ggplot(df)+aes(y=strictfdom,x=SexualDimorphism_MaleWeig
         axis.text=element_text(size=10)
   )+
   scale_y_discrete(labels = c('Strict female dominance', 'Co dominance', 'Strict male dominance'))+
-  scale_x_continuous(name="Male body size relative to female body size")+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
+  scale_x_continuous(name="Male body size relative to female body size",breaks=c(-0.6931472,0,0.4054651,0.6931472,0.9162907,1.098612),labels=c(0.5,1,1.5,2,2.5,3))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
 
 
 
@@ -308,14 +308,14 @@ df = data.frame(
   CanineDimorphism=exp(df_sexratiocanines$CanineDimorphism)
 )
 
-plot_caninesizedimorphism<-ggplot(df)+aes(y=strictfdom,x=CanineDimorphism,fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
+plot_caninesizedimorphism<-ggplot(df)+aes(y=strictfdom,x=log(CanineDimorphism),fill=strictfdom)+stat_halfeye(aes(thickness = after_stat(pdf*n)))+
   theme(axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
         axis.title.y = element_blank(),
         axis.title.x = element_blank(),
         axis.text=element_text(size=10)
   )+
-  scale_x_continuous(name="Male canine size relative to female canine size")+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
+  scale_x_continuous(name="Male canine size relative to female canine size",breaks=c(0,0.4054651,0.6931472,0.9162907,1.098612,1.252763,1.386294,1.504077,1.609438),labels=c(1,1.5,2,2.5,3,3.5,4,4.5,5))+scale_fill_manual(values=c(female_dominance_color,co_dominance_color,male_dominance_color))+theme(legend.position="none")
 
 
 # home range overlap
