@@ -79,7 +79,7 @@ ifelse(fileorigin=="local",source("AnalysisCode/FemaleDominance_LoadData.r"),sou
 
 ## Occurrence of intersexual conflict
 
-Intersexual conflicts are frequent, representing nearly half of all agonistic interactions among primates: mean percentage ±SD: 48.1±21.5
+Intersexual conflicts are frequent, representing nearly half of all agonistic interactions among primates: mean percentage ±SD: 47.4±21.9
 
 Intersexual conflicts are not more (or less) frequent when most dyads in the group are between the sexes: mean estimate -0.01, 89% HPDI -0.06 - +0.04
 
