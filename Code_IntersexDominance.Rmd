@@ -21,18 +21,11 @@ output:
 
 ### This file contains the R script with the analyses reported in the manuscript:
 The evolution of male-female dominance relations in primate societies
-Authors: Elise Huchard, Dieter Lukas, Nikolaos Smit, Claudia Fichtel, Peter M. Kappeler
+Authors: Elise Huchard, Peter M. Kappeler, Nikolaos Smit, Claudia Fichtel, Dieter Lukas
+https://doi.org/10.1073/pnas.2500405122
 
 
-## Abstract
-). Historically, it was assumed that males dominate females socially in most mammalian species. However, recent studies reveal significant variation within and among species, opening new possibilities to explore the extent and drivers of sex biases in dominance relations. This study utilizes comparative data from 253 populations across 121 primate species to demonstrate that male-female contests are common, accounting for nearly half of all within-group contests. Notably, strict male dominance is observed in less than 20% of the populations examined.
-Our analyses suggest that traits promoting female dominance often arise in contexts of intense female-female competition, as seen in solitary or pair-living species where females defend exclusive home ranges. Additionally, in sexually monogamous species with weak sexual size dimorphism and balanced sex ratios, significant female reproductive control is also associated with female dominance.
-Furthermore, our findings indicate that the evolution of terrestriality marks a pivotal shift in male-female power dynamics in primates, favoring male dominance through enhanced reproductive control. While male power often relies on coercion, female empowerment frequently hinges on alternative strategies, such as leveraging reproductive control.
-By identifying the traits associated with the emergence of female versus male dominance in primate evolutionary history, our results also illuminate the origins of gender power asymmetries in human societies. Specifically, the combination of traits observed in humans—such as flexible social organization, variable mating systems, terrestriality, and moderate sexual size dimorphism—does not align with the traits characteristic of species at either ends of the dominance spectrum.
-
-
-
-# The script can be used to load the required data from the repository at http://github.com/dieterlukas/primate_power , run the analyses, and generate the figures.
+# This script can be used to load the required data from the repository at http://github.com/dieterlukas/primate_power , run the analyses, and generate the figures.
 
 
 
@@ -114,7 +107,7 @@ precis(m_conflicts)
 
 ## Distribution of intersexual dominance
 
-
+Running the following code will display tables and outputs directly in R with the descriptive statistics showing the distribution of intersexual dominance in the sample
 
 ```{r p1 variation in intersexual dominance, echo=FALSE}
 
@@ -196,20 +189,11 @@ comparison
 
 ## Phylogenetic signal of intersexual dominance
 
-All three variables of intersexual dominance show consistent, but limited phylogenetic signals: percentage fights won by females Blomberg's K 0.32 (p=0.001), strict intersexual dominance K 0.20 (p=0.001), relaxed intersexual dominance K 0.21 (p=0.001)
-
-The phylogenetic covariance approach suggests that the percentage of fights that females can win changes in a somewhat Brownian fashion, with no very high covariances and a steady decline of covariance over phylogenetic distance.
-
-In contrast, the three-way classification of whether females, males, or no sex are strictly dominant show extremely high phylogenetic signal at the level of Families, which drops to zero beyond that. For the three-way classification (female/co/male dominance), this reflects that states deeper in the tree cannot be accurately reconstructed (see also the figure).
-
-These evolutionary patterns limit the ability to reconstruct co-evolutionary patterns for the two discrete traits. States in the the three-way, strict classification changes so frequently that there is high uncertainty around deeper parts of the tree.
-
+Running the following script will generate a csv output file with a table reporting the extent of the phylogenetic signal and their significance (results/FemaleDominance_PhylogeneticSignal.csv). In addition, it will generate two plots that show the estimated phylogenetic covariance based on the Bayesian model (figures/R_Figure_PhylogeneticCovariance...pdf).
 
 ```{r p1.4 phylogeny, echo=FALSE}
 
 source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/AnalysisCode/FemaleDominance_PhylogeneticSignal.r")
-
-# Running this code will generate a csv output file with a table reporting the extent of the phylogenetic signal and their significance (results/FemaleDominance_PhylogeneticSignal.csv). In addition, it will generate two plots that show the estimated phylogenetic covariance based on the Bayesian model (figures/R_Figure_PhylogeneticCovariance...pdf).
 
 ```
 
@@ -220,7 +204,7 @@ source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/Analysi
 
 ### Definition of functions to build statistical models to assess correlations with predictor variables
 
-We link each of the predictor variables to the three outcome variables measuring intersexual dominance in Bayesian regression models. There are different models reflecting the different outcome variables, whether the predictor variable is continuous or discrete, and whether the shared phylogenetic history among species is taken into account or not. For each of the unique combination of outcome variable and type of predictor variable, we built functions that can be called to automatically complete the respective set of analyses for a given predictor variable. 
+We link each of the predictor variables to the two outcome variables measuring intersexual dominance in Bayesian regression models. There are different models reflecting the different outcome variables (continuous versus categorical), whether the predictor variable is continuous or discrete, and whether the shared phylogenetic history among species is taken into account or not. For each of the unique combination of outcome variable and type of predictor variable, we built functions that can be called to automatically complete the respective set of analyses for a given predictor variable. These functions are loaded with the following script.
 
 
 ```{r functions, echo=FALSE}
@@ -237,7 +221,7 @@ source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/Analysi
 
 ### Correlations with predictor variables
 
-The correlations of the two variables measuring intersexual dominance and the set of predictor variables are shown in the output table "intersexualdominance_combinedresults.csv".
+The following code runs the univariate analyses linking the predictor variables to the two outcome variables. The predictor variables are grouped according to the five hypotheses we are testing. The code will first generate a file with a table showing the sample sizes for the different predictor variables ("FemdomAnalyses_Samplesize.csv"). Next, it will run the correlations, with the estimates of the correlations of the two variables measuring intersexual dominance and the set of predictor variables provided in the output table "intersexualdominance_combinedresults.csv".
 
 
 ```{r p2.1 mating system, echo=FALSE}
@@ -378,7 +362,7 @@ close(clip)
 
 
 
-Prepare the table for the results
+We prepare the table for the results by grouping the variables according to the hypotheses.
 
 ```{r prepare pairwise tables, echo=FALSE}
 
@@ -394,7 +378,7 @@ source("https://raw.githubusercontent.com/dieterlukas/primate_power/main/Analysi
 
 ### Correlations with predictor variables
 
-The correlations of the three variables measuring intersexual dominance and the set of predictor variables are shown in the output table "intersexualdominance_combinedresults.csv".
+We repeat the analyses in subsets of the data. First, we split the sample into populations that are from lemur species versus non-lemur species, to assess whether a variable predicts variation in intersexual dominance beyond the clear split between lemurs and other species. Second, we split the sample into populations in which males are at least 10% larger than females, to assess whether additional factors shape intersexual dominance beyond the physical ability of males to outcompete females when they are much larger. The correlations of the two variables measuring intersexual dominance and the set of predictor variables are shown in the output table "intersexualdominance_combinedresults.csv".
 
 
 ```{r p2.1 mating system, echo=FALSE}
